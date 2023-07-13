@@ -1,0 +1,40 @@
+# Carpeta de dependencias
+node_modules/
+
+# Archivos de compilación
+/dist
+
+# Archivos generados por Vite
+/.vite
+
+# Archivos de registro
+/log
+
+# Archivos de respaldo
+*.log*
+*.log
+*.swp
+
+# Archivos de configuración de IDE
+.idea/
+.vscode/
+
+# Archivos de caché de IDE
+*.iml
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/modules.xml
+/.idea/*.iml
+/.vscode/*.json
+
+# Archivos de respaldo de editor
+*~
+*.bak
+
+# Archivos de configuración local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Otros archivos y carpetas específicos de tu proyecto
