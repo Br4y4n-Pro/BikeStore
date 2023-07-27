@@ -1,0 +1,158 @@
+
+
+@media (max-width:768px) {
+    .contenedor_login{
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+    .contenedor_login .btn-back{
+        width: 30px;
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        z-index: 1;
+        cursor: pointer;
+        margin: 1.5em 0px 0px 1em;
+    }
+    .contenedor_login .back_login{
+        width: 30px;
+    }
+    .zoneImagen{
+        width: 100%;
+        height: 60vh;
+        background-image: url(../Img/FondoLoginMovil/FondoLogin.png);
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .zoneImagen img{
+        width: 250px;
+        aspect-ratio: 3/2;
+	    object-fit: contain;
+        margin-top: 0px;
+    }
+
+    .zoneImagen .Bienvenida{
+        top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+    .zoneImagen .Bienvenida h3{
+        color: white;
+        font-size: 3em;
+        width: 50%;
+        
+        
+    }
+    .zoneImagen .Bienvenida p{
+        margin-top: .3em;
+        color: white;
+        font-size: 2em;
+
+    }
+    .formulario{
+        width: 90%;
+        max-width: 80%;
+        margin: auto;
+        padding: 1em;
+        position: absolute;
+        top: 43vh;
+        right: 0;
+        left: 0;
+        border-radius: 1em;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, .7);
+        background-color: white;
+        
+    }
+
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        
+
+    }
+    .form .input_login{
+        padding: 1em;
+        outline: none;
+        border: 1px solid #c2c2c2;
+        border-radius: .6em;
+        width: 100%;
+	    font-family: 'Montserrat', sans-serif;    
+        margin-bottom: 1em;
+    }
+    .form .passRecu{
+        width: 100%;
+        color: var(--red-primary);
+        font-weight: bold;
+        font-size: 12px;
+        text-align: right;
+        margin-bottom: 1em;
+        cursor: pointer;
+    }
+    .form .btn-login{
+        padding: 1em;
+        border: none;
+        width: 100%;
+        border-radius: .5em;
+        color: var(--white);
+        background: var(--red-primary);
+        font-family: 'Montserrat', sans-serif;    
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 3em;
+    }
+    .form .registrarse{
+        color: var(--red-primary);
+        font-size: 12px;
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+    }
+
+}  
+
+@media (max-width:389px) {
+    .zoneImagen .Bienvenida h3{
+        color: white;
+        font-size: 1.5em;
+        width: 50%;
+        
+    }
+    .zoneImagen .Bienvenida p{
+        
+        color: white;
+        font-size: 1.2em;
+
+    }
+}
+
+@media (max-height:720px) {
+    .zoneImagen .Bienvenida h3{
+        color: white;
+        font-size: 2em;
+        width: 50%;
+        
+    }
+
+    .zoneImagen .Bienvenida p{
+        
+        color: white;
+        font-size: 1.5em;
+
+    }
+}
