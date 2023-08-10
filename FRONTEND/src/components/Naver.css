@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda&family=Montserrat:wght@100;300;400;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    }
+.navbar{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1em;
+   gap:1em;
+}
+
+.containerlup{
+   display: flex;
+    max-width: 100%;
+    width: 25%;
+}
+
+.containerlup input{
+   width: 100%;
+   border: none;
+   border-bottom: 1px solid black;
+}
+
+.containerlup  .btn img{
+    width: 20px;
+ }
+
+.menu{
+   display: flex;
+   justify-content: end;
+   min-width: 467px;
+}
+.menu ul{
+   display: flex;
+   gap:1em;
+}
+
+.menu ul li a {
+   color: black;
+}
+
+.search{
+   display: flex;
+   gap:.5em;
+  
+}
+
+.logo{
+   width: 100px;
+}
+
+
+.logo img{
+   width: 100px;
+}
+
+ .search img{
+    width: 25px;
+ }
+.menu-btn{
+  display: none;
+} 
+.carr{
+  display: none;
+}
+ /* tablet and mobil */
+
+@media (max-width: 600px){
+
+.navbar{
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   justify-content: space-between;
+   align-items: center;
+   padding:.3em .5em 1em .5em;
+   background: red;
+
+   
+}
+
+.logo{
+   order: -1;
+   width: 50%;
+   z-index: 2;
+}
+
+.logo img{
+   width: 100px;
+   mix-blend-mode: color-burn;
+}
+
+.containerlup{
+   width: 100%;
+   order: 3;
+   display: flex;
+   justify-content: center;
+   padding: .1em .5em;
+   margin-top: .5em;
+}
+.user{
+  display: block;
+  order: 1;
+  width: 25px;
+  cursor: pointer;
+}
+.containerlup input {
+   outline: none;
+   border: none;
+   border-bottom: 1px solid black;
+   background: transparent;
+   width: calc(100% - 30px);
+}
+
+.menu{
+   display: none;
+}
+
+.menu.active{
+  display: flex;
+   display: grid;
+   position: absolute;
+   inset:0 50% 0 0;
+   width: 50%;
+   background: #535353;
+   place-items:center;
+}
+
+.menu.active ul{
+   display: grid;
+   position: inherit;
+   margin-bottom: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu.active ul li a{
+   color: white;
+   font-size: 1.1em; 
+  
+
+}
+
+
+.search{
+   display: flex;
+   padding-right: .3em;
+}
+
+.search .carrito {
+   display: none;
+}
+
+ .search img{
+  display: flex;
+  gap: 0.5em;
+  width:25px
+  }
+ 
+ .btn img{
+    width: 20px;
+ }
+ .menu-btn{
+  display: block;
+    order: 1;
+    width: 25px;
+    cursor: pointer;
+ }
+
+  .containercarr {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    border-radius: 50%;
+   position: absolute;
+  right: 35px;
+  transform: translateY(470%);
+  }
+  
+  .logocarr {
+    width: 50%;
+    margin: 25%;
+    text-align: center;
+  }
+  
+  .logocarr img {
+    max-width: 100%;
+    height: auto;
+  }
+}
