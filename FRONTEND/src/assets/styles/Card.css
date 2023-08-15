@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800;900&display=swap');
+
+.contenedorCard{
+    margin: 2em;
+    width: 90%;
+    max-width: 260px;
+    padding: .5em 1em 2em 1em;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    
+}
+
+.contenedorCard .ImgProduct{
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.contenedorCard .ImgProduct img{
+    width: 238px;
+    
+}
+
+.contenedorCard .info {
+    margin: .5em;
+}
+
+.contenedorCard .info .tituloCard{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.contenedorCard .info .precioEstado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    width: 97%;
+}
+
+.contenedorCard .info .precioEstado .estado{
+    font-size: 12px;
+}   
+
+.contenedorCard .colores{
+    display: flex;
+    justify-content: start;
+    gap:1em;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.contenedorCard .colores .color1{
+    height: 25px;
+    width: 25px;
+    background: linear-gradient(45deg, rgb(255, 145, 0) 50%,black 50%);
+    border-radius: 100%;
+
+}
+
+.contenedorCard .colores .color2{
+    height: 25px;
+    width: 25px;
+    background: linear-gradient(45deg, rgb(46, 224, 58) 50%,black 50%);
+    border-radius: 100%;
+
+}
+
+.contenedorCard .colores .color3{
+    height: 25px;
+    width: 25px;
+    background: linear-gradient(45deg, rgb(255, 0, 81) 50%,black 50%);
+    border-radius: 100%;
+
+}
+
+.contenedorCard .colores .color4{
+    height: 25px;
+    width: 25px;
+    background: linear-gradient(45deg, rgb(114, 114, 114) 50%,black 50%);
+    border-radius: 100%;
+
+}
+
+.contenedorCard  .botonesHomeCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+    width: 100%;
+   
+}
+
+.contenedorCard .botonesHomeCard .comprar{
+    width: 90%;
+    height: 35px;
+    border: none;
+    color: var(--white);
+    background: var(--red-primary);
+	font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .5s background ease;
+
+}
+/* hover de comprar */
+.contenedorCard .botonesHomeCard .comprar:hover{
+    background: var(--white);
+    color: var(--red-primary);
+    transition: .5s background ease;
+    box-shadow: 1px 1px 3px var(--red-primary);
+}
+
+
+.opciones{
+    width: 90%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.contenedorCard .botonesHomeCard .addCarrito{
+    height: 35px;
+    width:85%;
+    background: var(--white);
+    border: 1px solid var(--grey);
+    font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+    margin-right: .5em;
+    transition: .5s background ease;
+    cursor: pointer;
+}
+
+.contenedorCard .botonesHomeCard .addCarrito:hover{
+    background: var(--red-primary);
+    color: var(--white);
+    transition: .5s background ease;
+
+}
+
+.contenedorCard .botonesHomeCard .Favorito{
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+} 
+
+.Favorito img{
+    width: 25px;
+}
+

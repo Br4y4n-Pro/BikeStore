@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800;900&display=swap');
+:root{
+	/* Principales */
+	--red-primary: rgb(254,16,67);
+	--grey: rgb(50,50,50);
+	--white: rgb(255,255,255);
+	--black: rgb(0,0,0);
+	/* Claros */
+	--red-ten-light: #fe4069;
+	--red-twenty-light: #fe587b;
+	/* Oscuros */
+	--red-thirty: #b20b2f;
+	--red-fourty: #980a28;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: var(--black)
+}
+
+*{
+	font-family: 'Montserrat', sans-serif;
+
+}
+
+/* footer{
+	display: flex;
+	flex-direction: column;
+	margin-top: 2em;
+}
+ */
+hr{
+	margin: auto;
+	width: 90%;
+}
+
+.footer{
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 3em;
+	padding: .5em 2em;
+	gap: 3em;
+	justify-content: center;
+}
+
+/* ZONA 1 :links de interes */
+
+.footer .zona1{
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+}
+
+.footer .zona1 .notificaciones form{
+	display: flex;
+	margin-top: .5em;
+}
+
+.footer .zona1 .notificaciones form input{
+	font-family: 'Montserrat', sans-serif;
+	outline: none;
+	border: 1px solid var(--grey);
+	padding: .5em;
+	margin-right: 0px;
+}
+
+.footer .zona1 .notificaciones form button{
+	background-color: var(--red-primary);
+	padding: .5em 1em;
+	border: 1px solid var(--black);
+	color: var(--white);
+	font-family: 'Montserrat', sans-serif;
+	transition: background-color .5s;
+	cursor: pointer;
+}
+
+.footer .zona1 .notificaciones form button:hover{
+	background-color: var(--white);
+	color: var(--red-primary);
+	border: 1px solid var(--grey);
+	transition: background-color .5s;
+
+}
+
+/* ZONA 2: FORMAS DE PAGO */
+
+.footer .zona2 .linea{
+	margin-top: 2em;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.footer .zona2 .linea .imagen{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: .7em;
+	margin: auto.5em;
+}
+
+.footer .zona2 .linea .imagen a img{
+	width: 80px;
+	/* lineas importantes :) */
+	aspect-ratio: 3/2;
+	object-fit: contain;
+	mix-blend-mode: color-burn;
+}
+
+/* ZONA 3: CONTACTO  */
+
+.footer .zona3{
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+
+}
+
+.footer .zona3 .redesSociales{
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	padding: 0px 1em;
+}
+.footer .zona3 .redesSociales a .redes{
+	width: 50px;
+}
+
+
+.footer .zona3 .logo {
+	margin: auto;
+}
+.footer .zona3 .logo img{
+	width: 200px;
+}
+
+.footer .copyright{
+	width: 100%;
+	text-align: center;
+}

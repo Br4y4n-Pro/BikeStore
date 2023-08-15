@@ -1,0 +1,10 @@
+.ContenidoCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+}
