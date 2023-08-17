@@ -8,3 +8,9 @@
     max-width: 1500px;
     margin: auto;
 }
+
+@media (max-width:820px) {
+    .ContenidoCard{
+        padding-top: 8em;
+    }
+}

@@ -17,13 +17,11 @@
 	padding: 0;
 	margin: 0;
 	text-decoration: none;
-	color: var(--black)
-}
-
-*{
+	color: var(--black);
 	font-family: 'Montserrat', sans-serif;
 
 }
+
 
 /* footer{
 	display: flex;
