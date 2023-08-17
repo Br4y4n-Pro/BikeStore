@@ -2,13 +2,16 @@ import React from "react";
 import "../../assets/styles/login.css";
 import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png"
 import back from "../../assets/Img/FondoLoginMovil/back.png"
+import logo from "../../assets/Img/logo/font kelly slab.png"
+
 export const Login = () => {
   return (
     <>
       <div className="contenedor_login">
-        
         <button className="btn-back"> <img className="back_login" src={back} alt="" /> </button>
+        <div className="contenedor-small">
         <div className="zoneImagen">
+
           <img src={LogoMovil} alt="" />
           <div className="Bienvenida">
             <h3>Iniciar Sesion</h3>
@@ -16,7 +19,9 @@ export const Login = () => {
           </div>
         </div>
         <div className="formulario">
-          <form action="">
+        <img className="logo_movil" src={logo} alt="" />
+
+          <form className="form-space" action="">
             <div className="form">
               <input placeholder="Correo Electronico" className="input_login" id="user" type="text" />
 
@@ -32,6 +37,7 @@ export const Login = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
+  </>
   );
 };
