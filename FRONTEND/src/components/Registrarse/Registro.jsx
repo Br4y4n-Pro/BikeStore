@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/styles/registro.css";
+import "../../assets/styles/registro.css"
 import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png"
 import back from "../../assets/Img/FondoLoginMovil/back.png"
 import logo from "../../assets/Img/logo/font kelly slab.png"
@@ -7,11 +7,13 @@ import logo from "../../assets/Img/logo/font kelly slab.png"
 export const Registro = () => {
   return (
     <>
-      <div className="contenedor_login">
-        <button className="btn-back"> <img className="back_login" src={back} alt="" /> </button>
+      <div className="contenedor_register">
+        <button className="btn-back"> 
+        <img className="back_login" src={back} alt="" /> 
+        </button>
+
         <div className="contenedor-small">
         <div className="zoneImagen">
-
           <img src={LogoMovil} alt="" />
           <div className="Bienvenida">
             <h3>Registrarse</h3>
@@ -30,11 +32,12 @@ export const Registro = () => {
               <input placeholder="Numero de telefono" className="input_login" id="n_telefono" type="number"/>
               <input placeholder="Contraseña" className="input_login" id="password" type="password" />
               <input placeholder="Confirmar contraseña" className="input_login" id="R_password" type="password" />
-
+              <input placeholder="Documento de Identidad" className="input_login" id="d_identidad" type="number" />
+              <input  placeholder="Direccion" className="input_login" id="direccion" type="text" />
               <button className="btn-login" type="submit">
                 Registrar
               </button>
-              <a className="registrarse">¿No tienes una Cuentas?</a>
+              <a className="registrarse">Iniciar Sesion</a>
             </div>
           </form>
         </div>
