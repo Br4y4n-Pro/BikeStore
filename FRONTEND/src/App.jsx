@@ -9,12 +9,23 @@ import { Registro } from "./components/Registrarse/Registro";
 import { Login } from "./components/LOGIN/login"
 
 function App(){
+  const pruebaApi = async () =>{
+   const response = await fetch("http://localhost:3050/productos")
+   const data = await response.json()
+   
+   console.log(data) 
+  }
+
   return (
     <>
-     <Naver/>
+
+    
+
+
+     {/* <Naver/>
       <Contenido />
-      <Footer />
-      <Login />
+  <Footer />*/}
+      <Login /> 
       {/* <Registro /> */}
     </>
   );
