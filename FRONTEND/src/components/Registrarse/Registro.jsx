@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../assets/styles/registro.css"
 import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png"
 import back from "../../assets/Img/FondoLoginMovil/back.png"

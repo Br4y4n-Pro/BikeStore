@@ -1,4 +1,4 @@
-import React from "react";
+
 import cicla from "../assets/Img/cicla.png";
 import "../assets/styles/Card.css";
 export const Card = () => {
