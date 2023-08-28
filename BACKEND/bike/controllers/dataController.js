@@ -1,3 +1,4 @@
+
 const { Pool } = require("pg");
 const { CONFIG_BD } = require("../config/db");
 const bcrypt = require("bcrypt");

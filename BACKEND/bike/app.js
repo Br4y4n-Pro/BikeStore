@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
@@ -30,3 +31,4 @@ const puerto = 3050;
 app.listen(puerto, () => {
   console.log(`Servidor escuchando en http://localhost:${puerto}`);
 });
+
