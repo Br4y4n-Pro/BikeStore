@@ -11,11 +11,11 @@ import { Login } from "./components/LOGIN/login"
 function App(){
   return (
     <>
-     <Naver/>
-      <Contenido />
-      <Footer />
+     {/* <Naver/> */}
+      {/* <Contenido /> */}
+      {/* <Footer /> */}
       <Login />
-      {/* <Registro /> */}
+      <Registro />
     </>
   );
 }
