@@ -44,7 +44,6 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
   return (
     <>
       <div className="contenedor_register">
-
         <button className="btn-back"> 
         <img className="back_register" src={back} alt="" /> 
         </button>
@@ -55,35 +54,16 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
           <div className="Bienvenida">
             <h3>Registrarse</h3>
             <p>Bienvenido</p>
-          </div>
         </div>
-        <div className="formulario">
-        <img className="logo_pc" src={logo} alt="" />
-
-          <form className="form-space" action="">
-            <div className="form">
-              <input placeholder="Nombre" className="input_register" id="nombre" type="text"/>
-              <input placeholder="Apellido" className="input_register" id="apellido" type="text"/>
-              <input placeholder="Correo Electronico" className="input_register" id="email" type="text" />
-              <input placeholder="Confirmar Correo Electronico" className="input_register" id="R_email" type="text" />
-              <input placeholder="Contraseña" className="input_register" id="password" type="password" />
-              <input placeholder="Confirmar contraseña" className="input_register" id="R_password" type="password" />
-              <input placeholder="Documento de Identidad" className="input_register" id="d_identidad" type="number" />
-              <input placeholder="Numero de telefono" className="input_register" id="n_telefono" type="number"/>
-              <input  placeholder="Direccion" className="input_register" id="direccion" type="text" />
-              <button className="btn-register" type="submit">
-                Registrar
-              </button>
-            </div>
-          </div>
+      </div>
           <div className="formulario">
-            <img className="logo_movil" src={logo} alt="" />
+          <img className="logo_pc" src={logo} alt="" />
 
             <form className="form-space" onSubmit={onSubmit}  >
               <div className="form">
                 <input
                   placeholder="Nombre"
-                  className="input_login"
+                  className="input_register"
                   type="text"
                   {...register("Nombre" ,{
                     required:true
@@ -94,7 +74,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 }
                 <input
                   placeholder="Apellido"
-                  className="input_login"
+                  className="input_register"
                   type="text"
                   {...register("Apellido" ,{
                     required:true
@@ -102,7 +82,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Correo Electronico"
-                  className="input_login"
+                  className="input_register"
                   type="text"
                   {...register("Correo Electronico" ,{
                     required:true
@@ -110,7 +90,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Confirmar Correo Electronico"
-                  className="input_login"
+                  className="input_register"
                   type="text"
                   {...register("Confirmar Correo Electronico" ,{
                     required:true
@@ -118,7 +98,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Numero de telefono"
-                  className="input_login"
+                  className="input_register"
                   type="number"
                   {...register("Numero de telefono" ,{
                     required:true
@@ -126,7 +106,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Contraseña"
-                  className="input_login"
+                  className="input_register"
                   type="password"
                   {...register("Contraseña" ,{
                     required:true
@@ -134,7 +114,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Confirmar contraseña"
-                  className="input_login"
+                  className="input_register"
                   type="password"
                   {...register("Confirmar contraseña" ,{
                     required:true
@@ -142,7 +122,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Documento de Identidad"
-                  className="input_login"
+                  className="input_register"
                   type="number"
                   {...register("Documento de Identidad" ,{
                     required:true,
@@ -154,20 +134,20 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
                 />
                 <input
                   placeholder="Direccion"
-                  className="input_login"
+                  className="input_register"
                   type="text"
                   {...register("Direccion" ,{
                     required:true
                   })}
                 />
-                <button className="btn-login" type="submit">
+                <button className="btn-register" type="submit">
                   Registrar
                 </button>
               </div>
             </form>
           </div>
         </div>
-      </div>
+        </div>
     </>
   );
 };
