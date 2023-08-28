@@ -4,7 +4,7 @@ import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
 import logo from "../../assets/Img/logo/font kelly slab.png";
 import { useState, useEffect } from "react";
-import {ModalNice, modalError} from "./modalNice";
+import {ModalNice} from "./modalNice";
 
 export const Login = () => {
   const [user, setUser] = useState({

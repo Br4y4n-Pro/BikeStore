@@ -1,12 +1,13 @@
-import "../../assets/styles/modalIngreso.css";
+import "../../assets/styles/modalRegistro.css";
 
-export const ModalNice = ({ cerrarModal }) => {
+
+export const ModalRegis = ({ cerrarModal }) => {
   return (
     <>
     <div className="modal-overlay">
           <div className="modal-content">
             <h2>Ingreso Exitoso</h2>
-            <p>¡Has ingresado correctamente!</p>
+            <p>Felicidades te has registrado correctamente</p>
             <button
               className="modal-close"
               onClick={cerrarModal}

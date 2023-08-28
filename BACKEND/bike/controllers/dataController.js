@@ -25,77 +25,68 @@ const getUsuario = (req, res) => {
   });
 };
 
-const registerUser = (req, res) => {
-console.log(req.body) 
-  // Validar que todos los campos necesarios estén presentes
-  if (!username || !email || !password) {
-    return res.json.status(400).json({ error: "Falta información requerida" });
-  }
+const registerUser = async (req, res) => {
+    
+  const {nombre,apellido,correo_electronico,direccion,hash_contraseña,numero_telefono,documento_identidad} = req.body;
+  
+  try {
+    const result = await pool.query(
+      "INSERT INTO usuarios (nombre, apellido, correo_electronico, direccion, hash_contraseña, numero_telefono, documento_identidad) VALUES ( $1,$2,$3,$4,$5,$6,$7)",
+      [ nombre,
+        apellido,
+        correo_electronico,
+        direccion,
+        hash_contraseña,
+        numero_telefono,
+        documento_identidad
+      ]
+    );
 
-  // Consultar si el usuario ya existe en la base de datos
-  pool.query(
-    "Select * FROM usuarios WHERE username = $1 OR email= $2",
-    { username, email },
-    (error, result) => {
-      if (error) {
-        console.error("Error al consultar la base de datos", error);
-        return res
-          .status(500)
-          .json({ error: "Error al registrar el usuario", error });
-      }
+    res.status(201).json({message:"usuario registrado exitosamente"})
 
-      //Si el usuario ya existe, devolver un error
-      if ((result.rows.length = 0)) {
-        return res.status(400).json({ error: "El usuario ya existe" });
-      }
-      //Si el usuario no existe, insertar el nuevo usuario en la base de datos
-      pool.query(
-        "INSERT INTO usuarios (username, email, password) VALUES ($1, $2, $3)",
-        [username, email, password],
-        (error) => {
-          if (error) {
-            console.error(
-              "Error al insertar el usuario en la base de datos",
-              error
-            );
-            return res
-              .status(500)
-              .json({ error: "Error al registrar el usuario" });
-          }
-          res.status(201).json({ message: "Usuario registrado exitosamente" });
-        }
-      );
+    
+
+    const user = result.rows[0];
+    console.log(user)
+    if (hash_contraseña === user.hash_contraseña) {
+      return res.status(200).json(user);
+    } else {
+      return res.status(401).json({ error: "Contraseña incorrecta" });
     }
-  );
+  
+    
+  } catch (error) {
+    console.log("hubo un error al registrar ", error)
+  }
 };
 
 const iniciarSesion = async (req, res) => {
-    const { correo_electronico, hash_contraseña } = req.body;
-    console.log(correo_electronico, hash_contraseña);
-  
-    try {
-      const result = await pool.query(
-        "SELECT * FROM usuarios WHERE correo_electronico = $1",
-        [correo_electronico]
-      );
-  
-      if (result.rows.length === 0) {
-        return res.status(400).json({ error: "No existe usuario" });
-      }
-  
-      const user = result.rows[0];
-  
-      if (hash_contraseña === user.hash_contraseña) {
-        return res.status(200).json(user); // Cambiado user.rows a user
-      } else {
-        return res.status(401).json({ error: "Contraseña incorrecta" });
-      }
-    } catch (error) {
-      console.error("Error al iniciar sesión", error);
-      res.status(500).json({ error: "Error al iniciar sesión" });
+  const { correo_electronico, hash_contraseña } = req.body;
+  console.log(correo_electronico, hash_contraseña);
+
+  try {
+    const result = await pool.query(
+      "SELECT * FROM usuarios WHERE correo_electronico = $1",
+      [correo_electronico]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(400).json({ error: "No existe usuario" });
     }
-  };
-  
+
+    const user = result.rows[0];
+
+    if (hash_contraseña === user.hash_contraseña) {
+      return res.status(200).json(user); // Cambiado user.rows a user
+    } else {
+      return res.status(401).json({ error: "Contraseña incorrecta" });
+    }
+  } catch (error) {
+    console.error("Error al iniciar sesión", error);
+    res.status(500).json({ error: "Error al iniciar sesión" });
+  }
+};
+
 module.exports = {
   getProduc,
   registerUser,
