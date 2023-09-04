@@ -8,7 +8,7 @@ import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
 
 
-const Navbar = () => {
+export const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [image, setImage] = useState(menu)
 
@@ -72,4 +72,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+

@@ -1,28 +1,28 @@
-import React from "react";
-import { Footer } from "./components/footer";
-import { Contenido } from "./components/contenido";
-import Naver from "./components";
-import { Registro } from "./components/Registrarse/Registro";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Login } from "./components/LOGIN/login";
-
-function App() {
-  const pruebaApi = async () => {
-    const response = await fetch("http://localhost:3050/productos");
-    const data = await response.json();
-
-    console.log(data);
-  };
+import { Registro } from "./components/Registrarse/Registro";
+// import  {Detalles}  from "./components/Detalles/detalles";
+import { Footer } from "./components/footer";
+import { Navbar } from "./components/Naver";
+import { Contenido } from './components/contenido'
+function App(){
 
   return (
     <>
-
-      {/* <Naver />
-      <Contenido />
-      <Footer /> */}
-      <Login />
-      <Registro />
-    </>
+   <Navbar />
+   <Router>
+        <Routes>
+        <Route exact path="/" Redirect to="/Home"/>
+        <Route path="/Home" element={ <Contenido /> } />
+          <Route path="/Registro" element={<Registro />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
+      </Router>
+   <Footer/>
+   </>
   );
+
 }
 
 export default App;
