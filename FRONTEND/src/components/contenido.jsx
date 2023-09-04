@@ -1,11 +1,13 @@
 import React from "react";
 import { Card } from "./card";
-import "../assets/styles/contenidoC.css"
-
+import "../assets/styles/contenidoC.css";
+import { Navbar } from "./Naver";
+import { Footer } from "./footer";
 export const Contenido = () => {
   return (
     <>
-    <div className="ContenidoCard">
+      <Navbar />
+      <div className="ContenidoCard">
         <Card />
         <Card />
         <Card />
@@ -24,7 +26,8 @@ export const Contenido = () => {
         <Card />
         <Card />
         <Card />
-        </div>
+      </div>
+      <Footer />
     </>
   );
 };
