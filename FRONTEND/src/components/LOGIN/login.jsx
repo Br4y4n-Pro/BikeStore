@@ -4,13 +4,18 @@ import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
 import logo from "../../assets/Img/logo/font kelly slab.png";
 import { useState, useEffect } from "react";
-import {ModalNice} from "./modalNice";
+import { ModalNice } from "./modalNice";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/contextLogin";
 
 export const Login = () => {
   const [user, setUser] = useState({
     correo_electronico: "",
     hash_contraseña: "",
   });
+
+  const Navigate = useNavigate();
+  const { setLoggedIn } = useAuth();
 
   const [ingreso, setIngreso] = useState(false);
 
@@ -32,10 +37,21 @@ export const Login = () => {
       const data = await res.json();
 
       console.log(data);
+
+
+      if (res.status === 401) {
+        return alert("Contraseña Incorrecta")
+      }
+      if (res.status === 400) {
+        return alert("Correo no registrado")
+      }
+    
       if (res.status === 200) {
-        setIngreso(true)
+        alert("ok");
+        Navigate("/Home");
+        setLoggedIn(true);
       } else {
-        console.log("no se pudo iniciar ");
+        console.log(data.error, "no se pudo iniciar ");
         // Inicio de sesión fallido, maneja el mensaje de error
       }
     } catch (error) {
@@ -53,8 +69,9 @@ export const Login = () => {
     <>
       <div className="contenedor_login">
         <button className="btn-back">
-          {" "}
-          <img className="back_login" src={back} alt="" />{" "}
+          <Link to="/Home">
+            <img className="back_login" src={back} alt="" />
+          </Link>
         </button>
         <div className="contenedor-small">
           <div className="zoneImagen">
@@ -86,13 +103,15 @@ export const Login = () => {
                   onChange={handleChange}
                   type="password"
                 />
-                <a className="passRecu" href="#">
+                <Link className="passRecu" to="/Restore">
                   ¿Olvidaste tu contraseña?
-                </a>
+                </Link>
                 <button className="btn-login" type="submit">
                   Iniciar Sesion
                 </button>
-                <a className="registrarse">¿No tienes una Cuentas?</a>
+                <Link to="/Registro" className="registrarse">
+                  ¿No tienes una Cuentas?
+                </Link>
               </div>
             </form>
           </div>
@@ -100,9 +119,7 @@ export const Login = () => {
       </div>
 
       {/* Modal */}
-      {ingreso && (
-        <ModalNice  cerrarModal={cerrarModal}/>
-      )}
+      {ingreso && <ModalNice cerrarModal={cerrarModal} />}
     </>
   );
 };

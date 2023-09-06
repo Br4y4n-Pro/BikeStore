@@ -1,9 +1,10 @@
 import "../../assets/styles/detalles.css";
-import Navbar from "../Naver";
+import {Navbar} from "../Naver";
 import { Footer } from "../footer";
 import cicla from "../../assets/Img/cicla.png";
 import talla from "../../assets/Img/colores detalles/gobernante.png";
 import favorito from "../../assets/Img/colores detalles/corazon.png";
+
 export const Detalles = () => {
   return (
     <>

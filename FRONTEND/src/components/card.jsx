@@ -1,13 +1,16 @@
 import React from "react";
 import cicla from "../assets/Img/cicla.png";
 import "../assets/styles/Card.css";
+import {Link} from "react-router-dom"
 export const Card = () => {
   return (
     <>
       <div className="contenedorCard">
-        <figure className="ImgProduct">
+       <Link to='/Detalles'>
+       <figure className="ImgProduct">
           <img src={cicla} alt="" />
         </figure>
+       </Link>
         <div className="info">
           <p className="tituloCard">Bicicleta ONE 0 ONE 121</p>
           <div className="precioEstado">
@@ -23,7 +26,7 @@ export const Card = () => {
         </div>
         <hr />
         <div className="botonesHomeCard">
-          <button className="comprar">COMPRAR</button>
+          <button className="comprar"><Link to='/Carrito'>COMPRAR</Link></button>
           <div className="opciones">
             <button className="addCarrito">AGREGAR AL CARRITO</button>
             <button className="Favorito">

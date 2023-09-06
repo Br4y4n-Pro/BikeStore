@@ -7,10 +7,12 @@ import carr from "../../src/assets/Img/nav/carrito.png";
 import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/contextLogin";
 
 export const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [image, setImage] = useState(menu);
+  const { isLoggedIn } = useAuth();
 
   const toggleMenu = () => {
     if (!menuActive) {
@@ -43,25 +45,35 @@ export const Navbar = () => {
         <div className={`menu ${menuActive ? "active" : ""}`}>
           <ul>
             <li>
-              <a href="#">Bicicleta</a>
+              <Link to="/Bicicletas">Bicicleta</Link>
             </li>
             <li>
-              <a href="#">Mantenimiento</a>
+              <Link to="/Mantenimiento">Mantenimiento</Link>
             </li>
             <li>
-              <a href="#">Accesorios</a>
+              <Link to="/Accesorios">Accesorios</Link>
             </li>
             <li>
-              <a href="#">Servicio al Cliente</a>
+              <Link to="/Servicio-Cliente">Servicio al Cliente</Link>
             </li>
           </ul>
         </div>
 
         <div className="search">
-          <Link to="/Login" className="user">
-            <p>Iniciar Sesion</p>
-            <img src={usua} alt="Icono de usuario"/>
-          </Link>
+          {!isLoggedIn && (
+            <>
+              <Link to="/Login" className="user">
+                <p>Iniciar Sesion</p>
+                <img src={usua} alt="Icono de usuario" />
+              </Link>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <Link to="/Registro"></Link>
+              <p>Inicio Sesion 😊😊</p>
+            </>
+          )}
           <img src={carr} alt="Icono de carrito" className="carrito" />
           <img
             src={image}

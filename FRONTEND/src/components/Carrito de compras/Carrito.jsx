@@ -1,8 +1,8 @@
 import React from "react";
 import "../../assets/styles/Carrito.css"
 import cicla from "../../assets/Img/cicla.png";
-import Navbar from "../Naver";
-import Footer from "../footer";
+import {Navbar} from "../Naver";
+import {Footer} from "../footer";
 
 export const Carrito = () => {
   return (

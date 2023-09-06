@@ -6,6 +6,7 @@ import logo from "../../assets/Img/logo/font kelly slab.png";
 // import { ModalRegis } from "./modalregi";
 // import { useState, useEffect } from "react";
 import {useForm} from 'react-hook-form' 
+import { Link } from "react-router-dom";
 
 export const Registro = () => {
 
@@ -45,7 +46,7 @@ const onSubmit = handleSubmit((data)=>{console.log(data)} )
     <>
       <div className="contenedor_register">
         <button className="btn-back"> 
-        <img className="back_register" src={back} alt="" /> 
+        <Link to='/Home' ><img className="back_register" src={back} alt="" /> </Link>
         </button>
 
         <div className="contenedor-small">

@@ -1,4 +1,3 @@
-
 const { Pool } = require("pg");
 const { CONFIG_BD } = require("../config/db");
 const bcrypt = require("bcrypt");
@@ -27,37 +26,36 @@ const getUsuario = (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-    
-  const {nombre,apellido,correo_electronico,direccion,hash_contraseña,numero_telefono,documento_identidad} = req.body;
-  
+  const {
+    nombre,
+    apellido,
+    correo_electronico,
+    direccion,
+    hash_contraseña,
+    numero_telefono,
+    documento_identidad,
+  } = req.body;
+
   try {
     const result = await pool.query(
       "INSERT INTO usuarios (nombre, apellido, correo_electronico, direccion, hash_contraseña, numero_telefono, documento_identidad) VALUES ( $1,$2,$3,$4,$5,$6,$7)",
-      [ nombre,
+      [
+        nombre,
         apellido,
         correo_electronico,
         direccion,
         hash_contraseña,
         numero_telefono,
-        documento_identidad
+        documento_identidad,
       ]
     );
 
-    res.status(201).json({message:"usuario registrado exitosamente"})
-
-    
+    res.status(201).json({ message: "usuario registrado exitosamente" });
 
     const user = result.rows[0];
-    console.log(user)
-    if (hash_contraseña === user.hash_contraseña) {
-      return res.status(200).json(user);
-    } else {
-      return res.status(401).json({ error: "Contraseña incorrecta" });
-    }
-  
-    
+    console.log(user);
   } catch (error) {
-    console.log("hubo un error al registrar ", error)
+    console.log("hubo un error al registrar ", error);
   }
 };
 
@@ -70,21 +68,59 @@ const iniciarSesion = async (req, res) => {
       "SELECT * FROM usuarios WHERE correo_electronico = $1",
       [correo_electronico]
     );
-
-    if (result.rows.length === 0) {
-      return res.status(400).json({ error: "No existe usuario" });
-    }
-
     const user = result.rows[0];
 
-    if (hash_contraseña === user.hash_contraseña) {
-      return res.status(200).json(user); // Cambiado user.rows a user
-    } else {
-      return res.status(401).json({ error: "Contraseña incorrecta" });
+  
+    //Usuario existe
+    if (result.rows.length === 1) {
+      //Si existe verificar si es la misma contraseña
+      if (hash_contraseña === user.hash_contraseña) {
+        return res.status(200).json({ message: "Inicio Sesion exitoso" });
+      }else{
+        return res.status(401).json({ message: "Contraseña incorrecta" });
+      }
+    } else{
+      return res.status(400).json({ error: "No existe usuario" });
     }
   } catch (error) {
     console.error("Error al iniciar sesión", error);
     res.status(500).json({ error: "Error al iniciar sesión" });
+  }
+};
+
+const addProductos = async (req, res) => {
+  const {
+    Nombre_Producto,
+    Descripcion,
+    Precio,
+    Stock,
+    Categoria,
+    Tipo,
+    Marca,
+    Color,
+    Img_Producto,
+  } = req.body;
+
+  try {
+    const result = await pool.query(
+      "INSERT INTO prod (Nombre_Producto,Descripcion,Precio,Stock,Categoria,Tipo,Marca,Color,Img_Producto) VALUES ( $1,$2,$3,$4,$5,$6,$7,$8,$9)",
+      [
+        Nombre_Producto,
+        Descripcion,
+        Precio,
+        Stock,
+        Categoria,
+        Tipo,
+        Marca,
+        Color,
+        Img_Producto,
+      ]
+    );
+
+    res.status(201).json({ message: "usuario registrado exitosamente" });
+  } catch (error) {
+    console.error("Error al agregar Producto ", error);
+    res.status(500).json({ error: "Error al agregar Producto" });
   }
 };
 
@@ -93,4 +129,5 @@ module.exports = {
   registerUser,
   getUsuario,
   iniciarSesion,
+  addProductos,
 };

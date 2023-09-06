@@ -8,6 +8,7 @@ router.post('/usuarios', dataController.iniciarSesion)
 router.get('/productos', dataController.getProduc);
 router.get('/usuarios', dataController.getUsuario);
 router.post('/usuario', dataController.registerUser);
+router.post('/addProducto', dataController.addProductos)
 
 // router.put('/registro',dataController.uregistro)
 
