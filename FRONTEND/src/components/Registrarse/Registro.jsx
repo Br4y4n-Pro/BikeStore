@@ -9,40 +9,17 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 export const Registro = () => {
-  // const registrarUser = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const res = await fetch("http://localhost:3050/usuario", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(regis),
-  //     });
-  //     const data = await res.json();
-
-  //     console.log(data);
-
-  //     if (res.status === 201) {
-  //       console.log("se regiostro")
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-
-  //   console.log("envio los datos ", regis);
-  // };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log(errors);
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
 
   return (
     <>
@@ -64,7 +41,7 @@ export const Registro = () => {
           <div className="formulario">
             <img className="logo_pc" src={logo} alt="" />
 
-            <form className="form-space" onSubmit={onSubmit}>
+            <form className="form-space" onSubmit={handleSubmit(onSubmit)}>
               <div className="form">
                 <input
                   placeholder="Nombre"
