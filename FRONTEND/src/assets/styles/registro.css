@@ -23,16 +23,12 @@
   width: 40px;
 }
 
-
-
 .contenedor_register .contenedor-small {
   max-width: 950px;
   width: 90%;
   height: auto;
   display: flex;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
-  
-  
 }
 
 .contenedor_register .contenedor-small .zoneImagen {
@@ -46,12 +42,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
-.contenedor_register .contenedor-small .zoneImagen .logo_movil { 
+.contenedor_register .contenedor-small .zoneImagen .logo_movil {
   display: none;
-  
 }
 
 .contenedor_register .contenedor-small .zoneImagen .Bienvenida {
@@ -82,7 +76,6 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 2em;
-  
 }
 
 .contenedor_register .contenedor-small .formulario .logo_pc {
@@ -90,7 +83,6 @@
   width: 200px;
   aspect-ratio: 3/2;
   object-fit: contain;
-
 }
 
 .contenedor_register .contenedor-small .formulario .form-space {
@@ -114,15 +106,26 @@
   .form-space
   .form
   .input_register {
-  padding: .8em;
+  padding: 0.8em;
   outline: none;
   border: 1px solid #c2c2c2;
   border-radius: 0.6em;
   width: 100%;
   font-family: "Montserrat", sans-serif;
-  margin-bottom: .8em;
+  margin-bottom: 0.8em;
 }
-
+.contenedor_register
+  .contenedor-small
+  .formulario
+  .form-space
+  .form
+  .errorInput {
+    font-size: .7em;
+    color: red;
+    transform: translateY(-5px);
+    text-align: start;
+    width: 100%;
+}
 
 .contenedor_register
   .contenedor-small
@@ -197,7 +200,6 @@
     text-align: center;
     background-image: none;
   }
-  
 
   .contenedor_register .contenedor-small .zoneImagen .logo_movil {
     width: 250px;

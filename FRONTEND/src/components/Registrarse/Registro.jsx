@@ -5,13 +5,10 @@ import back from "../../assets/Img/FondoLoginMovil/back.png";
 import logo from "../../assets/Img/logo/font kelly slab.png";
 // import { ModalRegis } from "./modalregi";
 // import { useState, useEffect } from "react";
-import {useForm} from 'react-hook-form' 
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 export const Registro = () => {
-
-
-
   // const registrarUser = async (e) => {
   //   e.preventDefault();
 
@@ -37,278 +34,240 @@ export const Registro = () => {
   //   console.log("envio los datos ", regis);
   // };
 
-const {register,handleSubmit,formState:{errors}} = useForm();
-console.log(errors)
-const onSubmit = handleSubmit((data)=>{console.log(data)} )
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
 
   return (
     <>
       <div className="contenedor_register">
-        <button className="btn-back"> 
-        <Link to='/Home' ><img className="back_register" src={back} alt="" /> </Link>
+        <button className="btn-back">
+          <Link to="/Home">
+            <img className="back_register" src={back} alt="" />{" "}
+          </Link>
         </button>
 
         <div className="contenedor-small">
-        <div className="zoneImagen">
-          <img className="logo_movil" src={LogoMovil} alt="" />
-          <div className="Bienvenida">
-            <h3>Registrarse</h3>
-            <p>Bienvenido</p>
-        </div>
-      </div>
+          <div className="zoneImagen">
+            <img className="logo_movil" src={LogoMovil} alt="" />
+            <div className="Bienvenida">
+              <h3>Registrarse</h3>
+              <p>Bienvenido</p>
+            </div>
+          </div>
           <div className="formulario">
-          <img className="logo_pc" src={logo} alt="" />
+            <img className="logo_pc" src={logo} alt="" />
 
-            <form className="form-space" onSubmit={onSubmit}  >
+            <form className="form-space" onSubmit={onSubmit}>
               <div className="form">
                 <input
                   placeholder="Nombre"
                   className="input_register"
                   type="text"
-                  {...register("Nombre" ,{
-                    required:true
+                  {...register("nombre", {
+                    required: {
+                      value: true,
+                      message: "nombre es requerido",
+                    },
+                    minLength: {
+                      value: 2,
+                      message: "Nombre debe tener al menos 2 caracteres ",
+                    },
+                    maxLength: {
+                      value: 15,
+                      message: "Nombre debe tener maximo 15 caracteres",
+                    },
                   })}
                 />
-                {
-                  errors.Nombre&& <span>EL NOMBRE ES REQUERIDO </span>
-                }
+                {errors.nombre && (
+                  <span className="errorInput">{errors.nombre.message} </span>
+                )}
+                
                 <input
                   placeholder="Apellido"
                   className="input_register"
                   type="text"
-                  {...register("Apellido" ,{
-                    required:true
+                  {...register("apellido", {
+                    required: {
+                      value: true,
+                      message: "apellido es requerido",
+                    },
+                    minLength: {
+                      value: 2,
+                      message: "apellido debe tener al menos 2 caracteres ",
+                    },
+                    maxLength: {
+                      value: 15,
+                      message: "apellido debe tener maximo 15 caracteres",
+                    },
                   })}
                 />
+                {errors.apellido && (
+                  <span className="errorInput">{errors.apellido.message} </span>
+                )}
                 <input
                   placeholder="Correo Electronico"
                   className="input_register"
-                  type="text"
-                  {...register("Correo Electronico" ,{
-                    required:true
+                  type="email"
+                  name="correo_electronico"
+                  {...register("correo_electronico", {
+                    required: {
+                      value: true,
+                      message: "correo es requerido",
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Correo no es valido",
+                    },
                   })}
                 />
+                {errors.correo_electronico && (
+                  <span className="errorInput">
+                    {errors.correo_electronico.message}
+                  </span>
+                )}
                 <input
                   placeholder="Confirmar Correo Electronico"
                   className="input_register"
                   type="text"
-                  {...register("Confirmar Correo Electronico" ,{
-                    required:true
-                  })}
                 />
+
                 <input
                   placeholder="Numero de telefono"
                   className="input_register"
                   type="number"
-                  {...register("Numero de telefono" ,{
-                    required:true
+                  name="Nt"
+                  {...register("numero_telefono", {
+                    required: {
+                      value: true,
+                      message: "numero  es requerido",
+                    },
+                    minLength: {
+                      value: 10,
+                      message: "el numero debe tener minimo 10 caracteres",
+                    },
+                    maxLength: {
+                      value: 10,
+                      message: "el numero no debe se mayor a 10 caracteres ",
+                    },
+                    pattern: {
+                      value: /^\+?[0-9\s-]+$/,
+                      message: "numero  no es valido",
+                    },
                   })}
                 />
+                {errors.numero_telefono && (
+                  <span className="errorInput">
+                    {errors.numero_telefono.message}{" "}
+                  </span>
+                )}
                 <input
                   placeholder="Contraseña"
                   className="input_register"
                   type="password"
-                  {...register("Contraseña" ,{
-                    required:true
+                  {...register("hash_contraseña", {
+                    required: {
+                      value: true,
+                      message: "la contraseña es requerida",
+                    },
                   })}
                 />
+                {errors.hash_contraseña && (
+                  <span className="errorInput">
+                    {errors.hash_contraseña.message}
+                  </span>
+                )}
                 <input
                   placeholder="Confirmar contraseña"
                   className="input_register"
                   type="password"
-                  {...register("Confirmar contraseña" ,{
-                    required:true
-                  })}
+                  name="Rhash_contraseña"
                 />
+
                 <input
                   placeholder="Documento de Identidad"
                   className="input_register"
                   type="number"
-                  {...register("Documento de Identidad" ,{
-                    required:true,
-                    minLength:8,
-                    maxLength:12
-                  
-
+                  name="CC"
+                  {...register("documento_identidad", {
+                    required: {
+                      value: true,
+                      message: "documento es requerido",
+                    },
+                    minLength: {
+                      value: 6,
+                      message: "el docuemento debe tener minimo 6 caracteres",
+                    },
+                    maxLength: {
+                      value: 12,
+                      message: "el documento no debe se mayor a 12 caracteres ",
+                    },
+                    pattern: {
+                      value: /^\+?[0-9\s-]+$/,
+                      message: "numero  no es valido",
+                    },
                   })}
                 />
+
+                {errors.documento_identidad && (
+                  <span className="errorInput">
+                    {errors.documento_identidad.message}{" "}
+                  </span>
+                )}
+
+                <input
+                  placeholder="Edad"
+                  className="input_register"
+                  type="number"
+                  {...register("edad", {
+                    required: {
+                      value: true,
+                      message: "Edad es requerida",
+                    },
+                    min: {
+                      value: 18,
+                      message: "Debes ser mayor de 18 años",
+                    },
+                    max: {
+                      value: 120,
+                      message: "Edad inválida",
+                    },
+                  })}
+                />
+                {errors.edad && (
+                  <span className="errorInput">{errors.edad.message} </span>
+                )}
                 <input
                   placeholder="Direccion"
                   className="input_register"
                   type="text"
-                  {...register("Direccion" ,{
-                    required:true
+                  {...register("direccion", {
+                    required: {
+                      value: true,
+                      message: "la direcion es requerida",
+                    },
                   })}
                 />
+                {errors.direccion && (
+                  <span className="errorInput">
+                    {errors.direccion.message}{" "}
+                  </span>
+                )}
                 <button className="btn-register" type="submit">
                   Registrar
                 </button>
+
               </div>
             </form>
           </div>
         </div>
-        </div>
+      </div>
     </>
   );
 };
-
-
-
-
-// import React from "react";
-// import "../../assets/styles/registro.css";
-// import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
-// import back from "../../assets/Img/FondoLoginMovil/back.png";
-// import logo from "../../assets/Img/logo/font kelly slab.png";
-// import { ModalRegis } from "./modalregi";
-// import { useState, useEffect } from "react";
-// import {useForm} from 'react-hook-form' 
-
-// export const Registro = () => {
-
-
-
-
-  
-//   const [register, setRegister] = useState({
-//     nombre: "",
-//     apellido: "",
-//     correo_electronico: "",
-//     direccion: "",
-//     hash_contraseña: "",
-//     numero_telefono: "",
-//     documento_identidad: ""
-//   });
-
-
-//   const handleregisus = (e) => {s
-//     setRegister({ ...register, [e.target.name]: e.target.value });
-//   };
-
-//   const registrarUser = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const res = await fetch("http://localhost:3050/usuario", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(register),
-//       });
-//       const data = await res.json();
-
-//       console.log(data);
-
-//       if (res.status === 201) {
-//         console.log("se regiostro")
-//       }
-//     } catch (error) {
-//       console.error(error);
-//     }
-
-//     console.log("envio los datos ", register);
-//   };
-
-// const {registe} = useForm();
-
-//   return (
-//     <>
-//       <div className="contenedor_register">
-//         <button className="btn-back">
-//           <img className="back_login" src={back} alt="" />
-//         </button>
-
-//         <div className="contenedor-small">
-//           <div className="zoneImagen">
-//             <img src={LogoMovil} alt="" />
-//             <div className="Bienvenida">
-//               <h3>Registrarse</h3>
-//               <p>Bienvenido</p>
-//             </div>
-//           </div>
-//           <div className="formulario">
-//             <img className="logo_movil" src={logo} alt="" />
-
-//             <form className="form-space" onSubmit={registrarUser}>
-//               <div className="form">
-//                 <input
-//                   placeholder="Nombre"
-//                   className="input_login"
-//                   name="nombre"
-//                   type="text"
-//                   // {...registe("nombre",{
-//                   //   required: true
-//                   // })}
-//                   onChange={handleregisus}
-//                 />
-//                 <input
-//                   placeholder="Apellido"
-//                   className="input_login"
-//                   name="apellido"
-//                   type="text"
-//                   onChange={handleregisus}
-//                 />
-//                 <input
-//                   placeholder="Correo Electronico"
-//                   className="input_login"
-//                   name="correo_electronico"
-//                   type="text"
-//                   onChange={handleregisus}
-//                 />
-//                 <input
-//                   placeholder="Confirmar Correo Electronico"
-//                   className="input_login"
-//                   name="correo_electronico"
-//                   type="text"
-//                 />
-//                 <input
-//                   placeholder="Numero de telefono"
-//                   className="input_login"
-//                   name="numero_telefono"
-//                   type="number"
-//                   onChange={handleregisus}
-//                 />
-//                 <input
-//                   placeholder="Contraseña"
-//                   className="input_login"
-//                   name="hash_contraseña"
-//                   onChange={handleregisus}
-//                   type="password"
-//                 />
-//                 <input
-//                   placeholder="Confirmar contraseña"
-//                   className="input_login"
-//                   name="hash_contraseña"
-//                   type="password"
-//                 />
-//                 <input
-//                   placeholder="Documento de Identidad"
-//                   className="input_login"
-//                   name="documento_identidad"
-//                   type="number"
-//                   onChange={handleregisus}
-//                 />
-//                 <input
-//                   placeholder="Direccion"
-//                   className="input_login"
-//                   name="direccion"
-//                   type="text"
-//                   onChange={handleregisus}
-//                 />
-//                 <button className="btn-login" type="submit">
-//                   Registrar
-//                 </button>
-//                 <a className="registrarse">Iniciar Sesion</a>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-
-
