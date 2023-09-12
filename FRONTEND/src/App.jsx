@@ -16,10 +16,12 @@ import { SerCliente } from "./components/NavbarMenu/SerCliente";
 import { NotFound } from "./components/NotFound";
 import { Detalles } from "./components/Detalles/detalles";
 import { Carrito } from "./components/Carrito de compras/Carrito";
+import ProductoForm from "./components/ProductoForm";
+
 function App() {
   return (
     <>
-      <CartProvider>
+      {/* <CartProvider>
         <AuthProvider>
           <Router>
             <Routes>
@@ -38,7 +40,8 @@ function App() {
             </Routes>
           </Router>
         </AuthProvider>
-      </CartProvider>
+      </CartProvider> */}
+      <ProductoForm></ProductoForm>
     </>
   );
 }
