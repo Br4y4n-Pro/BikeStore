@@ -1,131 +1,108 @@
 const bikeModel = require("../models/BikeModelos");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
+
+// Controlador para cargar una imagen
+const cargarImagen = (req, res) => {
+  // Aquí puedes procesar el archivo cargado, guardar información en la base de datos, etc.
+  res.status(200).json({ mensaje: 'Imagen cargada exitosamente' });
+};
 
 
-const Usuario = async (req, res) => {
+
+
+//funciona de maraavilla :)
+const ingresoUsuario = async (req, res) => {
   try {
     const { correo_electronico, hash_contraseña } = req.body;
-  
-    const usuario = await bikeModel.iniciarSesion(correo_electronico);
+    console.log(correo_electronico, hash_contraseña);
 
-if (!usuario) {
- return res.status(401).json({ mensaje: "Correo No existe" });
-  
-}
-
-    // Compara la contraseña proporcionada con la almacenada en la base de datos
-    const contraseñaCoincide = await bcrypt.compare(hash_contraseña, usuario.hash_contraseña);
-    if (!contraseñaCoincide) {
-      // Las contraseñas no coinciden, devolver error
-      return res.status(401).json({ mensaje: 'Credenciales incorrectas.' });
+    const usuario = await bikeModel.correoExiste(correo_electronico);
+    console.log("soy el usuario de usuario.", usuario);
+    if (!usuario) {
+      return res.status(401).json({ mensaje: "Correo No existe" });
     }
 
-    
+    // Compara la contraseña proporcionada con la almacenada en la base de datos
+    const contraseñaCoincide = await bcrypt.compare(
+      hash_contraseña,
+      usuario.hash_contraseña
+    );
+    if (!contraseñaCoincide) {
+      // Las contraseñas no coinciden, devolver error
+      return res.status(401).json({ mensaje: "Credenciales incorrectas." });
+    }
+
+    return res.status(200).json({ mensaje: "todo ando de maravilla" });
   } catch (error) {
     console.error("Error al iniciar sesion", error);
-    res.status(500).json({ mensaje: "Error al iniciar sesion usuario no encontrado" });
+    res
+      .status(500)
+      .json({ mensaje: "Error al iniciar sesion usuario no encontrado" });
   }
 };
 
-const getProduc = (req, res) => {
-  pool.query("SELECT * FROM prod", (error, result) => {
-    if (error) {
-      console.error("Error al obtener los datos", error);
-      res.status(500).send("Error al obtener datos");
-    } else {
-      res.json(result.rows);
-    }
-  });
+//funciona de maraavilla :)
+const conseguirProductos = async (req, res) => {
+  try {
+    const productos = await bikeModel.getProductos();
+    res.status(200).json(productos);
+  } catch (error) {
+    console.error("Error al obtener productos", error);
+    res.status(500).json({ mensaje: "Error al obtener productos" });
+  }
 };
+//funciona de maraavilla :)⭕
+const conseguirUsuarios = async (req, res) => {
+  const usuarios = await bikeModel.getUsuarios();
 
-const getUsuario = (req, res) => {
-  pool.query("SELECT * FROM usuarios", (error, result) => {
-    if (error) {
-      console.error("Error al obtener los datos", error);
-      res.status(500).send("Error al obtener datos");
-    } else {
-      res.json(result.rows);
-    }
-  });
+  const { rowCount, rows } = usuarios;
+  console.log(rowCount, rows);
+  res.status(200).json({ rowCount, rows });
 };
+//funciona de maraavilla :)⭕
 
 const registerUser = async (req, res) => {
-  const {
-    nombre,
-    apellido,
-    correo_electronico,
-    direccion,
-    hash_contraseña,
-    numero_telefono,
-    documento_identidad,
-  } = req.body;
-
   try {
-    const result = await pool.query(
-      "INSERT INTO usuarios (nombre, apellido, correo_electronico, direccion, hash_contraseña, numero_telefono, documento_identidad) VALUES ( $1,$2,$3,$4,$5,$6,$7)",
-      [
-        nombre,
-        apellido,
-        correo_electronico,
-        direccion,
-        hash_contraseña,
-        numero_telefono,
-        documento_identidad,
-      ]
+    const existeCorreo = await bikeModel.correoExiste(
+      req.body.correo_electronico
     );
+    const dIExiste = await bikeModel.dIExiste(req.body.documento_identidad);
+    if (existeCorreo) {
+      return res.status(401).json({ mensaje: "Correo ya esta registrado" });
+    }
+    if (dIExiste) {
+      return res
+        .status(401)
+        .json({ mensaje: "Documento de identidad ya esta registrado" });
+    }
 
-    res.status(201).json({ message: "usuario registrado exitosamente" });
+    // Realiza el hash de la contraseña
+    const hashContraseña = await bcrypt.hash(req.body.hash_contraseña, 10); // 10 es el número de rondas de hashing
 
-    const user = result.rows[0];
-    console.log(user);
+    // Agrega hashContraseña al objeto req.body
+    req.body.hash_contraseña = hashContraseña;
+
+    const newClient = bikeModel.registrarUsuario(req.body);
+
+    if (newClient) {
+      res.status(201).json({ message: "usuario registrado exitosamente" });
+    }
   } catch (error) {
     console.log("hubo un error al registrar ", error);
   }
 };
 
 const addProductos = async (req, res) => {
-  const {
-    nombre_producto,
-    descripcion,
-    precio,
-    stock,
-    categoria,
-    tipo,
-    marca,
-    color,
-    img_producto,
-  } = req.body;
-  const pathImagen = req.file.path;
-
-  try {
-    if (condition) {
-      const result = await pool.query(
-        "INSERT INTO productos (Nombre_Producto,Descripcion,Precio,Stock,Categoria,Tipo,Marca,Color,Img_Producto) VALUES ( $1,$2,$3,$4,$5,$6,$7,$8,$9)",
-        [
-          nombre_producto,
-          descripcion,
-          precio,
-          stock,
-          categoria,
-          tipo,
-          marca,
-          color,
-          img_producto,
-        ]
-      );
-    }
-
-    res.status(201).json({ message: "usuario registrado exitosamente" });
-  } catch (error) {
-    console.error("Error al agregar Producto ", error);
-    res.status(500).json({ error: "Error al agregar Producto" });
-  }
+  res.send("envio")
+console.log(req.body)
+ console.log(req.file)
 };
 
 module.exports = {
-  getProduc,
-  registerUser,
-  getUsuario,
+   cargarImagen,
+  ingresoUsuario, //⭕
+  conseguirProductos, //⭕
+  conseguirUsuarios, //⭕
+  registerUser,//⭕
   addProductos,
-  Usuario,
 };

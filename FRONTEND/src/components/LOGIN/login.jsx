@@ -1,9 +1,8 @@
-import React from "react";
 import "../../assets/styles/login.css";
 import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
 import logo from "../../assets/Img/logo/font kelly slab.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ModalNice } from "./modalNice";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/contextLogin";

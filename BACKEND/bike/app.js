@@ -6,20 +6,10 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 const cors = require("cors");
 const bodyParser = require('body-parser');
-const multer = require('multer')
-
+const path = require('path');
 // Configura Multer para guardar archivos en una carpeta
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, '../ProductosImg'); 
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
 
-// export const upload = multer({ storage });
-
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 //Configuración de swagger
 const swaggerDocument = yaml.load(fs.readFileSync("./swagger.yaml", "utf8"));
