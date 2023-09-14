@@ -5,7 +5,6 @@ import logo from "../../assets/Img/logo/font kelly slab.png";
 import { useState } from "react";
 import { ModalNice } from "./modalNice";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/contextLogin";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -14,7 +13,6 @@ export const Login = () => {
   });
 
   const Navigate = useNavigate();
-  const { setLoggedIn } = useAuth();
 
   const [ingreso, setIngreso] = useState(false);
 
@@ -48,7 +46,6 @@ export const Login = () => {
       if (res.status === 200) {
         alert("ok");
         Navigate("/Home");
-        setLoggedIn(true);
       } else {
         console.log(data.error, "no se pudo iniciar ");
         // Inicio de sesión fallido, maneja el mensaje de error

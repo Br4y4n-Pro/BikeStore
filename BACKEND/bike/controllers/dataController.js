@@ -1,6 +1,8 @@
 const bikeModel = require("../models/BikeModelos");
 const bcrypt = require("bcrypt");
 
+
+
 // Controlador para cargar una imagen
 const cargarImagen = (req, res) => {
   // Aquí puedes procesar el archivo cargado, guardar información en la base de datos, etc.
@@ -92,11 +94,35 @@ const registerUser = async (req, res) => {
   }
 };
 
-const addProductos = async (req, res) => {
-  res.send("envio")
-console.log(req.body)
- console.log(req.file)
+
+const addProductos = async (req,res)=>{
+
+  
+}
+
+const addImageProduct = async (req, res) => {
+  try {
+    // Accede a los datos del formulario
+    const {
+      nombre_producto,
+     
+    } = req.body;
+
+    // Accede al archivo de imagen
+    const imagen_producto = req.file;
+console.log(imagen_producto,"addProductos Linea 108 dataControllers")
+console.log(nombre_producto,)
+    // Realiza la lógica de procesamiento aquí (guardar en la base de datos, etc.)
+
+    // Devuelve una respuesta exitosa
+    res.status(200).json({ message: "Producto agregado exitosamente" });
+  } catch (error) {
+    console.error(error);
+    // Maneja los errores aquí y devuelve una respuesta de error si es necesario
+    res.status(500).json({ error: "Error en el servidor" });
+  }
 };
+
 
 module.exports = {
    cargarImagen,
@@ -105,4 +131,5 @@ module.exports = {
   conseguirUsuarios, //⭕
   registerUser,//⭕
   addProductos,
+  addImageProduct,
 };
