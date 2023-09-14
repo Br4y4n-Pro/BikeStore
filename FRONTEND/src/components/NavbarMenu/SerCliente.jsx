@@ -1,11 +1,14 @@
 import React from "react";
 import { Navbar } from "../Naver";
 import { Footer } from "../footer";
+
 import "../../assets/styles/servicio.css"
+
 
 export const SerCliente = () => {
   return (
     <>
+
     <Navbar/>
     <h1 className="ser">SERVICIO AL CLIENTE</h1>
     <div class="container-R">
@@ -31,3 +34,4 @@ export const SerCliente = () => {
     </>
   );
 };
+

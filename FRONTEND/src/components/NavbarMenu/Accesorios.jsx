@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "../Naver";
 import { Footer } from "../footer";
+
 import "../../assets/styles/accesorios.css"
 import alforja from "../../assets/Img/Accesorios/alforja.jpg";
 import bomba from "../../assets/Img/Accesorios/Bomba de aire.jpg";

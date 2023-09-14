@@ -1,5 +1,7 @@
+
 import "../../assets/styles/bicicleta.css";
 import { Navbar } from "../Naver";
+import { Footer } from "../footer";
 import bmc from "../../assets/Img/marcas/BMC.jpg";
 import canyon from "../../assets/Img/marcas/canyon.jpg";
 import colnago from "../../assets/Img/marcas/Colnago.jpg";
@@ -17,9 +19,11 @@ import trek from "../../assets/Img/marcas/trek.jpg";
 import wilier from "../../assets/Img/marcas/Wilier.jpeg";
 import yeti from "../../assets/Img/marcas/Yeti.jpg";
 
+
 export const Bicicletas = () => {
   return (
     <>
+
 <Navbar/>
 <h1 className="titulo">BICICLETAS</h1>
 <div className="todos">
@@ -153,6 +157,7 @@ export const Bicicletas = () => {
         </div>
       </div>
       </div>
+
     </>
   );
 };

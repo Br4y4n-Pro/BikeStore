@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./ProductoForm.css"; // Estilos CSS para el formulario
 import { Navbar } from "./Naver";
+
 import { enviarImagen } from "../logic/productoLogic";
 export const ProductoForm = () => {
   const [producto, setProducto] = useState({
@@ -71,9 +72,11 @@ export const ProductoForm = () => {
   };
 
   return (
+
     
     <>
     <Navbar/>
+
       <article className="contenedor-formulario">
         <form
           className="datos_formulario"
