@@ -97,6 +97,10 @@ const registerUser = async (req, res) => {
 
 const addProductos = async (req,res)=>{
 
+  res.status(201).json({ message: "usuario registrado exitosamente" });
+
+  console.log(req.body,"Linea 100 dataControllers")
+
   
 }
 
