@@ -1,10 +1,12 @@
 import React from "react";
 import cicla from "../assets/Img/cicla.png";
+import corazon from "../assets/Img/colores detalles/corazon.png"
 import "../assets/styles/Card.css";
 import {Link} from "react-router-dom"
 export const Card = () => {
   return (
     <>
+    
       <div className="contenedorCard">
        <Link to='/Detalles'>
        <figure className="ImgProduct">
@@ -30,7 +32,7 @@ export const Card = () => {
           <div className="opciones">
             <button className="addCarrito">AGREGAR AL CARRITO</button>
             <button className="Favorito">
-              <img src={cicla} alt="Favorito" />
+              <img src={corazon} alt="Favorito" />
             </button>
           </div>
         </div>

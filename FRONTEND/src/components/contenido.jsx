@@ -5,11 +5,24 @@ import { Navbar } from "./Naver";
 import { Footer } from "./footer";
 import { Link } from "react-router-dom";
 
+import mas from "../assets/Img/boton-mas.png"
+import fond from "../assets/Img/fondd.png"
+
 export const Contenido = () => {
   return (
     <>
       <Navbar />
-      <Link to="/Productos">IR AL FORMULARIO DE PRODUCTO</Link>
+
+      <div className="img_poster">
+      <img className="fond" src={fond} alt="" />
+
+      </div>
+      <Link to="/Productos">
+      <img src="" alt="" />
+    <abbr title="Agregar Producto"><img className="mas" src={mas} alt="" /></abbr>
+
+  </Link>
+
       <div className="ContenidoCard">
         <Card />
         <Card />
