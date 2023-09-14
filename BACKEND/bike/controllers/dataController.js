@@ -3,12 +3,6 @@ const bcrypt = require("bcrypt");
 
 
 
-// Controlador para cargar una imagen
-const cargarImagen = (req, res) => {
-  // Aquí puedes procesar el archivo cargado, guardar información en la base de datos, etc.
-  res.status(200).json({ mensaje: 'Imagen cargada exitosamente' });
-};
-
 
 
 
@@ -129,7 +123,6 @@ console.log(nombre_producto,)
 
 
 module.exports = {
-   cargarImagen,
   ingresoUsuario, //⭕
   conseguirProductos, //⭕
   conseguirUsuarios, //⭕

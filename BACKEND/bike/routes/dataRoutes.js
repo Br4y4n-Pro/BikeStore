@@ -9,7 +9,7 @@ const { error } = require('console');
 
 // Configura Multer para guardar archivos en una carpeta
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, "public/uploads"),
+  destination: path.join(__dirname, "../public/uploads"),
   filename: (req, file, cb) => {
     cb(null, file.originalname.toLowerCase());
    
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 const upload =
   multer({
     storage,
-    dest: path.join(__dirname, "public/uploads"),
+    dest: path.join(__dirname, "../public/uploads"),
     // fileFilter: (req, file, cb) => {
     //   const filetypes = /jpgeg|jpg|png|gif|webp/;
     //   const mimetype = filetypes.test(file.mimetype);
