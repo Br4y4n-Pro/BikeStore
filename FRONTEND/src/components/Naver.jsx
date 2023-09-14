@@ -6,23 +6,21 @@ import lupa from "../../src/assets/Img/nav/lupa.png";
 import carr from "../../src/assets/Img/nav/carrito.png";
 import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
+import { Link } from "react-router-dom";
 
-
-const Navbar = () => {
+export const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
-  const [image, setImage] = useState(menu)
+  const [image, setImage] = useState(menu);
 
   const toggleMenu = () => {
     if (!menuActive) {
-     setMenuActive(!menuActive);
-    document.body.style.overflow = "hidden";
-    setImage(image === menu ? closeMenu : menu)
-
+      setMenuActive(!menuActive);
+      document.body.style.overflow = "hidden";
+      setImage(image === menu ? closeMenu : menu);
     } else {
-    setMenuActive(!menuActive);
-    document.body.style.overflow = "auto";
-    setImage(image === menu ? closeMenu : menu)
-
+      setMenuActive(!menuActive);
+      document.body.style.overflow = "auto";
+      setImage(image === menu ? closeMenu : menu);
     }
   };
 
@@ -30,46 +28,52 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="logo">
-          <img src={logo} alt="Logo de la empresa" className="log" />
+          <Link to="/Home">
+            <img src={logo} alt="Logo de la empresa" className="log" />
+          </Link>
         </div>
 
         <div className="containerlup">
           <input type="text" placeholder="Buscar" />
-          <div className="btn">
+          <div className="btn-lupa">
             <img src={lupa} alt="Icono de lupa" className="lupa" />
           </div>
         </div>
-        <img
-          src={image}
-          alt=""
-          className={`menu-btn ${menuActive ? "active" : ""}`}
-          onClick={toggleMenu}
-          
-        />
+
         <div className={`menu ${menuActive ? "active" : ""}`}>
           <ul>
             <li>
-              <a href="#">Bicicleta</a>
+              <Link to="/Bicicletas">Bicicleta</Link>
             </li>
             <li>
-              <a href="#">Mantenimiento</a>
+              <Link to="/Mantenimiento">Mantenimiento</Link>
             </li>
             <li>
-              <a href="#">Accesorios</a>
+              <Link to="/Accesorios">Accesorios</Link>
             </li>
             <li>
-              <a href="#">Servicio al Cliente</a>
+              <Link to="/Servicio-Cliente">Servicio al Cliente</Link>
             </li>
           </ul>
         </div>
 
         <div className="search">
-          <img src={usua} alt="Icono de usuario" className="user" />
+            <>
+              <Link to="/Login" className="user">
+                <p>Iniciar Sesion</p>
+                <img src={usua} alt="Icono de usuario" />
+              </Link>
+            </>
+        
           <img src={carr} alt="Icono de carrito" className="carrito" />
+          <img
+            src={image}
+            alt=""
+            className={`menu-btn ${menuActive ? "active" : ""}`}
+            onClick={toggleMenu}
+          />
         </div>
       </nav>
     </>
   );
 };
-
-export default Navbar;

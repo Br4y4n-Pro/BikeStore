@@ -96,7 +96,7 @@
     width: 90%;
     height: 35px;
     border: none;
-    color: var(--white);
+    color: white;
     background: var(--red-primary);
 	font-family: 'Montserrat', sans-serif;
     font-size: 12px;
@@ -123,14 +123,16 @@
 
 .contenedorCard .botonesHomeCard .addCarrito{
     height: 35px;
-    width:85%;
+    width: 85%;
     background: var(--white);
     border: 1px solid var(--grey);
     font-size: 10px;
-	font-family: 'Montserrat', sans-serif;
-    margin-right: .5em;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 0.5em;
     transition: .5s background ease;
     cursor: pointer;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 .contenedorCard .botonesHomeCard .addCarrito:hover{

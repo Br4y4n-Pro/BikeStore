@@ -54,14 +54,14 @@ export const Footer = () => {
                     className="formasPago"
                   />
                 </a>
-                <caption>Bancolombia</caption>
+                <p>Bancolombia</p>
               </figure>
 
               <figure className="imagen">
                 <a href="">
                   <img src={qr} alt="Logo QR" className="formasPago" />
                 </a>
-                <caption>Codigo QR</caption>
+                <p>Codigo QR</p>
               </figure>
               <figure className="imagen">
                 <a href="">
@@ -71,7 +71,7 @@ export const Footer = () => {
                     className="formasPago"
                   />
                 </a>
-                <caption>Corresponsal</caption>
+                <p>Corresponsal</p>
               </figure>
             </div>
 

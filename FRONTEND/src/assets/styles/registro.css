@@ -5,127 +5,152 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 
 .contenedor_register .btn-back {
-    width: 50px;
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    z-index: 1;
-    cursor: pointer;
-    margin: 2em;
-    top: 0;
-    left: 0;
-  }
+  width: 50px;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  margin: 2em 0px 0px 2em;
+}
 
+.contenedor_register .btn-back .back_register {
+  width: 40px;
+}
 
-.back_login {
-    width: 50px;
-  }
-
-  .contenedor_register .contenedor-small {
+.contenedor_register .contenedor-small {
   max-width: 950px;
   width: 90%;
-  background-color: blueviolet;
+  height: auto;
   display: flex;
-  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7); */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
 }
-.zoneImagen {
+
+.contenedor_register .contenedor-small .zoneImagen {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url(../Img/login/fondo.jpg);
+  background-image: url(/src/assets/Img/login/fondo.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.zoneImagen img {
+.contenedor_register .contenedor-small .zoneImagen .logo_movil {
   display: none;
 }
 
-.zoneImagen .Bienvenida {
-  top: 50px;
+.contenedor_register .contenedor-small .zoneImagen .Bienvenida {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.zoneImagen .Bienvenida h3 {
+.contenedor_register .contenedor-small .zoneImagen .Bienvenida h3 {
   color: white;
   font-size: 3em;
-  width: 50%;
+  width: 100%;
 }
-.zoneImagen .Bienvenida p {
+
+.contenedor_register .contenedor-small .zoneImagen .Bienvenida p {
   margin-top: 0.3em;
   color: white;
-  font-size: 2em;
+  font-size: 3em;
 }
-.formulario {
+
+.contenedor_register .contenedor-small .formulario {
   width: 100%;
-  padding: 1em;
+  max-width: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-.logo_movil {
-  width: 200px;
+  padding-bottom: 2em;
 }
 
-.form-space {
+.contenedor_register .contenedor-small .formulario .logo_pc {
+  display: block;
+  width: 200px;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.contenedor_register .contenedor-small .formulario .form-space {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 2em;
 }
 
-.form {
+.contenedor_register .contenedor-small .formulario .form-space .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1em;
-  width: 80%;
+  padding: 0px 3em;
+  width: 100%;
 }
-.form .input_login {
-  padding: 1em;
+
+.contenedor_register
+  .contenedor-small
+  .formulario
+  .form-space
+  .form
+  .input_register {
+  padding: 0.8em;
   outline: none;
   border: 1px solid #c2c2c2;
   border-radius: 0.6em;
   width: 100%;
   font-family: "Montserrat", sans-serif;
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
 }
-.form .passRecu {
-  width: 100%;
-  color: var(--red-primary);
-  font-weight: bold;
-  font-size: 12px;
-  text-align: right;
-  margin-bottom: 1em;
-  cursor: pointer;
+.contenedor_register
+  .contenedor-small
+  .formulario
+  .form-space
+  .form
+  .errorInput {
+    font-size: .7em;
+    color: red;
+    transform: translateY(-5px);
+    text-align: start;
+    width: 100%;
 }
-.form .btn-login {
+
+.contenedor_register
+  .contenedor-small
+  .formulario
+  .form-space
+  .form
+  .btn-register {
   padding: 1em;
   border: none;
-  width: 45%;
+  width: 100%;
   border-radius: 0.5em;
   color: var(--white);
   background: var(--red-primary);
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 3em;
   margin-top: 1em;
 }
-.form .registrarse {
+
+.contenedor_register
+  .contenedor-small
+  .formulario
+  .form-space
+  .form
+  .registrarse {
   color: var(--red-primary);
   font-size: 12px;
   text-align: left;
@@ -134,20 +159,13 @@
 }
 
 @media (max-width: 768px) {
-  .contenedor-small {
-    display: block;
+  .contenedor_register {
     width: 100%;
-    height: 100%;
-    background-color: white;
+    height: auto;
+    position: relative;
   }
 
-  .contenedor_login {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: block;
-  }
-  .contenedor_login .btn-back {
+  .contenedor_register .btn-back {
     width: 30px;
     position: absolute;
     background-color: transparent;
@@ -156,29 +174,34 @@
     cursor: pointer;
     margin: 1.5em 0px 0px 1em;
   }
-  .contenedor_login .back_login {
+
+  .contenedor_register .btn-back .back_register {
     width: 30px;
   }
-  .zoneImagen {
+
+  .contenedor_register .contenedor-small {
+    max-width: 950px;
     width: 100%;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+    height: 100%;
     background-image: url(../Img/FondoLoginMovil/FondoLogin.png);
     background-position: top left;
     background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+    background-size: 100% 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contenedor_register .contenedor-small .zoneImagen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
     text-align: center;
+    background-image: none;
   }
 
-  .logo_movil {
-    display: none;
-  }
-
-  .zoneImagen img {
+  .contenedor_register .contenedor-small .zoneImagen .logo_movil {
     width: 250px;
     aspect-ratio: 3/2;
     object-fit: contain;
@@ -186,7 +209,7 @@
     display: block;
   }
 
-  .zoneImagen .Bienvenida {
+  .contenedor_register .contenedor-small .zoneImagen .Bienvenida {
     top: 50px;
     display: flex;
     flex-direction: column;
@@ -194,36 +217,41 @@
     align-items: center;
   }
 
-  .zoneImagen .Bienvenida h3 {
+  .contenedor_register .contenedor-small .zoneImagen .Bienvenida h3 {
     color: white;
-    font-size: 3em;
-    width: 50%;
+    font-size: 2em;
+    width: 100%;
   }
-  .zoneImagen .Bienvenida p {
+
+  .contenedor_register .contenedor-small .zoneImagen .Bienvenida p {
     margin-top: 0.3em;
     color: white;
     font-size: 2em;
   }
-  .formulario {
+
+  .contenedor_register .contenedor-small .formulario {
     width: 90%;
     max-width: 80%;
-    margin: auto;
+    margin: 1em auto;
     padding: 1em;
-    position: absolute;
-    top: 43vh;
-    right: 0;
-    left: 0;
     border-radius: 1em;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
     background-color: white;
+    display: flex;
   }
 
-  .form-space {
+  .contenedor_register .contenedor-small .formulario .logo_pc {
+    display: none;
+  }
+
+  .contenedor_register .contenedor-small .formulario .form-space {
     width: 100%;
     padding: 0.1em;
+    display: flex;
+    justify-content: center;
   }
 
-  .form {
+  .contenedor_register .contenedor-small .formulario .form-space .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -231,7 +259,13 @@
     padding: 1em;
     width: 90%;
   }
-  .form .input_login {
+
+  .contenedor_register
+    .contenedor-small
+    .formulario
+    .form-space
+    .form
+    .input_register {
     padding: 1em;
     outline: none;
     border: 1px solid #c2c2c2;
@@ -240,7 +274,13 @@
     font-family: "Montserrat", sans-serif;
     margin-bottom: 1em;
   }
-  .form .passRecu {
+
+  .contenedor_register
+    .contenedor-small
+    .formulario
+    .form-space
+    .form
+    .passRecu {
     width: 100%;
     color: var(--red-primary);
     font-weight: bold;
@@ -249,7 +289,13 @@
     margin-bottom: 1em;
     cursor: pointer;
   }
-  .form .btn-login {
+
+  .contenedor_register
+    .contenedor-small
+    .formulario
+    .form-space
+    .form
+    .btn-register {
     padding: 1em;
     border: none;
     width: 100%;
@@ -259,38 +305,18 @@
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 3em;
   }
-  .form .registrarse {
+
+  .contenedor_register
+    .contenedor-small
+    .formulario
+    .form-space
+    .form
+    .registrarse {
     color: var(--red-primary);
     font-size: 12px;
     text-align: left;
     width: 100%;
     cursor: pointer;
-  }
-}
-
-@media (max-width: 389px) {
-  .zoneImagen .Bienvenida h3 {
-    color: white;
-    font-size: 1.5em;
-    width: 50%;
-  }
-  .zoneImagen .Bienvenida p {
-    color: white;
-    font-size: 1.2em;
-  }
-}
-
-@media (max-height: 720px) {
-  .zoneImagen .Bienvenida h3 {
-    color: white;
-    font-size: 2em;
-    width: 50%;
-  }
-
-  .zoneImagen .Bienvenida p {
-    color: white;
-    font-size: 1.5em;
   }
 }

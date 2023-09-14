@@ -1,14 +1,16 @@
 import "../../assets/styles/detalles.css";
-import Navbar from "../Naver";
+import {Navbar} from "../Naver";
 import { Footer } from "../footer";
 import cicla from "../../assets/Img/cicla.png";
 import talla from "../../assets/Img/colores detalles/gobernante.png";
 import favorito from "../../assets/Img/colores detalles/corazon.png";
+
 export const Detalles = () => {
   return (
     <>
       <Navbar />
-
+      <br></br>
+      <br></br>
       <div className="todo">
         <div className="container1">
           <div className="precio_titulo">
@@ -112,8 +114,10 @@ export const Detalles = () => {
           <div className="guiatallas">
             <br></br>
             <h2>Guia de tallas</h2>
+
             <img className="guiaimg" src={talla} alt="" />
           </div>
+          
 
           <div className="btns">
             <div className="bnts-com">
