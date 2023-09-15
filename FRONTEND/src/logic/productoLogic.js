@@ -12,7 +12,6 @@ export const enviarImagen = async (imagen,nombre) => {
   
       if (res.status === 200) {
         // La imagen se procesó exitosamente
-        alert("Imagen procesada exitosamente");
       } else {
         // Manejar errores aquí
         console.log("Error al procesar la imagen");

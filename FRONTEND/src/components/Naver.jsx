@@ -6,12 +6,24 @@ import lupa from "../../src/assets/Img/nav/lupa.png";
 import carr from "../../src/assets/Img/nav/carrito.png";
 import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/loginStore";
 
 export const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [image, setImage] = useState(menu);
+  const [optionPerfil,setPerfilOption]=useState(false)
 
+  const Navigate = useNavigate();
+  //estado global
+  const {logout , isLoggedIn} = useAuthStore()
+
+  const cerrarSesion =()=>{
+    logout()
+    Navigate("/Home");
+  }
+
+  
   const toggleMenu = () => {
     if (!menuActive) {
       setMenuActive(!menuActive);
@@ -58,12 +70,20 @@ export const Navbar = () => {
         </div>
 
         <div className="search">
-            <>
-              <Link to="/Login" className="user">
-                <p>Iniciar Sesion</p>
+            
+             {isLoggedIn ? ( 
+                <Link to="/Home" className="user">
+                <p>Brayan Cañas</p>
+                <button onClick={cerrarSesion}>Cerrar Sesion</button>
+
                 <img src={usua} alt="Icono de usuario" />
               </Link>
-            </>
+             ): (  
+             <Link to="/Login" className="user">
+             <p>Iniciar Sesion</p>
+             <img src={usua} alt="Icono de usuario" />
+           </Link>)
+           }
         
           <img src={carr} alt="Icono de carrito" className="carrito" />
           <img

@@ -3,18 +3,19 @@ import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
 import logo from "../../assets/Img/logo/font kelly slab.png";
 import { useState } from "react";
-import { ModalNice } from "./modalNice";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useAuthStore } from "../../store/loginStore";
 export const Login = () => {
+
+const {login , isLoggedIn} = useAuthStore()
+console.log(login,"antes","--------------------", isLoggedIn)
+
   const [user, setUser] = useState({
     correo_electronico: "",
     hash_contraseña: "",
   });
 
   const Navigate = useNavigate();
-
-  const [ingreso, setIngreso] = useState(false);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -44,8 +45,11 @@ export const Login = () => {
       }
     
       if (res.status === 200) {
+        login()
         alert("ok");
         Navigate("/Home");
+        console.log(login,"despues","--------------------", isLoggedIn)
+
       } else {
         console.log(data.error, "no se pudo iniciar ");
         // Inicio de sesión fallido, maneja el mensaje de error
@@ -58,9 +62,7 @@ export const Login = () => {
     // hacer loader luego ya casi...
     console.log("envio los datos ", user);
   };
-  const cerrarModal = () => {
-    setIngreso(false);
-  };
+
   return (
     <>
       <div className="contenedor_login">
@@ -114,8 +116,6 @@ export const Login = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      {ingreso && <ModalNice cerrarModal={cerrarModal} />}
     </>
   );
 };

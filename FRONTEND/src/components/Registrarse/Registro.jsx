@@ -1,4 +1,3 @@
-import React from "react";
 import "../../assets/styles/registro.css";
 import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
@@ -15,9 +14,29 @@ export const Registro = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data)
+    try {
+      const res = await fetch("http://localhost:3050/registro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if(res.status === 401) return console.log("El correo ya esta registrado")
+      if (res.status === 200) {
+        // Los datos del formulario se procesaron exitosamente
+        alert("Se registro exitosamente joven")
+      } else {
+        // Manejar errores aquí
+        console.log("Error al procesar datos del formulario");
+      }
+    } catch (error) {
+      console.error(error);
+      // Maneja errores de conexión u otros errores
+    }
   }
 
 

@@ -36,7 +36,6 @@ export const ProductoForm = () => {
 
   const handleChange = (e) => {
     if (e.target.type === "file") {
-      console.log(e.target.files[0]);
       setProducto({ ...producto, img_producto: e.target.files[0] });
     } else {
       setProducto({ ...producto, [e.target.name]: e.target.value });
@@ -57,8 +56,6 @@ export const ProductoForm = () => {
       });
       if (res.status === 200) {
         // Los datos del formulario se procesaron exitosamente
-        alert("Datos del formulario procesados exitosamente");
-        enviarImagen(producto.img_producto, producto.nombre_producto);
       } else {
         // Manejar errores aquí
         console.log("Error al procesar datos del formulario");
@@ -67,6 +64,7 @@ export const ProductoForm = () => {
       console.error(error);
       // Maneja errores de conexión u otros errores
     }
+    enviarImagen(producto.img_producto, producto.nombre_producto);
   };
 
   return (
@@ -213,8 +211,7 @@ export const ProductoForm = () => {
             name="imagen_producto"
             onChange={handleChange}
           />
-
-          <button type="submit">Agregar Producto</button>
+          <button className="boton_producto" type="submit">Agregar Producto</button>
         </form>
       </article>
     </>
