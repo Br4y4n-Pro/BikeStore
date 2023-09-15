@@ -11,6 +11,7 @@ export const enviarImagen = async (imagen,nombre) => {
       });
   
       if (res.status === 200) {
+        console.log("se agrego la imagen al producto")
         // La imagen se procesó exitosamente
       } else {
         // Manejar errores aquí

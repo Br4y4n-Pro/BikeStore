@@ -5,21 +5,24 @@ import { persist } from "zustand/middleware";
 //get para leer el estado
 
 // Define el store
-export const useAuthStore = create()(persist((set) => {
-return {
-    // Inicialmente, el usuario no está logeado
-    isLoggedIn: false,
+export const useAuthStore = create()(
+  persist(
+    (set) => {
+      return {
+        // Inicialmente, el usuario no está logeado
+        isLoggedIn: false,
 
-  // fetchUser: async ()=>{
-  // //   const URL = "http://localhost:3050/usuario/" + ""
-  // //   const res = fetch(URL)
-  // // }
+        user: null,
+        setUser: (newUser) => set({ data: newUser }), // Función para actualizar los datos
+        // Función para iniciar sesión
+        login: () => set((state) => ({ isLoggedIn: true })),
 
-    // Función para iniciar sesión
-    login: () => set((state) => ({ isLoggedIn: true })),
-  
-    // Función para cerrar sesión
-    logout: () => set((state) => ({ isLoggedIn: false })),
-}},{
-  name:"loginSesion"
-}))
+        // Función para cerrar sesión
+        logout: () => set((state) => ({ isLoggedIn: false })),
+      };
+    },
+    {
+      name: "loginSesion",
+    }
+  )
+);

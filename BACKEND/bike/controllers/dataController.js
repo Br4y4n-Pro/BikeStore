@@ -20,10 +20,10 @@ const ingresoUsuario = async (req, res) => {
     );
     if (!contraseñaCoincide) {
       // Las contraseñas no coinciden, devolver error
-      return res.status(401).json({ mensaje: "contraseña incorrectas." });
+      return res.status(401).json({ mensaje: "contraseña incorrectas."});
     }
 
-    return res.status(200).json({ mensaje: "todo fue de maravilla" });
+    return res.status(200).json({ info: usuario  });
   } catch (error) {
     console.error("Error al iniciar sesion", error);
     res

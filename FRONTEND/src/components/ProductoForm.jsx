@@ -61,6 +61,7 @@ export const ProductoForm = () => {
       console.log(data)
       if (res.status === 200) {
         // Los datos del formulario se procesaron exitosamente
+        alert("se agrego el producto")
       } else {
         // Manejar errores aquí
         console.log("Error al procesar datos del formulario");

@@ -33,7 +33,7 @@ console.log(login,"antes","--------------------", isLoggedIn)
         body: JSON.stringify(user),
       });
       const data = await res.json();
-
+      setData(data) 
       console.log(data);
 
 
