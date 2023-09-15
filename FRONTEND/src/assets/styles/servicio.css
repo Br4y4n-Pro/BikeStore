@@ -45,6 +45,9 @@ input[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
 }
+textarea{
+  resize: none;
+}
 
 input[type="submit"]:hover {
   background-color: #0056b3;

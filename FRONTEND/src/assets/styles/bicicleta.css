@@ -1,8 +1,4 @@
 
-body {
-    display: flex;
-    justify-content: center; /* Centra los contenedores horizontalmente */
-}
 :root {
     --Very-dark-blue-card-BG: rgba(167, 4, 4, 0.767);
 }
