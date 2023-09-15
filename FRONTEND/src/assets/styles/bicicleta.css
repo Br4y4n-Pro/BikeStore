@@ -1,0 +1,79 @@
+
+body {
+    display: flex;
+    justify-content: center; /* Centra los contenedores horizontalmente */
+}
+:root {
+    --Very-dark-blue-card-BG: rgba(167, 4, 4, 0.767);
+}
+
+.container {
+    display: flex;
+    grid-auto-columns: auto;
+    display: grid;
+    background-color: var(--Very-dark-blue-card-BG);
+    width: 200px;
+    height: 200px;
+    border-radius: 10PX;
+    padding: 3px;
+    font-family: "Montserrat", sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    /* Agrega una sombra con valores personalizables */
+    margin: auto;
+    margin-top: 20px;
+}
+
+.todos {
+    margin: 10px; /* Márgenes entre los contenedores */
+    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    flex-wrap: wrap;
+
+}
+
+.capa {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    background-color: rgba(177, 187, 187, 0.445);
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: 1s ease;
+    border-radius: 10px;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+}
+.espacio-imagen {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.espacio-imagen .principal-image {
+    width: 200px;
+    /* Ajusta el ancho al 100% del contenedor */
+    height: 200px;
+    /* Ajusta la altura al 100% del contenedor */
+    border-radius: 10px;
+    /* object-fit: cover; Esto ajustará la imagen dentro del contenedor */
+}
+
+.capa:hover {
+    opacity: 1;
+
+}
+@media (max-width: 818px) {
+  
+.todos {
+    grid-template-columns: repeat(3, 2fr);
+}
+}
+@media (max-width: 612px) {
+    .todos {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
