@@ -3,17 +3,18 @@ const { CONFIG_BD } = require("../config/db");
 const pool = new Pool(CONFIG_BD);
 
 const productoExiste = async (nombre_producto) => {
-  console.log(nombre_producto);
+  console.log(nombre_producto,"<<<__________________");
+
   const result = pool.query(
     "SELECT * FROM productos WHERE nombre_producto = $1",
     [nombre_producto]
   );
   try {
-    console.log(result)
+    console.log(result,"<<<<<//////----------")
     if (result.rows === 1) {
-      return result.rows[0];
+      return result.rows
     } else {
-      return null; //no se encontro el correo
+      return null; //no se encontro el producto
     }
   } catch (error) {
     console.error("Error al obtener nombre del producto", error);
@@ -153,7 +154,7 @@ const agregarProducto = async (datos) => {
     ]
   );
 
-  console.log(result);
+  console.log(result,"---------------------------we");
   try {
     if (result.rowCount === 1) {
       return result.rowCount;
@@ -185,7 +186,7 @@ const imgProducto = async (nombre, imagen) => {
     );
     return result.rowCount;
   } else {
-    return null;
+    return false;
   }
 };
 

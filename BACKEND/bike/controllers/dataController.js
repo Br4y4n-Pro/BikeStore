@@ -88,9 +88,11 @@ const registerUser = async (req, res) => {
 };
 
 const addProductos = async (req, res) => {
-  const productoExiste = bikeModel.productoExiste(req.body.nombre_producto);
 
-  if (productoExiste) {
+  console.log(req.body.nombre_producto)
+  const productoExiste = bikeModel.productoExiste(req.body.nombre_producto);
+console.log(productoExiste,"<----<---<---<---")
+  if (!productoExiste) {
     return res
       .status(400)
       .json({ message: "El nombre del producto ya esta registrado" });
@@ -112,7 +114,7 @@ const addImageProduct = async (req, res) => {
     // Accede al archivo de imagen
     const productoExiste = bikeModel.productoExiste(req.body.nombre_producto);
 
-    if (productoExiste) {
+    if (!productoExiste) {
       return res
         .status(400)
         .json({ message: "El nombre del producto ya esta registrado" });

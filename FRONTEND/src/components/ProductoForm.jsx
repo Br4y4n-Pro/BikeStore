@@ -56,6 +56,9 @@ export const ProductoForm = () => {
         },
         body: JSON.stringify(producto),
       });
+
+      const data =res.json()
+      console.log(data)
       if (res.status === 200) {
         // Los datos del formulario se procesaron exitosamente
       } else {
