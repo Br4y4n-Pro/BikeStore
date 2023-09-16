@@ -10,20 +10,29 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/loginStore";
 
 export const Navbar = () => {
+
   const [menuActive, setMenuActive] = useState(false);
   const [image, setImage] = useState(menu);
-  const [optionPerfil,setPerfilOption]=useState(false)
+  const [isActive, setIsActive] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsActive(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsActive(false);
+  };
 
   const Navigate = useNavigate();
   //estado global
-  const {logout , isLoggedIn} = useAuthStore()
+  const { logout, isLoggedIn, usuario, setData } = useAuthStore();
 
-  const cerrarSesion =()=>{
-    logout()
+  const cerrarSesion = () => {
+    logout();
+    setData(null);
     Navigate("/Home");
-  }
+  };
 
-  
   const toggleMenu = () => {
     if (!menuActive) {
       setMenuActive(!menuActive);
@@ -43,6 +52,7 @@ export const Navbar = () => {
           <Link to="/Home">
             <img src={logo} alt="Logo de la empresa" className="log" />
           </Link>
+          
         </div>
 
         <div className="containerlup">
@@ -70,21 +80,40 @@ export const Navbar = () => {
         </div>
 
         <div className="search">
-            
-             {isLoggedIn ? ( 
-                <Link to="/Home" className="user">
-                <p>Brayan Cañas</p>
-                <button onClick={cerrarSesion}>Cerrar Sesion</button>
+          {isLoggedIn ? (
+            <div   className={`user ${isActive ? "active" : ""}`}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}>
+                   <div className="user_imagen">
+             {
+                <p>
+                  
+                  {(usuario.nombre + " " + usuario.apellido).toUpperCase()}
+                </p>
+              }
+               <img src={usua} alt="Icono de usuario" />
+             </div>
+              <div
+               className={`elemento ${isActive ? "active" : ""}`}
+               onMouseEnter={handleMouseEnter}
+               onMouseLeave={handleMouseLeave}>
+              <div className="lista_perfil">
+              <Link to={`/perfil/${(usuario.nombre + usuario.apellido).toLowerCase()}`}>
+      <p>Perfil</p>
+    </Link>
+              <p>Lista de Favorito</p>
+              <p onClick={cerrarSesion}>Cerrar Sesion</p>
+              </div>
+              </div>
 
-                <img src={usua} alt="Icono de usuario" />
-              </Link>
-             ): (  
-             <Link to="/Login" className="user">
-             <p>Iniciar Sesion</p>
-             <img src={usua} alt="Icono de usuario" />
-           </Link>)
-           }
-        
+            </div>
+          ) : (
+            <Link to="/Login" className="user">
+              <p>Iniciar Sesion</p>
+              <img src={usua} alt="Icono de usuario" />
+            </Link>
+          )}
+
           <img src={carr} alt="Icono de carrito" className="carrito" />
           <img
             src={image}
@@ -97,3 +126,5 @@ export const Navbar = () => {
     </>
   );
 };
+
+//EFECTO HOVER SOSTENIDO EN REACT :)

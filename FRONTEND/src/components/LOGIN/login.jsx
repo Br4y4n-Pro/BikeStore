@@ -7,8 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/loginStore";
 export const Login = () => {
 
-const {login , isLoggedIn} = useAuthStore()
-console.log(login,"antes","--------------------", isLoggedIn)
+const {login , isLoggedIn,setData} = useAuthStore()
 
   const [user, setUser] = useState({
     correo_electronico: "",
@@ -33,7 +32,7 @@ console.log(login,"antes","--------------------", isLoggedIn)
         body: JSON.stringify(user),
       });
       const data = await res.json();
-      setData(data) 
+      setData(data.info)
       console.log(data);
 
 

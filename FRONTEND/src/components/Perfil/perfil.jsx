@@ -1,8 +1,21 @@
 import "../../assets/styles/perfil.css";
 import { Card } from "../card";
 import per from "../../assets/Img/formaPago/qr.png";
-import Navbar from "../Naver";
+import { Navbar } from "../Naver";
+import { useAuthStore } from "../../store/loginStore";
+
 export const Perfil = () => {
+  const { usuario } = useAuthStore();
+
+  const {
+    apellido,
+    correo_electronico,
+    direccion,
+    documento_identidad,
+    nombre,
+    numero_telefono,
+  } = usuario;
+
   return (
     <>
       <Navbar />
@@ -16,11 +29,20 @@ export const Perfil = () => {
 
           <div className="Cont2">
             <p>NOMBRE:</p>
+            {nombre}
+            <p>APELLIDO:</p>
+            {apellido}
             <p>NOMBRE DE USUARIO:</p>
+            {nombre}
             <p>FECHA DE NACIMIENTO:</p>
             <p>UBICACION:</p>
-            <p>EDAD:</p>
-            <p>SEXO:</p>
+            {direccion}
+            <p>DOCUMENTO DE IDENTIDAD:</p>
+            {documento_identidad}
+            <p>CORREO ELECTRONICO:</p>
+            {correo_electronico}
+            <p>Numero de Telefono:</p>
+            {numero_telefono}
           </div>
         </div>
         <div className="todo">
@@ -37,12 +59,12 @@ export const Perfil = () => {
           <div className="Historial">
             <p>HISTORIAL DE COMPRAS</p>
             <div className="cont_card_his">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+            </div>
           </div>
         </div>
       </div>

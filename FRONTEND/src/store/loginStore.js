@@ -12,13 +12,12 @@ export const useAuthStore = create()(
         // Inicialmente, el usuario no está logeado
         isLoggedIn: false,
 
-        user: null,
-        setUser: (newUser) => set({ data: newUser }), // Función para actualizar los datos
-        // Función para iniciar sesión
-        login: () => set((state) => ({ isLoggedIn: true })),
+        usuario: null, // Inicialmente nulo, se utilizará para almacenar los datos de la solicitud fetch
+        setData: (newData) => set({ usuario: newData }), // Función para actualizar los datos
+        login: () => set({ isLoggedIn: true }),
 
         // Función para cerrar sesión
-        logout: () => set((state) => ({ isLoggedIn: false })),
+        logout: () => set({ isLoggedIn: false }),
       };
     },
     {

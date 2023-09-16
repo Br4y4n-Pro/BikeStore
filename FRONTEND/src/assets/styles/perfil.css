@@ -1,40 +1,8 @@
-:root{
-  --Soft-blue: hsl(215, 51%, 70%);
---Cyan: hsl(178, 100%, 50%);
---Very-dark-blue-main-BG: hsl(217, 54%, 11%);
---Very-dark-blue-card-BG: hsl(216, 50%, 16%);
---Very-dark-blue-line: hsl(215, 32%, 27%);
---White: hsl(0, 0%, 100%);
-
-}
-
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-
-}
-
-body{
-  display: grid;
-  place-items: center;
-  /* font-family: 'Hanken Grotesk', sans-serif; */
-  font-family: 'Outfit', sans-serif;
-  background-color: var(--Very-dark-blue-main-BG);
-  color: var(--Cyan);
-  width: 100%;
-  height: 100vh;
-
-}
-
-
-
 .container{
  
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: var(--Very-dark-blue-card-BG);
   width: 350px;
   border-radius: 10PX;
   padding: 25px;
@@ -71,31 +39,24 @@ body{
 h2{
   cursor: pointer;
   font-size: 20px;
-  color: var(--White);
   font-weight: 800;
   transition:  ease 0.1ms;
 }
-h2:hover{
-  color: var(--Cyan);
-}
+
 
 .text-info{
   font-weight: 100;
-  color: var(--Soft-blue);
   font-size: 18px;
 }
 .info-valor-time{
   display: flex;
   justify-content: space-between;
 }
-.parrafo{
-  color: var(--Cyan);
-}
+
 
 .icon-text{
   display: flex;
   gap: 8px;
-  color: var(--Soft-blue);
   
 }
 
@@ -106,33 +67,23 @@ h2:hover{
 }
 
 .perfil img{
-  border: 1px solid var(--White);
   border-radius: 50%;
   width: 35px;
 }
 hr{
   height: 1px;
-  background-color: var(--Very-dark-blue-line);
   border: none;
 }
 
 .perfil span{
   display: flex;
-  color: var(--White);
   
   cursor: pointer;
 }
 .perfil p{
   display: flex;
-  color: var(--Soft-blue);
   gap: 5px;
 }
-
-.perfil span:hover{
-  color: var(--Cyan);
-
-}
-
 
 .capa:hover{
   opacity: 1;
