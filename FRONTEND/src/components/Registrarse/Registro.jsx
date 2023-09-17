@@ -26,7 +26,7 @@ export const Registro = () => {
       });
 
       if(res.status === 401) return console.log("El correo ya esta registrado")
-      if (res.status === 200) {
+      if (res.status === 201) {
         // Los datos del formulario se procesaron exitosamente
         alert("Se registro exitosamente joven")
       } else {

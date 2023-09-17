@@ -127,4 +127,3 @@ export const Navbar = () => {
   );
 };
 
-//EFECTO HOVER SOSTENIDO EN REACT :)

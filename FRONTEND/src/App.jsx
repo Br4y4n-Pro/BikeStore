@@ -16,7 +16,7 @@ import { Detalles } from "./components/Detalles/detalles";
 import { Carrito } from "./components/Carrito de compras/Carrito";
 import { ProductoForm } from "./components/ProductoForm";
 import { Perfil } from "./components/Perfil/perfil";
-
+import { AdminZone } from "./components/admin";
 
 function App() {
   return (
@@ -33,8 +33,8 @@ function App() {
           <Route path="/Servicio-Cliente" element={<SerCliente />} />
           <Route path="/Detalles" element={<Detalles />} />
           <Route path="/Carrito" element={<Carrito />} />
-          <Route path="/Productos" element={<ProductoForm />} />
-          <Route path="/perfil/:nombre" element={<Perfil/>} />
+          <Route path="/Productos" element={<AdminZone />} />
+          <Route path="/perfil/:nombreLink" element={<Perfil/>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

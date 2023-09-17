@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/loginStore";
 export const Login = () => {
 
-const {login , isLoggedIn,setData} = useAuthStore()
+const {login ,setData} = useAuthStore()
 
   const [user, setUser] = useState({
     correo_electronico: "",
@@ -47,7 +47,6 @@ const {login , isLoggedIn,setData} = useAuthStore()
         login()
         alert("ok");
         Navigate("/Home");
-        console.log(login,"despues","--------------------", isLoggedIn)
 
       } else {
         console.log(data.error, "no se pudo iniciar ");

@@ -8,6 +8,7 @@
   padding: 1em;
   gap: 1em;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  top: 0;
 }
 
 .navbar .logo {
@@ -58,7 +59,7 @@
 .navbar .search .user {
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 0.6em;
   position: relative;
   height: 35px;
   cursor: pointer;

@@ -3,9 +3,16 @@ import { Card } from "../card";
 import per from "../../assets/Img/formaPago/qr.png";
 import { Navbar } from "../Naver";
 import { useAuthStore } from "../../store/loginStore";
+import { Navigate, useParams } from "react-router-dom";
 
 export const Perfil = () => {
+const {nombreLink} = useParams()
+
+console.log(nombreLink)
   const { usuario } = useAuthStore();
+  if (!usuario) return <Navigate to="/Home" />;
+  console.log(usuario.nombre + usuario.apellido)
+if ((usuario.nombre+usuario.apellido) != nombreLink) return <Navigate to="/Home" />;
 
   const {
     apellido,
@@ -20,7 +27,7 @@ export const Perfil = () => {
     <>
       <Navbar />
       <div className="container-perfil">
-        <h1 className="perfil">PERFIL</h1>
+        <h1 className="perfil">{nombreLink}</h1>
         <div className="cont1_cont2">
           <div className="Cont1">
             <img className="back_register" src={per} alt="" />
@@ -28,26 +35,34 @@ export const Perfil = () => {
           </div>
 
           <div className="Cont2">
-            <p>NOMBRE:</p>
-            {nombre}
-            <p>APELLIDO:</p>
-            {apellido}
-            <p>NOMBRE DE USUARIO:</p>
-            {nombre}
-            <p>FECHA DE NACIMIENTO:</p>
-            <p>UBICACION:</p>
-            {direccion}
-            <p>DOCUMENTO DE IDENTIDAD:</p>
-            {documento_identidad}
-            <p>CORREO ELECTRONICO:</p>
-            {correo_electronico}
-            <p>Numero de Telefono:</p>
-            {numero_telefono}
+            <p className="datos_personales">
+              Nombre: <span>{nombre}</span>
+            </p>
+
+            <p className="datos_personales">
+              Apellido: <span>{apellido}</span>
+            </p>
+            <p className="datos_personales">Fecha de Nacimiento:</p>
+            <p className="datos_personales">
+              Direccion: <span>{direccion}</span>
+            </p>
+
+            <p className="datos_personales">
+              Documento de identidad: <span>{documento_identidad}</span>
+            </p>
+
+            <p className="datos_personales">
+              Correo Electronico: <span>{correo_electronico}</span>
+            </p>
+
+            <p className="datos_personales">
+              Numero de Telefono: <span>{numero_telefono}</span>
+            </p>
           </div>
         </div>
         <div className="todo">
           <div className="favoritos">
-            <p>FAVORITOS</p>
+            <p className="title_favoritos">FAVORITOS</p>
             <div className="cont_card_fav">
               <Card />
               <Card />
@@ -57,7 +72,7 @@ export const Perfil = () => {
             </div>
           </div>
           <div className="Historial">
-            <p>HISTORIAL DE COMPRAS</p>
+            <p className="title_historial">HISTORIAL DE COMPRAS</p>
             <div className="cont_card_his">
               <Card />
               <Card />
