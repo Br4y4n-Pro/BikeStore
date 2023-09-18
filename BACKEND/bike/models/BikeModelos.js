@@ -3,16 +3,16 @@ const { CONFIG_BD } = require("../config/db");
 const pool = new Pool(CONFIG_BD);
 
 const productoExiste = async (nombre_producto) => {
-  console.log(nombre_producto,"<<<__________________");
+  console.log(nombre_producto, "<<<__________________");
 
   const result = pool.query(
     "SELECT * FROM productos WHERE nombre_producto = $1",
     [nombre_producto]
   );
   try {
-    console.log(result,"<<<<<//////----------")
+    console.log(result, "<<<<<//////----------");
     if (result.rows === 1) {
-      return result.rows
+      return result.rows;
     } else {
       return null; //no se encontro el producto
     }
@@ -72,6 +72,22 @@ const getProductos = async () => {
     throw error;
   }
 };
+
+const getProducto = async (iDproducto) => {
+  try {
+    const result = await pool.query(
+      "select * from productos where id_producto = $1",
+      [iDproducto]
+    );
+
+    console.log(result.rows)
+    return result.rows;
+  } catch (error) {
+    console.error("Error al obtener productos", error);
+    throw error;
+  }
+};
+
 //funcionando
 
 const getUsuarios = async () => {
@@ -154,7 +170,7 @@ const agregarProducto = async (datos) => {
     ]
   );
 
-  console.log(result,"---------------------------we");
+  console.log(result, "---------------------------we");
   try {
     if (result.rowCount === 1) {
       return result.rowCount;
@@ -199,4 +215,5 @@ module.exports = {
   agregarProducto,
   imgProducto,
   productoExiste,
+  getProducto,
 };

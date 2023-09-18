@@ -133,6 +133,20 @@ const addImageProduct = async (req, res) => {
   }
 };
 
+const conseguirProducto = async (req,res) =>{
+  const IDproducto = req.params.id;
+  const producto = await bikeModel.getProducto(IDproducto);
+
+  
+  if (!producto) {
+    return res.status(404).send('Usuario no encontrado');
+  }
+
+  res.send(producto)
+
+;
+}
+
 module.exports = {
   ingresoUsuario, //⭕
   conseguirProductos, //⭕
@@ -140,4 +154,6 @@ module.exports = {
   registerUser, //⭕
   addProductos, //⭕
   addImageProduct,//⭕ lento
+  conseguirProducto,
+
 };
