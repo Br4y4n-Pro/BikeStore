@@ -6,8 +6,20 @@ import { Link } from "react-router-dom";
 import mas from "../assets/Img/boton-mas.png";
 import fond from "../assets/Img/fondd.png";
 import { useAuthStore } from "../store/loginStore";
+import { useGlobalStore } from "../store/productoFetchStore";
+import { useEffect } from "react";
+
 
 export const Contenido = () => {
+
+  const { fetchData} = useGlobalStore();
+
+  useEffect(() => {
+    fetchData(); // Llama a la función para realizar la solicitud fetch al montar el componente
+  }, [fetchData]);
+  
+
+
   const { usuario } = useAuthStore();
   
   let userAdmin = false;
@@ -17,7 +29,8 @@ export const Contenido = () => {
       console.log(userAdmin);
     }
   
-
+    const {data} = useGlobalStore()
+console.log(data)
   return (
     <>
       <Navbar />
@@ -40,24 +53,10 @@ export const Contenido = () => {
     }
 
       <div className="ContenidoCard">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+       {
+        data.map((producto) => (
+<Card key={producto.id} {...producto} />         
+        ))}
       </div>
       <Footer />
     </>

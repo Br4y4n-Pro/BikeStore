@@ -19,6 +19,9 @@ export const useAuthStore = create()(
         // Función para cerrar sesión
         logout: () => set({ isLoggedIn: false }),
       };
+
+
+      
     },
     {
       name: "loginSesion",
