@@ -8,7 +8,7 @@ import fond from "../assets/Img/fondd.png";
 import { useAuthStore } from "../store/loginStore";
 import { useGlobalStore } from "../store/productoFetchStore";
 import { useEffect } from "react";
-
+import { Carousele } from "./carousel";
 
 export const Contenido = () => {
 
@@ -42,10 +42,7 @@ if (data) {
   return (
     <>
       <Navbar />
-
-      <div className="img_poster">
-        <img className="fond" src={fond} alt="" />
-      </div>
+    <Carousele/>
       {userAdmin ?(
         <main className="admin zone">
           <Link to="/Productos">

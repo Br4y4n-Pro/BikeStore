@@ -8,12 +8,12 @@ const upload = require('../models/multerConfig');
 
 router.get('/productos', dataController.conseguirProductos);
 router.get('/Allusuarios', dataController.conseguirUsuarios);
+router.get('/producto', dataController.)
 
 
 
 router.post('/addproducto',upload, dataController.addProductos)
 router.post('/addproducto/imagen',upload, dataController.addImageProduct)
-
 
 
 

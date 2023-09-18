@@ -32,7 +32,7 @@ console.log(linkimagen)
   return (
     <>
       <div className="contenedorCard" id={id_producto}>
-        <Link to={`/Detalles/${nombre_producto.split(' ').join('')}`}>
+        <Link to={`/Detalles/${(nombre_producto).split(' ').join('')}`}>
           <figure className="ImgProduct">
            { noImagen ?(
                <img src={cicla} alt="" />
