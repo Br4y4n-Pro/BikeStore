@@ -17,13 +17,31 @@ export const Card = ({
   img_producto,
 }) => {
 
+  let noImagen = false
+  // eslint-disable-next-line react/prop-types
+  const colores = color.split(",")
+  console.log(colores)
+
+  const linkimagen = "http://localhost:3050"+img_producto
+  
+  if (linkimagen === "http://localhost:3050null") {
+     noImagen = true
+  }
+console.log(linkimagen)
 
   return (
     <>
       <div className="contenedorCard">
         <Link to="/Detalles/${id_producto}">
           <figure className="ImgProduct">
-            <img src={cicla} alt="" />
+           { noImagen ?(
+               <img src={cicla} alt="" />
+
+             ):(
+
+               <img src={linkimagen} alt="" />
+               )
+           }
           </figure>
         </Link>
         <div className="info">
@@ -33,11 +51,9 @@ export const Card = ({
             <p className="estado">Disponible</p>
           </div>
           <div className="colores">
-           {/* {
-            color.forEach((color) => {
-              <div key={color}  className={color}> hola</div>
-            })
-           } */}
+          {colores.map((color, index) => (
+    <div key={index} className={`${color}`}></div>
+  ))}
           </div>
         </div>
         <hr />

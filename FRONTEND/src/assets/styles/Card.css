@@ -6,7 +6,6 @@
     padding: .5em 1em 2em 1em;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     background-color: white;
-    
 }
 
 .contenedorCard .ImgProduct{
@@ -17,6 +16,7 @@
 
 .contenedorCard .ImgProduct img{
     width: 238px;
+    height: 238px;
     
 }
 
@@ -48,39 +48,55 @@
     gap:1em;
     align-items: center;
     margin-bottom: 1.5em;
+
 }
 
-.contenedorCard .colores .color1{
+.contenedorCard .colores .blue{
     height: 25px;
     width: 25px;
-    background: linear-gradient(45deg, rgb(255, 145, 0) 50%,black 50%);
+    background: blue;
     border-radius: 100%;
+    border: 1px solid black;
+
 
 }
 
-.contenedorCard .colores .color2{
+.contenedorCard .colores .grey{
     height: 25px;
     width: 25px;
-    background: linear-gradient(45deg, rgb(46, 224, 58) 50%,black 50%);
     border-radius: 100%;
+    background: grey;
+    border: 1px solid black;
 
 }
 
-.contenedorCard .colores .color3{
+.contenedorCard .colores .white{
     height: 25px;
     width: 25px;
-    background: linear-gradient(45deg, rgb(255, 0, 81) 50%,black 50%);
     border-radius: 100%;
+    background: white;
+    border: 1px solid black;
 
 }
 
-.contenedorCard .colores .color4{
+.contenedorCard .colores .red{
     height: 25px;
     width: 25px;
-    background: linear-gradient(45deg, rgb(114, 114, 114) 50%,black 50%);
     border-radius: 100%;
+    background: red;
+    border: 1px solid black;
 
 }
+
+.contenedorCard .colores .black{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: black;
+    border: 1px solid black;
+
+}
+
 
 .contenedorCard  .botonesHomeCard{
     display: flex;
