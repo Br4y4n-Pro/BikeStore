@@ -31,8 +31,8 @@ console.log(linkimagen)
 
   return (
     <>
-      <div className="contenedorCard">
-        <Link to="/Detalles/${id_producto}">
+      <div className="contenedorCard" id={id_producto}>
+        <Link to={`/Detalles/${nombre_producto.split(' ').join('')}`}>
           <figure className="ImgProduct">
            { noImagen ?(
                <img src={cicla} alt="" />
@@ -42,6 +42,14 @@ console.log(linkimagen)
                <img src={linkimagen} alt="" />
                )
            }
+
+
+           {/* 
+           onclick=(algo)=>{
+            
+           }
+           
+           */}
           </figure>
         </Link>
         <div className="info">

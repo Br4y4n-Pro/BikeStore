@@ -5,7 +5,9 @@ import cicla from "../../assets/Img/cicla.png";
 import talla from "../../assets/Img/colores detalles/gobernante.png";
 import favorito from "../../assets/Img/colores detalles/corazon.png";
 
-export const Detalles = () => {
+export const Detalles = ({}) => {
+
+
   return (
     <>
       <Navbar />

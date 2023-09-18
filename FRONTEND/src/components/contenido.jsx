@@ -61,8 +61,6 @@ if (data) {
     }
 
       <div className="ContenidoCard">
-
-        
        {
         data.map((producto) => (
 <Card key={producto.id} {...producto} />         

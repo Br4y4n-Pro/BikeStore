@@ -139,5 +139,5 @@ module.exports = {
   conseguirUsuarios, //⭕
   registerUser, //⭕
   addProductos, //⭕
-  addImageProduct,
+  addImageProduct,//⭕ lento
 };
