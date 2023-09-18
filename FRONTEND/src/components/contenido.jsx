@@ -9,24 +9,36 @@ import { useAuthStore } from "../store/loginStore";
 import { useGlobalStore } from "../store/productoFetchStore";
 import { useEffect } from "react";
 
+
 export const Contenido = () => {
-  const { fetchData } = useGlobalStore();
+
+  const { data, loading, error, fetchData } = useGlobalStore();
 
   useEffect(() => {
     fetchData(); // Llama a la función para realizar la solicitud fetch al montar el componente
   }, [fetchData]);
+  
+
 
   const { usuario } = useAuthStore();
-
+  
   let userAdmin = false;
 
-  if (usuario) {
-    if (usuario.rol === 1) userAdmin = true;
-    console.log(userAdmin);
-  }
+    if (usuario) {
+      if (usuario.rol === 1)  userAdmin = true;
+      console.log(userAdmin);
+    }
 
-  const { data } = useGlobalStore();
-  console.log(data);
+if (loading) {
+  return <div>Cargando...</div>;
+}
+
+if (error) {
+  return <div>Error: {error.message}</div>;
+}
+
+if (data) {
+  // Renderiza los datos recibidos
   return (
     <>
       <Navbar />
@@ -34,7 +46,7 @@ export const Contenido = () => {
       <div className="img_poster">
         <img className="fond" src={fond} alt="" />
       </div>
-      {userAdmin ? (
+      {userAdmin ?(
         <main className="admin zone">
           <Link to="/Productos">
             <img src="" alt="" />
@@ -43,16 +55,24 @@ export const Contenido = () => {
             </abbr>
           </Link>
         </main>
-      ) : (
+      ):(
         <div></div>
-      )}
+      )
+    }
 
       <div className="ContenidoCard">
-        {data.map((producto) => (
-          <Card key={producto.id} {...producto} />
+
+        
+       {
+        data.map((producto) => (
+<Card key={producto.id} {...producto} />         
         ))}
       </div>
       <Footer />
     </>
   );
-};
+}
+
+return null;
+}
+
