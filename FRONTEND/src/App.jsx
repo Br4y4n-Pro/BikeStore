@@ -16,7 +16,7 @@ import { Detalles } from "./components/Detalles/detalles";
 import { Carrito } from "./components/Carrito de compras/Carrito";
 import { Perfil } from "./components/Perfil/perfil";
 import { AdminZone } from "./components/admin";
-
+import { ProductoForm } from "./components/ProductoForm";
 
 function App() {
 
@@ -33,9 +33,10 @@ function App() {
           <Route path="/Bicicletas" element={<Bicicletas />} />
           <Route path="/Mantenimiento" element={<Mantenimiento />} />
           <Route path="/Servicio-Cliente" element={<SerCliente />} />
-          <Route path="/Detalles/Bicicleta/:detalleCicla" element={<Detalles />} />
+          <Route path="/Detalles/Bicicletas/:detalleCicla" element={<Detalles />} />
           <Route path="/Carrito" element={<Carrito />} />
           <Route path="/Productos" element={<AdminZone />} />
+          <Route path="/Productos/Añadir" element={<ProductoForm/>}/>
           <Route path="/perfil/:nombreLink" element={<Perfil/>} />
 
           <Route path="*" element={<NotFound />} />

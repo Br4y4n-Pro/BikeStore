@@ -9,6 +9,12 @@ input[type="number"] {
   width: 100%;
   margin:  auto;
   background-color: #e7e7e7;
+  margin-top: 2em;
+  border-radius: 1em;
+
+  @media (width< 820px) {
+    margin-top: 9em;
+  }
 }
 
 .contenedor-formulario .datos_formulario {
@@ -27,7 +33,7 @@ input[type="number"] {
   border-radius: 0.6em;
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .contenedor-formulario .datos_formulario .textArea {
