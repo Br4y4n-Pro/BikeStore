@@ -1,5 +1,4 @@
 import "../../assets/styles/perfil.css";
-import { Card } from "../card";
 import per from "../../assets/Img/formaPago/qr.png";
 import { Navbar } from "../Naver";
 import { useAuthStore } from "../../store/loginStore";
@@ -8,11 +7,10 @@ import { Navigate, useParams } from "react-router-dom";
 export const Perfil = () => {
 const {nombreLink} = useParams()
 
-console.log(nombreLink)
   const { usuario } = useAuthStore();
-  if (!usuario) return <Navigate to="/Home" />;
-  console.log(usuario.nombre + usuario.apellido)
-if ((usuario.nombre+usuario.apellido) != nombreLink) return <Navigate to="/Home" />;
+  if (!usuario) return <Navigate to="/Home"/>;
+  const nombreUser=usuario.nombre + usuario.apellido
+if (((nombreUser.toLowerCase())) != nombreLink) return <Navigate to={`/perfil/${usuario.nombre+usuario.apellido}`} />;
 
   const {
     apellido,
@@ -64,21 +62,13 @@ if ((usuario.nombre+usuario.apellido) != nombreLink) return <Navigate to="/Home"
           <div className="favoritos">
             <p className="title_favoritos">FAVORITOS</p>
             <div className="cont_card_fav">
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+                
             </div>
           </div>
           <div className="Historial">
             <p className="title_historial">HISTORIAL DE COMPRAS</p>
             <div className="cont_card_his">
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+           
             </div>
           </div>
         </div>

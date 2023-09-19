@@ -1,7 +1,7 @@
 import "../../assets/styles/detalles.css";
 import { Navbar } from "../Naver";
 import { Footer } from "../footer";
-import cicla from "../../assets/Img/cicla.png";
+// import cicla from "../../assets/Img/cicla.png";
 import talla from "../../assets/Img/colores detalles/gobernante.png";
 import favorito from "../../assets/Img/colores detalles/corazon.png";
 import { useParams } from "react-router-dom";
@@ -9,8 +9,9 @@ import { useEffect, useState } from "react";
 
 export const Detalles = () => {
   const { detalleCicla } = useParams();
+  console.log(detalleCicla)
   const [data, setData] = useState(null);
-
+data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,6 +28,7 @@ export const Detalles = () => {
     fetchData();
   }, [detalleCicla]);
 
+  console.log(data)
   if (!data) {
     return (
       <div className="loader">
@@ -38,7 +40,6 @@ const {
   nombre_producto,
   descripcion,
   precio,
-  marca,
   color,
   img_producto,}= data
   const colores = color.split(",");
@@ -65,7 +66,6 @@ const {
               
           </div>
           <div>
-            {marca.toLowerCase()}
           </div>
           <br></br>
         </div>

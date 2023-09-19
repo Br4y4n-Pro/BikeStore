@@ -1,4 +1,7 @@
 import { Carousel } from 'react-carousel-minimal';
+import { useAuthStore } from '../store/loginStore';
+
+
 
 export const Carousele = () => {
     const data = [

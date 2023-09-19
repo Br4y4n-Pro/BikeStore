@@ -17,19 +17,17 @@ export const Card = ({
   let noImagen = false;
   // eslint-disable-next-line react/prop-types
   const colores = color.split(",");
-  // console.log(colores)
 
   const linkimagen = "http://localhost:3050" + img_producto;
 
   if (linkimagen === "http://localhost:3050null") {
     noImagen = true;
   }
-  console.log(linkimagen);
 
   return (
     <>
       <div className="contenedorCard" id={id_producto}>
-        <Link to={`/Detalles/Bicicleta/${id_producto}`}>
+        <Link to={`/Detalles/${id_producto}`}>
           <figure className="ImgProduct">
             {noImagen ? (
               <img src={cicla} alt="" />

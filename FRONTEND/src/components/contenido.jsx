@@ -4,7 +4,6 @@ import { Navbar } from "./Naver";
 import { Footer } from "./footer";
 import { Link } from "react-router-dom";
 import mas from "../assets/Img/boton-mas.png";
-import fond from "../assets/Img/fondd.png";
 import { useAuthStore } from "../store/loginStore";
 import { useGlobalStore } from "../store/productoFetchStore";
 import { useEffect } from "react";
