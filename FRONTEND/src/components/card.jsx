@@ -2,8 +2,6 @@ import cicla from "../assets/Img/cicla.png";
 import corazon from "../assets/Img/colores detalles/corazon.png";
 import "../assets/styles/Card.css";
 import { Link } from "react-router-dom";
-import { useGlobalStore } from "../store/productoFetchStore";
-
 export const Card = ({
   id_producto,
   nombre_producto,
@@ -16,40 +14,28 @@ export const Card = ({
   color,
   img_producto,
 }) => {
-
-  let noImagen = false
+  let noImagen = false;
   // eslint-disable-next-line react/prop-types
-  const colores = color.split(",")
-  console.log(colores)
+  const colores = color.split(",");
+  // console.log(colores)
 
-  const linkimagen = "http://localhost:3050"+img_producto
-  
+  const linkimagen = "http://localhost:3050" + img_producto;
+
   if (linkimagen === "http://localhost:3050null") {
-     noImagen = true
+    noImagen = true;
   }
-console.log(linkimagen)
+  console.log(linkimagen);
 
   return (
     <>
       <div className="contenedorCard" id={id_producto}>
-        <Link to={`/Detalles/${(nombre_producto).split(' ').join('')}`}>
+        <Link to={`/Detalles/Bicicleta/${id_producto}`}>
           <figure className="ImgProduct">
-           { noImagen ?(
-               <img src={cicla} alt="" />
-
-             ):(
-
-               <img src={linkimagen} alt="" />
-               )
-           }
-
-
-           {/* 
-           onclick=(algo)=>{
-            
-           }
-           
-           */}
+            {noImagen ? (
+              <img src={cicla} alt="" />
+            ) : (
+              <img src={linkimagen} alt="" />
+            )}
           </figure>
         </Link>
         <div className="info">
@@ -59,9 +45,9 @@ console.log(linkimagen)
             <p className="estado">Disponible</p>
           </div>
           <div className="colores">
-          {colores.map((color, index) => (
-    <div key={index} className={`${color}`}></div>
-  ))}
+            {colores.map((color, index) => (
+              <div key={index} className={`${color}`}></div>
+            ))}
           </div>
         </div>
         <hr />

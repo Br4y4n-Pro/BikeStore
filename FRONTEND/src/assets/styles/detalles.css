@@ -49,20 +49,32 @@ tr:nth-child(odd) td {
   flex-direction: row;
   justify-content: space-evenly;
 }
-.color1 {
-  background-color: rgb(107, 107, 196);
+.colors-flex .blue {
+  background-color: blue;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.color2 {
-  background-color: rgb(57, 167, 143);
+.colors-flex  .red {
+  background-color: red;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.color3 {
-  background-color: rgb(190, 67, 190);
+.colors-flex  .grey {
+  background-color: grey;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.colors-flex .black {
+  background-color:black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.colors-flex  .white {
+  background-color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
