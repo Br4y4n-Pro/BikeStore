@@ -39,10 +39,12 @@ export const Contenido = () => {
 
   if (data) {
     // Renderiza los datos recibidos
+
+    console.log(data)
     return (
       <>
         <Navbar />
-        <Carousele />
+        <Carousele/>
         {userAdmin ? (
           <main className="admin zone">
             <Link to="/Productos">
@@ -58,7 +60,7 @@ export const Contenido = () => {
 
         <div className="ContenidoCard">
           {data.map((producto) => (
-            <Card key={producto.id} {...producto} />
+            <Card key={producto.id_producto} {...producto} />
           ))}
         </div>
         <Footer />

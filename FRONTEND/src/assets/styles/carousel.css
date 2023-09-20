@@ -1,0 +1,8 @@
+.Carousel{
+
+
+    @media (width<820px) {
+        padding-top: 9em;
+    }
+    
+}

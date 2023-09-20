@@ -1,13 +1,14 @@
+import "../assets/styles/carousel.css"
 import { Carousel } from 'react-carousel-minimal';
-import { useAuthStore } from '../store/loginStore';
 
 
 
-export const Carousele = () => {
-    const data = [
+export const Carousele = (props) => {
+
+    const datas = [
         {
             image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg",
-            caption: "San Francisco"
+            caption: props.id_producto
         },
         {
             image: "https://cdn.britannica.com/s:800x450,c:crop/35/204435-138-2F2B745A/Time-lapse-hyper-lapse-Isle-Skye-Scotland.jpg",
@@ -54,19 +55,17 @@ export const Carousele = () => {
 
     return (
         <div style={{
-            width: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center"
         }} className="Carousel">
-            <div style={{ textAlign: "center",
+            
+            <div style={{
         width: "100%", }}>
-                <div style={{
-                    padding: "0 20px"
-                }}>
+                <div>
                     <Carousel
-                        data={data}
+                        data={datas}
                         time={3000}
                         width="100%"
                         height="500px"
@@ -78,21 +77,14 @@ export const Carousele = () => {
                         automatic={true}
                         dots={true}
                         pauseIconColor="white"
-                        pauseIconSize="40px"
+                        pauseIconSize="20px"
                         slideBackgroundColor="darkgrey"
                         slideImageFit="cover"
                         thumbnails={true}
                         thumbnailWidth="100px"
                         style={{
-                            textAlign: "center",
-                            maxWidth: "90%",
-                            maxHeight: "auto",
-                            margin: "40px auto",
-                            paddingBottom: "3em",
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center"
+                        padding:" 1em 1em"
+                           
 
                         }}
                     />
