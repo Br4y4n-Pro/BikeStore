@@ -206,6 +206,17 @@ const imgProducto = async (nombre, imagen) => {
   }
 };
 
+const consulta = async (query) =>{
+try{
+  const resultado = await pool.query('SELECT * FROM productos WHERE nombre_producto ILIKE $1', [`%${query}%`])
+  console.log(resultado)
+  return resultado;
+} catch (error) {
+  console.error("Error al obtener listado de clientes", error);
+  throw error;
+}
+}
+
 module.exports = {
   correoExiste,
   dIExiste,
@@ -216,4 +227,5 @@ module.exports = {
   imgProducto,
   productoExiste,
   getProducto,
+  consulta,
 };

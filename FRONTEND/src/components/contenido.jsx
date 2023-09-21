@@ -40,7 +40,8 @@ export const Contenido = () => {
   if (data) {
     // Renderiza los datos recibidos
 
-    console.log(data)
+    // console.log(data)
+
     return (
       <>
         <Navbar />

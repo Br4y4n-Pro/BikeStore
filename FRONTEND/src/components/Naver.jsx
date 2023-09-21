@@ -8,6 +8,8 @@ import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/loginStore";
+import { useGlobalStore } from "../store/productoFetchStore";
+
 
 export const Navbar = () => {
 
@@ -45,6 +47,21 @@ export const Navbar = () => {
     }
   };
 
+
+
+  //BUSCADOR 
+
+  const {data} = useGlobalStore()
+
+  console.log(data)
+  const handleChange =(event) =>{
+    const busqueda = event.target.value
+    console.log(busqueda)
+
+
+
+  }
+
   return (
     <>
       <nav className="navbar">
@@ -56,11 +73,12 @@ export const Navbar = () => {
         </div>
 
         <div className="containerlup">
-          <input type="text" placeholder="Buscar" />
+          <input onChange={handleChange} type="text" placeholder="Buscar" />
           <div className="btn-lupa">
             <img src={lupa} alt="Icono de lupa" className="lupa" />
           </div>
         </div>
+
 
         <div className={`menu ${menuActive ? "active" : ""}`}>
           <ul>

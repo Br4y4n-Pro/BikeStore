@@ -7,7 +7,7 @@ import { useGlobalStore } from "../store/productoFetchStore";
 export const Carousele = () => {
 
     const {data}= useGlobalStore()
-console.log(data)
+// console.log(data)
     const datos = data.slice(0,10).map((producto)=>{
          return {
             image: "http://localhost:3050"+producto.img_producto,
@@ -15,7 +15,7 @@ console.log(data)
          }
       })
 
-      console.log(datos)
+    //   console.log(datos)
 
 
     const captionStyle = {

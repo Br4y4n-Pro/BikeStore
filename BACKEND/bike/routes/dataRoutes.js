@@ -9,7 +9,7 @@ const upload = require('../models/multerConfig');
 router.get('/productos', dataController.conseguirProductos);
 router.get('/Allusuarios', dataController.conseguirUsuarios);
 router.get('/productos/:id', dataController.conseguirProducto)
-
+router.get('/buscar', dataController.busqueda)
 
 
 router.post('/addproducto',upload, dataController.addProductos)
