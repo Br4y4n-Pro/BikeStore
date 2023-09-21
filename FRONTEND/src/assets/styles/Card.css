@@ -6,17 +6,28 @@
     padding: .5em 1em 2em 1em;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     background-color: white;
+    max-width: calc(510px-1em);
+
+    @media (width<820px) {
+        max-width: 210px;
+        padding: .25em .5em 1em .5em;
+    }
 }
 
 .contenedorCard .ImgProduct{
-    display: grid;
-    place-items: center;
+    width: 100%;
     cursor: pointer;
+
 }
 
 .contenedorCard .ImgProduct img{
     width: 238px;
     height: 238px;
+    object-fit: contain;
+
+    @media (width<820px) {
+        width: 100%;
+    }
     
 }
 
@@ -25,7 +36,7 @@
 }
 
 .contenedorCard .info .tituloCard{
-    font-size: 18px;
+    font-size: 1em;
     font-weight: bold;
     margin-bottom: 1em;
 }
@@ -35,17 +46,17 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
-    width: 97%;
+    width: 100%;
 }
 
 .contenedorCard .info .precioEstado .estado{
-    font-size: 12px;
+    font-size: .7em;
 }   
 
 .contenedorCard .colores{
     display: flex;
-    justify-content: start;
-    gap:1em;
+    align-items: center;
+    gap:.5em;
     align-items: center;
     margin-bottom: 1.5em;
 
@@ -112,13 +123,17 @@
     width: 90%;
     height: 35px;
     border: none;
-    color: white;
     background: var(--red-primary);
 	font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: .8em;
     cursor: pointer;
     transition: .5s background ease;
-
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    
 }
 /* hover de comprar */
 .contenedorCard .botonesHomeCard .comprar:hover{
@@ -164,9 +179,22 @@
     height: 35px;
     width: 35px;
     cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "centro";
+    place-items: center;
 } 
+
+.contenedorCard .botonesHomeCard .Favorito #like{
+    grid-area: centro;
+    z-index: 3;
+    display: none;
+}
 
 .Favorito img{
     width: 25px;
+    grid-area: centro;
+    text-align: center;
 }
 

@@ -1,20 +1,42 @@
+import { useState } from "react";
 import cicla from "../assets/Img/cicla.png";
-import corazon from "../assets/Img/colores detalles/corazon.png";
+import corazon from "../assets/Img/corazon.svg";
+import corazonSelect from "../assets/Img/corazonSelect.svg";
+
 import "../assets/styles/Card.css";
 import { Link } from "react-router-dom";
 export const Card = ({
+  
   id_producto,
   nombre_producto,
-  descripcion,
   precio,
-  stock,
-  categoria,
-  tipo,
-  marca,
   color,
   img_producto,
 }) => {
+  
+  
+  const [fav, setFav] = useState(corazon)
+
+
+const toggleFav = () =>{
+  console.log("checkee")
+if (fav) {
+  setFav(fav === corazon ? corazonSelect : corazon)
+  
+} else {
+  setFav(fav === corazon ? corazonSelect : corazon)
+  
+}
+
+
+}
+
+
   let noImagen = false;
+
+
+
+  
   // eslint-disable-next-line react/prop-types
   const colores = color.split(",");
 
@@ -23,6 +45,8 @@ export const Card = ({
   if (linkimagen === "http://localhost:3050null") {
     noImagen = true;
   }
+
+  
 
   return (
     <>
@@ -50,14 +74,16 @@ export const Card = ({
         </div>
         <hr />
         <div className="botonesHomeCard">
-          <button className="comprar">
-            <Link to="/Carrito">COMPRAR</Link>
-          </button>
+          <Link to="/Carrito" className="comprar">
+            COMPRAR
+          </Link>
           <div className="opciones">
             <button className="addCarrito">AGREGAR AL CARRITO</button>
-            <button className="Favorito">
-              <img src={corazon} alt="Favorito" />
-            </button>
+            <div onClick={toggleFav} className="Favorito">
+              <input type="checkbox" name="like" id="like" />
+             <img src={fav} alt="" />
+              
+            </div>
           </div>
         </div>
       </div>

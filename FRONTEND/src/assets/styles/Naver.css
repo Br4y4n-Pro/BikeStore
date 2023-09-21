@@ -63,6 +63,9 @@
   position: relative;
   height: 35px;
   cursor: pointer;
+  &:hover{
+    background-color: white;
+  }
 }
 
 .navbar .search .user .user_imagen {
@@ -75,9 +78,16 @@
 
 .navbar .search .user .user_imagen p{
   font-size: .8em;
+&:hover{
+  text-shadow: 1px 1px 10px #000;
+}
  }
 
+ .elemento {
+  display: none;
+  z-index: 3;
 
+}
 
 .navbar .search .user .elemento .lista_perfil{
    display: flex;
@@ -90,6 +100,10 @@
 
 .navbar .search .user .elemento .lista_perfil p{
    cursor: pointer;
+   &:hover{
+  text-shadow: 1px 1px 10px #000;
+
+   }
 }
 
 
@@ -102,9 +116,7 @@
   display: none;
 }
 
-.elemento {
-  display: none;
-}
+
 
 .elemento.active {
    display: block;
@@ -200,6 +212,9 @@
     gap: 0.6em;
     justify-content: center;
     align-items: center;
+    &:hover{
+      background-color: violet;
+    }
   }
   .navbar .search img {
     display: flex;

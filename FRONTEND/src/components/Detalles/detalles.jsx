@@ -55,7 +55,7 @@ const {
           <div className="precio_titulo">
             <h1 className="titulo">{nombre_producto}</h1>
             <br></br>
-            <h2 className="precio">{precio}</h2>
+            <h2 className="precio">$ {precio}</h2>
             <br></br>
           </div>
           <img className="cicla" src={linkimagen} alt="" />
@@ -141,8 +141,8 @@ const {
                 </abbr>
               </div>
               <div className="cantidad">
-                <h3>cantidad</h3>
-                <input type="number" name="" id="" className="input-can" />
+                <p>Cantidad</p>
+                <input type="text" pattern="^[0-9]+$" name="" id="" className="input-can" />
               </div>
             </div>
           </div>

@@ -7,6 +7,10 @@
     width: 100%;
     max-width: 1500px;
     margin: auto;
+
+    @media (width<820px) {
+        gap: 1em;
+    }
 }
 .mas{
     width: 60px;

@@ -1,18 +1,24 @@
 .todo {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   font-family: "Montserrat", sans-serif;
+  padding: 1em;
+  gap: 2em;
 }
 
 .container1 {
   display: flex;
   font-family: "Montserrat", sans-serif;
-
   align-items: center;
   flex-direction: column;
-  width: 60%;
+  width: 50%;
 }
+
+.precio_titulo {
+  width: 100%;
+  text-align: center;
+}
+
 .container1 .cicla {
   max-width: 500px;
   width: 80%;
@@ -23,6 +29,7 @@
   justify-content: center;
   font-family: "Montserrat", sans-serif;
   border-collapse: collapse;
+  align-self: center;
 }
 th,
 tr,
@@ -55,25 +62,25 @@ tr:nth-child(odd) td {
   height: 40px;
   border-radius: 50%;
 }
-.colors-flex  .red {
+.colors-flex .red {
   background-color: red;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.colors-flex  .grey {
+.colors-flex .grey {
   background-color: grey;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 .colors-flex .black {
-  background-color:black;
+  background-color: black;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.colors-flex  .white {
+.colors-flex .white {
   background-color: white;
   width: 40px;
   height: 40px;
@@ -82,12 +89,23 @@ tr:nth-child(odd) td {
 
 .btncomprar {
   border: none;
-  background-color: crimson;
-  padding: 14px 30px;
-  font-size: 16px;
+  background-color: var(--red-primary);
+  padding: 1em;
+  font-size: 1em;
   cursor: pointer;
   display: inline-block;
-  border-radius: 5%;
+  border-radius: 1em;
+  color: white;
+  border: 1px solid var(--red-primary);
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    background-color: var(--white);
+    color: #000;
+    border: 1px solid var(--grey);
+    transition: background-color 0.2s ease-in;
+    box-shadow: 1px 1px 10px var(--red-primary);
+  }
 }
 .talla {
   width: 60px;
@@ -104,14 +122,17 @@ tr:nth-child(odd) td {
   cursor: pointer;
 }
 .descripcion {
-  width: 70%;
+  width: 90%;
   font-family: "Montserrat", sans-serif;
+  padding: 1em;
+  text-align: justify;
 }
 
 .container2 {
-  width: 35%;
+  width: 40%;
   display: flex;
   flex-direction: column;
+  justify-content: end;
 }
 .btns {
   width: 100%;
@@ -123,12 +144,24 @@ tr:nth-child(odd) td {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 90%;
+
+  @media (width<1000px) {
+    justify-content: center;
+    gap: 1em;
+  }
 }
 .input-can {
-  border-radius: 10px;
-  width: 30px;
-  height: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.input-can:invalid {
+  background-color: red;
 }
 .cantidad {
   display: flex;
@@ -169,6 +202,4 @@ tr:nth-child(odd) td {
     align-items: center;
     margin-left: 1em;
   }
-  
-
 }

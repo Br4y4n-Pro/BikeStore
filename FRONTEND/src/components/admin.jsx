@@ -16,7 +16,7 @@ export const AdminZone = () => {
                 Agregar Productos
               </Link>
               <Link className="item">Estadisticas</Link>
-              <Link className="item">Compras</Link>
+              <Link className="item">Inventario</Link>
               <Link className="item">Actualizar Productos</Link>
             </div>
             <div className="menu_aside">

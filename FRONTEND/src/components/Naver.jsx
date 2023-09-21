@@ -65,16 +65,16 @@ export const Navbar = () => {
         <div className={`menu ${menuActive ? "active" : ""}`}>
           <ul>
             <li>
-              <Link to="/Bicicletas">Bicicleta</Link>
+              <Link onClick={toggleMenu} to="/Bicicletas">Bicicleta</Link>
             </li>
             <li>
-              <Link to="/Mantenimiento">Mantenimiento</Link>
+              <Link onClick={toggleMenu} to="/Mantenimiento">Mantenimiento</Link>
             </li>
             <li>
-              <Link to="/Accesorios">Accesorios</Link>
+              <Link onClick={toggleMenu} to="/Accesorios">Accesorios</Link>
             </li>
             <li>
-              <Link to="/Servicio-Cliente">Servicio al Cliente</Link>
+              <Link onClick={toggleMenu} to="/Servicio-Cliente">Servicio al Cliente</Link>
             </li>
           </ul>
         </div>
