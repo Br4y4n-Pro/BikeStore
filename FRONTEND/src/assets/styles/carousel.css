@@ -1,0 +1,20 @@
+.Carousel{
+
+
+    @media (width<820px) {
+        padding-top: 9em;
+    }
+    
+}
+
+.thumbnails {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+}
+
+.carousel-caption-bottom a{
+    color: var(--red-primary);
+}

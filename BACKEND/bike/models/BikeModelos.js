@@ -2,11 +2,26 @@ const { Pool } = require("pg");
 const { CONFIG_BD } = require("../config/db");
 const pool = new Pool(CONFIG_BD);
 
+const productoExiste = async (nombre_producto) => {
+  console.log(nombre_producto, "<<<__________________");
 
+  const result = pool.query(
+    "SELECT * FROM productos WHERE nombre_producto = $1",
+    [nombre_producto]
+  );
+  try {
+    console.log(result, "<<<<<//////----------");
+    if (result.rows === 1) {
+      return result.rows;
+    } else {
+      return null; //no se encontro el producto
+    }
+  } catch (error) {
+    console.error("Error al obtener nombre del producto", error);
+    throw error;
+  }
+};
 
-
-
-//Logica para el inicio de sesion separa en modelo
 //FUNCIONANDO
 const correoExiste = async (correo_electronico) => {
   console.log(correo_electronico);
@@ -57,6 +72,22 @@ const getProductos = async () => {
     throw error;
   }
 };
+
+const getProducto = async (iDproducto) => {
+  try {
+    const result = await pool.query(
+      "select * from productos where id_producto = $1",
+      [iDproducto]
+    );
+
+    console.log(result.rows)
+    return result.rows;
+  } catch (error) {
+    console.error("Error al obtener productos", error);
+    throw error;
+  }
+};
+
 //funcionando
 
 const getUsuarios = async () => {
@@ -98,20 +129,20 @@ const registrarUsuario = async (datos) => {
   );
 
   console.log(result);
-    try {
-      //Usuario creado
-      if (result.rowCount === 1) {
-        return result.rowCount;
-        }else{
-          return null; //no se ereo usuario
-        }
-  }catch{
+  try {
+    //Usuario creado
+    if (result.rowCount === 1) {
+      return result.rowCount;
+    } else {
+      return null; //no se ereo usuario
+    }
+  } catch {
     console.error("Error al registrar el usuario", error);
-      throw error;
+    throw error;
+  }
 };
-}
-
-const agregarProducto =async (datos) =>{
+//Funcionando
+const agregarProducto = async (datos) => {
   const {
     nombre_producto,
     descripcion,
@@ -121,11 +152,12 @@ const agregarProducto =async (datos) =>{
     tipo,
     marca,
     color,
-    img_producto,
-  } = req.body;
+  } = datos;
+
+  const colores = color.join(",");
 
   const result = await pool.query(
-    "INSERT INTO productos (Nombre_Producto,Descripcion,Precio,Stock,Categoria,Tipo,Marca,Color,Img_Producto) VALUES ( $1,$2,$3,$4,$5,$6,$7,$8,$9)",
+    "INSERT INTO productos (nombre_producto,descripcion,precio,stock,categoria,tipo,marca,color) VALUES ( $1,$2,$3,$4,$5,$6,$7,$8)",
     [
       nombre_producto,
       descripcion,
@@ -134,10 +166,55 @@ const agregarProducto =async (datos) =>{
       categoria,
       tipo,
       marca,
-      color,
-      img_producto,
+      colores,
     ]
   );
+
+  console.log(result, "---------------------------we");
+  try {
+    if (result.rowCount === 1) {
+      return result.rowCount;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error al registrar el usuario", error);
+    throw error;
+  }
+};
+
+const imgProducto = async (nombre, imagen) => {
+  const { nombre_producto } = nombre;
+  const { filename } = imagen;
+
+  const linkImagen = "/public/uploads/" + filename;
+
+  const result = await pool.query(
+    "UPDATE productos SET img_producto = $1 WHERE nombre_producto = $2",
+    [linkImagen, nombre_producto]
+  );
+
+  console.log(result);
+  if (result.rowCount === 1) {
+    console.log(
+      "--------------------------Imagen agregada a la base de datos-------------------------------",
+      result.rowCount
+    );
+    return result.rowCount;
+  } else {
+    return false;
+  }
+};
+
+const consulta = async (query) =>{
+try{
+  const resultado = await pool.query('SELECT * FROM productos WHERE nombre_producto ILIKE $1', [`%${query}%`])
+  console.log(resultado)
+  return resultado;
+} catch (error) {
+  console.error("Error al obtener listado de clientes", error);
+  throw error;
+}
 }
 
 module.exports = {
@@ -147,4 +224,8 @@ module.exports = {
   getUsuarios,
   registrarUsuario,
   agregarProducto,
+  imgProducto,
+  productoExiste,
+  getProducto,
+  consulta,
 };

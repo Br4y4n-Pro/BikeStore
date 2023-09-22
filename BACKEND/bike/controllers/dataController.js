@@ -1,11 +1,6 @@
 const bikeModel = require("../models/BikeModelos");
 const bcrypt = require("bcrypt");
 
-
-
-
-
-
 //funciona de maraavilla :)
 const ingresoUsuario = async (req, res) => {
   try {
@@ -25,10 +20,10 @@ const ingresoUsuario = async (req, res) => {
     );
     if (!contraseñaCoincide) {
       // Las contraseñas no coinciden, devolver error
-      return res.status(401).json({ mensaje: "Credenciales incorrectas." });
+      return res.status(401).json({ mensaje: "contraseña incorrectas."});
     }
 
-    return res.status(200).json({ mensaje: "todo ando de maravilla" });
+    return res.status(200).json({ info: usuario  });
   } catch (error) {
     console.error("Error al iniciar sesion", error);
     res
@@ -81,39 +76,56 @@ const registerUser = async (req, res) => {
     const newClient = bikeModel.registrarUsuario(req.body);
 
     if (newClient) {
-      res.status(201).json({ message: "usuario registrado exitosamente" });
+      res.status(201).json({ mensaje: "usuario registrado exitosamente" });
+    } else {
+      res
+        .status(401)
+        .json({ mensaje: "no se pudo guardar en la base de datos" });
     }
   } catch (error) {
     console.log("hubo un error al registrar ", error);
   }
 };
 
+const addProductos = async (req, res) => {
 
-const addProductos = async (req,res)=>{
+  console.log(req.body.nombre_producto)
+  const productoExiste = bikeModel.productoExiste(req.body.nombre_producto);
+console.log(productoExiste,"<----<---<---<---")
+  if (!productoExiste) {
+    return res
+      .status(400)
+      .json({ message: "El nombre del producto ya esta registrado" });
+  }
 
-  res.status(201).json({ message: "usuario registrado exitosamente" });
+  const newProduct = bikeModel.agregarProducto(req.body);
 
-  console.log(req.body,"Linea 100 dataControllers")
-
-  
-}
+  if (newProduct) {
+    res.status(201).json({ message: "Producto registrado exitosamente" });
+  } else {
+    res.status(401).json({ mensaje: "no se pudo guardar en la base de datos" });
+  }
+  console.log(newProduct, "linea 98 addProductos dataControllers");
+  console.log(req.body, "Linea 100 dataControllers");
+};
 
 const addImageProduct = async (req, res) => {
   try {
-    // Accede a los datos del formulario
-    const {
-      nombre_producto,
-     
-    } = req.body;
-
     // Accede al archivo de imagen
-    const imagen_producto = req.file;
-console.log(imagen_producto,"addProductos Linea 108 dataControllers")
-console.log(nombre_producto,)
-    // Realiza la lógica de procesamiento aquí (guardar en la base de datos, etc.)
+    const productoExiste = bikeModel.productoExiste(req.body.nombre_producto);
 
+    if (!productoExiste) {
+      return res
+        .status(400)
+        .json({ message: "El nombre del producto ya esta registrado" });
+    }
+    const newImagen = bikeModel.imgProducto(req.body, req.file);
+    if (newImagen) {
+      res.status(200).json({ message: "imagen agregado exitosamente" });
+    } else {
+      res.status(400).json({ message: "Imagen no agregada" });
+    }
     // Devuelve una respuesta exitosa
-    res.status(200).json({ message: "Producto agregado exitosamente" });
   } catch (error) {
     console.error(error);
     // Maneja los errores aquí y devuelve una respuesta de error si es necesario
@@ -121,12 +133,41 @@ console.log(nombre_producto,)
   }
 };
 
+const conseguirProducto = async (req,res) =>{
+  const IDproducto = req.params.id;
+  const producto = await bikeModel.getProducto(IDproducto);
+
+  
+  if (!producto) {
+    return res.status(404).send('Usuario no encontrado');
+  }
+
+  res.send(producto)
+
+;
+}
+
+const busqueda = async (req,res) =>{
+  const query = req.query.q;
+  try {
+    // Realiza una consulta SQL para buscar registros que coincidan parcialmente con 'query'
+      const resultados = bikeModel.consulta(query);
+    // Envía los resultados como respuesta JSON
+    res.json((await resultados).rows);
+  } catch (error) {
+    console.error('Error al buscar en la base de datos:', error);
+    res.status(500).json({ error: 'Error en la búsqueda' });
+  }
+}
 
 module.exports = {
   ingresoUsuario, //⭕
   conseguirProductos, //⭕
   conseguirUsuarios, //⭕
-  registerUser,//⭕
-  addProductos,
-  addImageProduct,
+  registerUser, //⭕
+  addProductos, //⭕
+  addImageProduct,//⭕ lento
+  conseguirProducto,
+  busqueda,
+
 };

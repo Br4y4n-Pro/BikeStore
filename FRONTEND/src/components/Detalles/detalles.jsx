@@ -1,11 +1,50 @@
 import "../../assets/styles/detalles.css";
-import {Navbar} from "../Naver";
+import { Navbar } from "../Naver";
 import { Footer } from "../footer";
-import cicla from "../../assets/Img/cicla.png";
+// import cicla from "../../assets/Img/cicla.png";
 import talla from "../../assets/Img/colores detalles/gobernante.png";
 import favorito from "../../assets/Img/colores detalles/corazon.png";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const Detalles = () => {
+  const { detalleCicla } = useParams();
+  console.log(detalleCicla)
+  const [data, setData] = useState(null);
+data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3050/productos/${detalleCicla}`
+        );
+        const data = await response.json();
+        setData(data[0]);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    };
+
+    fetchData();
+  }, [detalleCicla]);
+
+  console.log(data)
+  if (!data) {
+    return (
+      <div className="loader">
+        <div className="wheel"></div>
+      </div>
+    ); // Puedes mostrar un indicador de carga mientras se obtienen los datos.
+  }
+const {
+  nombre_producto,
+  descripcion,
+  precio,
+  color,
+  img_producto,}= data
+  const colores = color.split(",");
+
+  const linkimagen = "http://localhost:3050" + img_producto;
   return (
     <>
       <Navbar />
@@ -14,49 +53,24 @@ export const Detalles = () => {
       <div className="todo">
         <div className="container1">
           <div className="precio_titulo">
-            <h1 className="titulo">Bicicleta ONE O ONE 121</h1>
+            <h1 className="titulo">{nombre_producto}</h1>
             <br></br>
-            <h2 className="precio">$5.900.000 </h2>
+            <h2 className="precio">$ {precio}</h2>
             <br></br>
           </div>
-          <img className="cicla" src={cicla} alt="" />
+          <img className="cicla" src={linkimagen} alt="" />
 
           <div className="descripcion">
             <h2>Descripcion</h2>
-            <ul>
-              <li>
-                Solar tiene una geometría balanceada entre beneficios de
-                comodidad y control en todos los terrenos.
-              </li>
-              <li>
-                El marco está fabricado con fibra de carbono UR-HM de alta
-                resistencia, con esto se logra una bicicleta muy liviana y
-                altamente resistente.
-              </li>
-              <li>
-                La transmisión de cambios es fabricada por Sram uno de los
-                líderes mundiales de componentes. Su modelo SX Eagle con un solo
-                plato (34 dientes) y 12 piñones (11-50) te brinda la mayor
-                suavidad y precisión cuando realizas cambios.
-              </li>
-              <li>
-                Las llantas son el punto de contacto con todos los terrenos y
-                las encargadas de darte control y suavidad, con llantas de 29” y
-                ancho de 2.1” la Solar te da eso y además mucha confianza.
-              </li>
-              <li>
-                Los frenos hidráulicos te darán tranquilidad para detenerte
-                rápidamente en cualquier condición: seco o mojado.
-              </li>
-            </ul>
+            {descripcion}
+              
+          </div>
+          <div>
           </div>
           <br></br>
         </div>
 
         <div className="container2">
-          <br></br>
-          <br></br>
-          <br></br>
 
           <table className="tabla">
             <tbody>
@@ -95,9 +109,9 @@ export const Detalles = () => {
             <br></br>
             <h2>Color</h2>
             <div className="colors-flex">
-              <div className="color1"> </div>
-              <div className="color2"></div>
-              <div className="color3"></div>
+            {colores.map((color, index) => (
+              <div key={index} className={`${color}`}></div>
+            ))}
             </div>
           </div>
           <br></br>
@@ -117,7 +131,6 @@ export const Detalles = () => {
 
             <img className="guiaimg" src={talla} alt="" />
           </div>
-          
 
           <div className="btns">
             <div className="bnts-com">
@@ -128,8 +141,8 @@ export const Detalles = () => {
                 </abbr>
               </div>
               <div className="cantidad">
-                <h3>cantidad</h3>
-                <input type="number" name="" id="" className="input-can" />
+                <p>Cantidad</p>
+                <input type="text" pattern="^[0-9]+$" name="" id="" className="input-can" />
               </div>
             </div>
           </div>

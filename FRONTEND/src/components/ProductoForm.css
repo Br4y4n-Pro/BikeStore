@@ -7,8 +7,14 @@ input[type="number"] {
 .contenedor-formulario {
   max-width: 600px;
   width: 100%;
-  margin: 2em auto;
+  margin:  auto;
   background-color: #e7e7e7;
+  margin-top: 2em;
+  border-radius: 1em;
+
+  @media (width< 820px) {
+    margin-top: 9em;
+  }
 }
 
 .contenedor-formulario .datos_formulario {
@@ -27,7 +33,7 @@ input[type="number"] {
   border-radius: 0.6em;
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .contenedor-formulario .datos_formulario .textArea {
@@ -95,4 +101,24 @@ input[type="number"] {
 .input-p span {
   font-size: 16px; /* Tamaño de fuente del texto */
   color: #333; /* Color del texto */
+}
+
+.file_file{
+  background: white;
+  width: 90%;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-bottom: 1.5em;
+}
+
+.boton_producto{
+  padding: 1em;
+    border: none;
+    width: 15em;
+    border-radius: 0.5em;
+    color: var(--white);
+    background: var(--red-primary);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 3em;
 }

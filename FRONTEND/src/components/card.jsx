@@ -1,39 +1,89 @@
-import React from "react";
+import { useState } from "react";
 import cicla from "../assets/Img/cicla.png";
-import corazon from "../assets/Img/colores detalles/corazon.png"
+import corazon from "../assets/Img/corazon.svg";
+import corazonSelect from "../assets/Img/corazonSelect.svg";
+
 import "../assets/styles/Card.css";
-import {Link} from "react-router-dom"
-export const Card = () => {
+import { Link } from "react-router-dom";
+export const Card = ({
+  
+  id_producto,
+  nombre_producto,
+  precio,
+  color,
+  img_producto,
+}) => {
+  
+  
+  const [fav, setFav] = useState(corazon)
+
+
+const toggleFav = () =>{
+  console.log("checkee")
+if (fav) {
+  setFav(fav === corazon ? corazonSelect : corazon)
+  
+} else {
+  setFav(fav === corazon ? corazonSelect : corazon)
+  
+}
+
+
+}
+
+
+  let noImagen = false;
+
+
+
+  
+  // eslint-disable-next-line react/prop-types
+  const colores = color.split(",");
+
+  const linkimagen = "http://localhost:3050" + img_producto;
+
+  if (linkimagen === "http://localhost:3050null") {
+    noImagen = true;
+  }
+
+  
+
   return (
     <>
-    
-      <div className="contenedorCard">
-       <Link to='/Detalles'>
-       <figure className="ImgProduct">
-          <img src={cicla} alt="" />
-        </figure>
-       </Link>
+      <div className="contenedorCard" id={id_producto}>
+        <Link to={`/Detalles/${id_producto}`}>
+          <figure className="ImgProduct">
+            {noImagen ? (
+              <img src={cicla} alt="" />
+            ) : (
+              <img src={linkimagen} alt="" />
+            )}
+          </figure>
+        </Link>
         <div className="info">
-          <p className="tituloCard">Bicicleta ONE 0 ONE 121</p>
+          <p className="tituloCard">{nombre_producto}</p>
           <div className="precioEstado">
-            <p className="precio">$5.499.000</p>
+            <p className="precio">{precio}</p>
             <p className="estado">Disponible</p>
           </div>
           <div className="colores">
-            <div className="color1"></div>
-            <div className="color2"></div>
-            <div className="color3"></div>
-            <div className="color4"></div>
+            {colores.map((color, index) => (
+              <div key={index} className={`${color}`}></div>
+            ))}
           </div>
         </div>
         <hr />
         <div className="botonesHomeCard">
-          <button className="comprar"><Link to='/Carrito'>COMPRAR</Link></button>
+          <Link to="/Carrito" className="comprar">
+            COMPRAR
+          </Link>
           <div className="opciones">
             <button className="addCarrito">AGREGAR AL CARRITO</button>
-            <button className="Favorito">
-              <img src={corazon} alt="Favorito" />
-            </button>
+            <div onClick={toggleFav} className="Favorito">
+              <input type="checkbox" name="like" id="like" />
+             <img src={fav} alt="" />
+              
+            </div>
           </div>
         </div>
       </div>

@@ -17,7 +17,6 @@
 	padding: 0;
 	margin: 0;
 	text-decoration: none;
-	color: var(--black);
 	font-family: 'Montserrat', sans-serif;
 
 }
@@ -43,6 +42,9 @@ hr{
 	justify-content: center;
 }
 
+.footer a{
+	color: #000;
+}
 /* ZONA 1 :links de interes */
 
 .footer .zona1{

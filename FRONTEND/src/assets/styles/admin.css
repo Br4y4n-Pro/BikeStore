@@ -1,0 +1,89 @@
+.container_admin{
+    width: 100%;
+    height: 100vh;
+    background-color: darkcyan;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr  ;
+    grid-template-rows: 1fr 1fr ;
+    grid-template-areas: "aside div div"
+                        "aside zone zone"
+    ;
+}
+.container_admin .aside_admin{
+    grid-area: aside;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.container_admin .aside_admin .logo_admin{
+    max-width: 250px;
+    width: 90%;
+}
+
+.container_admin .aside_admin .zone_lists_aside{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.container_admin .aside_admin .zone_lists_aside .lists_items{
+    margin-top: 6em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.container_admin .aside_admin .zone_lists_aside .lists_items .item{
+    font-weight: 600;
+    &:hover{
+        font-weight: 400;
+    }
+}
+.container_admin .aside_admin .zone_lists_aside .menu_aside{
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    gap: 1em;
+    margin-bottom: 4em;
+
+}
+
+.container_admin .aside_admin .zone_lists_aside .menu_aside .item{
+    color: red;
+}
+
+
+.container_admin .graficos_admin{
+    grid-area: div;
+    background-color: black;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+
+.container_admin .graficos_admin .grafico_uno{
+background-color: wheat;
+}
+
+.container_admin .graficos_admin .grafico_dos{
+    background-color: antiquewhite;
+}
+
+.container_admin .graficos_admin .grafico_tres{
+background-color: aquamarine;
+}
+
+
+.container_admin .zone_ventas{
+    grid-area: zone;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+}

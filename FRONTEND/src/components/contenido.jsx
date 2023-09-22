@@ -1,49 +1,73 @@
-import React from "react";
 import { Card } from "./card";
 import "../assets/styles/contenidoC.css";
 import { Navbar } from "./Naver";
 import { Footer } from "./footer";
 import { Link } from "react-router-dom";
-
-import mas from "../assets/Img/boton-mas.png"
-import fond from "../assets/Img/fondd.png"
+import mas from "../assets/Img/boton-mas.png";
+import { useAuthStore } from "../store/loginStore";
+import { useGlobalStore } from "../store/productoFetchStore";
+import { useEffect } from "react";
+import { Carousele } from "./carousel";
 
 export const Contenido = () => {
-  return (
-    <>
-      <Navbar />
+  const { data, loading, error, fetchData } = useGlobalStore();
 
-      <div className="img_poster">
-      <img className="fond" src={fond} alt="" />
+  useEffect(() => {
+    fetchData(); // Llama a la función para realizar la solicitud fetch al montar el componente
+  }, [fetchData]);
 
+  const { usuario } = useAuthStore();
+
+  let userAdmin = false;
+
+  if (usuario) {
+    if (usuario.rol === 1) userAdmin = true;
+    // console.log(userAdmin);
+  }
+
+  if (loading) {
+    return (
+      <div className="loader">
+        <div className="wheel"></div>
       </div>
-      <Link to="/Productos">
-      <img src="" alt="" />
-    <abbr title="Agregar Producto"><img className="mas" src={mas} alt="" /></abbr>
+    );
+  }
 
-  </Link>
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-      <div className="ContenidoCard">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-      <Footer />
-    </>
-  );
+  if (data) {
+    // Renderiza los datos recibidos
+
+    // console.log(data)
+
+    return (
+      <>
+        <Navbar />
+        <Carousele/>
+        {userAdmin ? (
+          <main className="admin zone">
+            <Link to="/Productos">
+              <img src="" alt="" />
+              <abbr title="Agregar Producto">
+                <img className="mas" src={mas} alt="" />
+              </abbr>
+            </Link>
+          </main>
+        ) : (
+          <div></div>
+        )}
+
+        <div className="ContenidoCard">
+          {data.map((producto) => (
+            <Card key={producto.id_producto} {...producto} />
+          ))}
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  return null;
 };
