@@ -2,9 +2,10 @@ import { useState } from "react";
 import cicla from "../assets/Img/cicla.png";
 import corazon from "../assets/Img/corazon.svg";
 import corazonSelect from "../assets/Img/corazonSelect.svg";
-
 import "../assets/styles/Card.css";
 import { Link } from "react-router-dom";
+import { useCarrito } from "../store/carritoStore";
+
 export const Card = ({
   
   id_producto,
@@ -14,7 +15,9 @@ export const Card = ({
   img_producto,
 }) => {
   
+const {  incrementar }= useCarrito()
   
+
   const [fav, setFav] = useState(corazon)
 
 
@@ -78,7 +81,7 @@ if (fav) {
             COMPRAR
           </Link>
           <div className="opciones">
-            <button className="addCarrito">AGREGAR AL CARRITO</button>
+            <button className="addCarrito" onClick={incrementar}>AGREGAR AL CARRITO</button>
             <div onClick={toggleFav} className="Favorito">
               <input type="checkbox" name="like" id="like" />
              <img src={fav} alt="" />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../../src/assets/styles/Naver.css";
 import logoMovil from "../../src/assets/Img/Logo/LogoLWhitepeque.png";
-import logoPc from "../../src/assets/Img/Logo/font kelly slab.png"
+import logoPc from "../../src/assets/Img/Logo/font kelly slab.png";
 import usua from "../../src/assets/Img/nav/usuario.png";
 import lupa from "../../src/assets/Img/nav/lupa.png";
 import carr from "../../src/assets/Img/nav/carrito.png";
@@ -9,19 +9,20 @@ import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/loginStore";
+import { useCarrito } from "../store/carritoStore";
 
 export const Navbar = () => {
   //estados
   const [menuActive, setMenuActive] = useState(false);
   const [image, setImage] = useState(menu);
-  const [logo, setLogo] = useState(logoPc)
+  const [logo, setLogo] = useState(logoPc);
   const [isActive, setIsActive] = useState(false);
   const [query, setQuery] = useState([]);
   const [text, setText] = useState("");
   const [buscando, setBuscando] = useState(false);
   //estados globales
   const { logout, isLoggedIn, usuario, setData } = useAuthStore();
-
+  const { contador } = useCarrito();
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,17 +33,17 @@ export const Navbar = () => {
       }
     };
 
-        // Agregar un evento de cambio de tamaño de ventana para verificar el ancho de la pantalla
-        window.addEventListener('resize', handleResize);
+    // Agregar un evento de cambio de tamaño de ventana para verificar el ancho de la pantalla
+    window.addEventListener("resize", handleResize);
 
-        // Llamar a handleResize una vez cuando se carga el componente
-        handleResize();
-    
-        // Eliminar el evento cuando el componente se desmonta
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }, []);
+    // Llamar a handleResize una vez cuando se carga el componente
+    handleResize();
+
+    // Eliminar el evento cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     setIsActive(true);
@@ -60,26 +61,25 @@ export const Navbar = () => {
     Navigate("/Home");
   };
 
+  console.log(contador)
   const toggleMenu = () => {
-
     if (window.innerWidth <= 820) {
-    if (!menuActive) {
-      setMenuActive(!menuActive);
-      document.body.style.overflow = "hidden";
-      setImage(image === menu ? closeMenu : menu);
-    } else {
-      setMenuActive(!menuActive);
-      document.body.style.overflow = "auto";
-      setImage(image === menu ? closeMenu : menu);
+      if (!menuActive) {
+        setMenuActive(!menuActive);
+        document.body.style.overflow = "hidden";
+        setImage(image === menu ? closeMenu : menu);
+      } else {
+        setMenuActive(!menuActive);
+        document.body.style.overflow = "auto";
+        setImage(image === menu ? closeMenu : menu);
+      }
     }
-  }
-  
   };
 
   //BUSCADOR
 
   const handleChange = async (event) => {
-    setText(  event.target.value );
+    setText(event.target.value);
     if (text !== "" && text !== " ") {
       const urlBusqueda = `http://localhost:3050/buscar?q=${text}`;
       console.log(urlBusqueda);
@@ -89,18 +89,14 @@ export const Navbar = () => {
       setBuscando(true);
     } else {
       setBuscando(false);
-      
     }
   };
 
   const handleBlur = () => {
     // Cuando el input pierde el foco, borra su valor
-    setBuscando(false)
-    setText("")
-
- };
-
-
+    setBuscando(false);
+    setText("");
+  };
 
   return (
     <>
@@ -112,8 +108,12 @@ export const Navbar = () => {
         </div>
 
         <div className="containerlup">
-          <input onChange={handleChange}
- onBlur={handleBlur} type="text" placeholder="Buscar" />
+          <input
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            placeholder="Buscar"
+          />
           <div className="btn-lupa">
             <img src={lupa} alt="Icono de lupa" className="lupa" />
           </div>
@@ -209,8 +209,10 @@ export const Navbar = () => {
               <img src={usua} alt="Icono de usuario" />
             </Link>
           )}
-
-          <img src={carr} alt="Icono de carrito" className="carrito" />
+          <div>
+            <img src={carr} alt="Icono de carrito" className="carrito" />
+            {contador}
+          </div>
           <img
             src={image}
             alt=""
