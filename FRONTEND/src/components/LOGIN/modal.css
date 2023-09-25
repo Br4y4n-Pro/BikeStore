@@ -1,0 +1,49 @@
+.modal_login_layout{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(254,16,67,.7);
+    display: grid;
+    place-items: center;
+  
+}
+
+.modal_login{
+    display: flex;
+justify-content: center;
+align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    border-radius: .5em;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal_login.visible {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_login.hidden {
+  opacity: 0;
+}
+
+.modal_login_button{
+    padding: 1em;
+    border: none;
+    width: 90%;
+    border-radius: 0.5em;
+    color: var(--white);
+    background: var(--red-primary);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+}

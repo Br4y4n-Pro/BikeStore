@@ -1,200 +1,183 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800;900&display=swap");
 
-.contenedorCard{
-    width: 90%;
-    max-width: 260px;
-    padding: .5em 1em 2em 1em;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    background-color: white;
-    max-width: calc(510px-1em);
+.contenedorCard {
+  width: 90%;
+  max-width: 260px;
+  padding: 0.5em 1em 2em 1em;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  max-width: calc(510px-1em);
 
-    @media (width<820px) {
-        max-width: 210px;
-        padding: .25em .5em 1em .5em;
-    }
+  @media (width<820px) {
+    max-width: 210px;
+    padding: 0.25em 0.5em 1em 0.5em;
+  }
 }
 
-.contenedorCard .ImgProduct{
+.contenedorCard .ImgProduct {
+  width: 100%;
+  cursor: pointer;
+}
+
+.contenedorCard .ImgProduct img {
+  width: 238px;
+  height: 238px;
+  object-fit: contain;
+
+  @media (width<820px) {
     width: 100%;
-    cursor: pointer;
-
-}
-
-.contenedorCard .ImgProduct img{
-    width: 238px;
-    height: 238px;
-    object-fit: contain;
-
-    @media (width<820px) {
-        width: 100%;
-    }
-    
+  }
 }
 
 .contenedorCard .info {
-    margin: .5em;
+  margin: 0.5em;
 }
 
-.contenedorCard .info .tituloCard{
-    font-size: 1em;
-    font-weight: bold;
-    margin-bottom: 1em;
+.contenedorCard .info .tituloCard {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1em;
 }
 
-.contenedorCard .info .precioEstado{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-    width: 100%;
+.contenedorCard .info .precioEstado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  width: 100%;
 }
 
-.contenedorCard .info .precioEstado .estado{
-    font-size: .7em;
-}   
-
-.contenedorCard .colores{
-    display: flex;
-    align-items: center;
-    gap:.5em;
-    align-items: center;
-    margin-bottom: 1.5em;
-
+.contenedorCard .info .precioEstado .estado {
+  font-size: 0.7em;
 }
 
-.contenedorCard .colores .blue{
-    height: 25px;
-    width: 25px;
-    background: blue;
-    border-radius: 100%;
-    border: 1px solid black;
-
-
+.contenedorCard .colores {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  align-items: center;
+  margin-bottom: 1.5em;
 }
 
-.contenedorCard .colores .grey{
-    height: 25px;
-    width: 25px;
-    border-radius: 100%;
-    background: grey;
-    border: 1px solid black;
-
+.contenedorCard .colores .blue {
+  height: 25px;
+  width: 25px;
+  background: blue;
+  border-radius: 100%;
+  border: 1px solid black;
 }
 
-.contenedorCard .colores .white{
-    height: 25px;
-    width: 25px;
-    border-radius: 100%;
-    background: white;
-    border: 1px solid black;
-
+.contenedorCard .colores .grey {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background: grey;
+  border: 1px solid black;
 }
 
-.contenedorCard .colores .red{
-    height: 25px;
-    width: 25px;
-    border-radius: 100%;
-    background: red;
-    border: 1px solid black;
-
+.contenedorCard .colores .white {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background: white;
+  border: 1px solid black;
 }
 
-.contenedorCard .colores .black{
-    height: 25px;
-    width: 25px;
-    border-radius: 100%;
-    background: black;
-    border: 1px solid black;
-
+.contenedorCard .colores .red {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background: red;
+  border: 1px solid black;
 }
 
-
-.contenedorCard  .botonesHomeCard{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1.5em;
-    width: 100%;
-   
+.contenedorCard .colores .black {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background: black;
+  border: 1px solid black;
 }
 
-.contenedorCard .botonesHomeCard .comprar{
-    width: 90%;
-    height: 35px;
-    border: none;
-    background: var(--red-primary);
-	font-family: 'Montserrat', sans-serif;
-    font-size: .8em;
-    cursor: pointer;
-    transition: .5s background ease;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    
+.contenedorCard .botonesHomeCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+.contenedorCard .botonesHomeCard .comprar {
+  width: 90%;
+  height: 35px;
+  border: none;
+  background: var(--red-primary);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: 0.5s background ease;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
 }
 /* hover de comprar */
-.contenedorCard .botonesHomeCard .comprar:hover{
-    background: var(--white);
-    color: var(--red-primary);
-    transition: .5s background ease;
-    box-shadow: 1px 1px 3px var(--red-primary);
+.contenedorCard .botonesHomeCard .comprar:hover {
+  background: var(--white);
+  color: var(--red-primary);
+  transition: 0.5s background ease;
+  box-shadow: 1px 1px 3px var(--red-primary);
 }
 
-
-.opciones{
-    width: 90%;
-    margin-top: 1em;
-    display: flex;
-    justify-content: space-between;
+.opciones {
+  width: 90%;
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.contenedorCard .botonesHomeCard .addCarrito{
-    height: 35px;
-    width: 85%;
-    background: var(--white);
-    border: 1px solid var(--grey);
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
-    margin-right: 0.5em;
-    transition: .5s background ease;
-    cursor: pointer;
-    margin-left: 0;
-    margin-top: 0;
+.contenedorCard .botonesHomeCard .addCarrito {
+  height: 35px;
+  width: 85%;
+  background: var(--white);
+  border: 1px solid var(--grey);
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+  margin-right: 0.5em;
+  transition: 0.5s background ease;
+  cursor: pointer;
+  margin-left: 0;
+  margin-top: 0;
 }
 
-.contenedorCard .botonesHomeCard .addCarrito:hover{
-    background: var(--red-primary);
-    color: var(--white);
-    transition: .5s background ease;
-
+.contenedorCard .botonesHomeCard .addCarrito:hover {
+  background: var(--red-primary);
+  color: var(--white);
+  transition: 0.5s background ease;
 }
 
-.contenedorCard .botonesHomeCard .Favorito{
-    background-color: var(--white);
-    border: 1px solid var(--grey);
-    height: 35px;
-    width: 35px;
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "centro";
-    place-items: center;
-} 
-
-.contenedorCard .botonesHomeCard .Favorito #like{
-    grid-area: centro;
-    z-index: 3;
-    display: none;
+.contenedorCard .botonesHomeCard .Favorito {
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  width: 35px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "centro";
+  place-items: center;
 }
 
-.Favorito img{
-    width: 25px;
-    grid-area: centro;
-    text-align: center;
+.contenedorCard .botonesHomeCard .Favorito #like {
+  grid-area: centro;
+  z-index: 3;
+  display: none;
 }
 
+.Favorito img {
+  width: 25px;
+  grid-area: centro;
+  text-align: center;
+}

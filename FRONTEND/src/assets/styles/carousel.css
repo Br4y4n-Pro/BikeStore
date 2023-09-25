@@ -1,7 +1,7 @@
 .Carousel{
 
 
-    @media (width<820px) {
+    @media (width<=820px) {
         padding-top: 9em;
     }
     

@@ -147,13 +147,14 @@ const conseguirProducto = async (req,res) =>{
 ;
 }
 
-const busqueda = async (req,res) =>{
+const busqueda = async (req, res) => {
   const query = req.query.q;
   try {
     // Realiza una consulta SQL para buscar registros que coincidan parcialmente con 'query'
-      const resultados = bikeModel.consulta(query);
+    const resultados = await bikeModel.buscarProductos(query); // Usa await aquí
+
     // Envía los resultados como respuesta JSON
-    res.json((await resultados).rows);
+    res.json(resultados);
   } catch (error) {
     console.error('Error al buscar en la base de datos:', error);
     res.status(500).json({ error: 'Error en la búsqueda' });

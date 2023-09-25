@@ -1,9 +1,21 @@
 /* Estilos para el encabezado */
+
+.contenedor_servicio{
+  max-height: 90vh;
+  height: 90vh;
+  max-width:900px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
 .ser {
   font-size: 24px;
   color: #333;
   text-align: center;
-  margin-top: 10%;
 }
 
 /* Estilos para el formulario y el contenedor */

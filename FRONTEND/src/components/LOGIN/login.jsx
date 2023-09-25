@@ -1,3 +1,4 @@
+import "./modal.css"
 import "../../assets/styles/login.css";
 import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
@@ -5,20 +6,37 @@ import logo from "../../assets/Img/logo/font kelly slab.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/loginStore";
+
 export const Login = () => {
+  const { login, setData } = useAuthStore();
+  const [showPopup, setShowPopup] = useState(false);
+  const [ numberStatus, setNumberStatus] = useState(0)
 
-const {login ,setData} = useAuthStore()
 
+  const mensaje = (value) => {
+    console.log(value)
+    if (value === 1) {
+      return `No se ingreso ningun dato`
+    }
+ 
+    if (value === 401) {
+      return 'El correo o la contraseña es incorrecta';
+    }
+  };
+  
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
   const [user, setUser] = useState({
     correo_electronico: "",
     hash_contraseña: "",
   });
 
-  const Navigate = useNavigate();
-
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  const Navigate = useNavigate();
 
   const ingresarUser = async (e) => {
     e.preventDefault();
@@ -32,23 +50,25 @@ const {login ,setData} = useAuthStore()
         body: JSON.stringify(user),
       });
       const data = await res.json();
-      setData(data.info)
-      console.log(data);
-
-
-      if (res.status === 401) {
-        return alert("Contraseña Incorrecta")
-      }
+      setData(data.info);
+      // console.log(data);
+      
       if (res.status === 400) {
-        return alert("Correo no registrado")
+        setShowPopup(true);
+        setNumberStatus(400)
+        return alert("Correo no registrado");
       }
-    
-      if (res.status === 200) {
-        login()
-        alert("ok");
-        Navigate("/Home");
+      if (res.status === 401) {
+        setShowPopup(true);
+        setNumberStatus(401)
+        // return alert("Contraseña Incorrecta");
+      }
 
+      if (res.status === 200) {
+        login();
+        Navigate("/Home");
       } else {
+        setNumberStatus(1)
         console.log(data.error, "no se pudo iniciar ");
         // Inicio de sesión fallido, maneja el mensaje de error
       }
@@ -60,6 +80,11 @@ const {login ,setData} = useAuthStore()
     // hacer loader luego ya casi...
     console.log("envio los datos ", user);
   };
+  console.log(showPopup)
+
+ 
+  
+  // console.log(mensaje(401))
 
   return (
     <>
@@ -113,7 +138,18 @@ const {login ,setData} = useAuthStore()
           </div>
         </div>
       </div>
+{showPopup ?(
+     <div className="modal_login_layout">
+       <div className={`modal_login ${showPopup ? 'visible': 'hidden'}`}>
+        {mensaje(numberStatus)}
 
+
+        <button className="modal_login_button" onClick={handleClosePopup}> Cerrar Modal</button>
+      </div>
+     </div>
+      ): null}
     </>
   );
 };
+
+

@@ -206,16 +206,29 @@ const imgProducto = async (nombre, imagen) => {
   }
 };
 
-const consulta = async (query) =>{
-try{
-  const resultado = await pool.query('SELECT * FROM productos WHERE nombre_producto ILIKE $1', [`%${query}%`])
-  console.log(resultado)
-  return resultado;
-} catch (error) {
-  console.error("Error al obtener listado de clientes", error);
-  throw error;
-}
-}
+const buscarProductos = async (query) => {
+  try {
+    const keywords = query.split(' ');
+
+    // Construir la consulta SQL
+    const consultaSQL = 'SELECT * FROM productos WHERE (' + keywords.map((keyword, index) => {
+      return 'nombre_producto ILIKE $' + (index + 1);
+    }).join(' AND ') + ')';
+    
+
+    // Parámetros para la consulta SQL
+    const parametros = keywords.map(keyword => `%${keyword}%`);
+
+    // Ejecutar la consulta en la base de datos
+    const resultado = await pool.query(consultaSQL, parametros);
+
+    console.log(resultado)
+    return resultado.rows; // Devolver los resultados
+  } catch (error) {
+    console.error("Error al obtener listado de productos", error);
+    throw error;
+  }
+};
 
 module.exports = {
   correoExiste,
@@ -227,5 +240,5 @@ module.exports = {
   imgProducto,
   productoExiste,
   getProducto,
-  consulta,
+  buscarProductos,
 };

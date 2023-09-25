@@ -21,28 +21,32 @@ if (((nombreUser.toLowerCase())) != nombreLink) return <Navigate to={`/perfil/${
     numero_telefono,
   } = usuario;
 
+
+  const mensaje =()=>{
+    alert(`proximamente, ${nombre.toUpperCase()}  ☆*: .｡. o(≧▽≦)o .｡.:*☆`)
+  }
+
   return (
     <>
       <Navbar />
       <div className="container-perfil">
-        <h1 className="perfil">{nombreLink}</h1>
-        <div className="cont1_cont2">
+         <div className="cont1_cont2">
           <div className="Cont1">
             <img className="back_register" src={per} alt="" />
-            <button>Editar</button>
+            <button onClick={mensaje}>Editar</button>
           </div>
 
           <div className="Cont2">
             <p className="datos_personales">
-              Nombre: <span>{nombre}</span>
+              Nombre: <span>{nombre.toUpperCase()}</span>
             </p>
 
             <p className="datos_personales">
-              Apellido: <span>{apellido}</span>
+              Apellido: <span>{apellido.toUpperCase()}</span>
             </p>
             <p className="datos_personales">Fecha de Nacimiento:</p>
             <p className="datos_personales">
-              Direccion: <span>{direccion}</span>
+              Direccion: <span>{direccion.toUpperCase()}</span>
             </p>
 
             <p className="datos_personales">

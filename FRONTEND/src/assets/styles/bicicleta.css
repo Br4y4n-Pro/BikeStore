@@ -26,6 +26,12 @@
     display: grid;
     flex-wrap: wrap;
 
+    @media (width<=820px) {
+
+    grid-template-columns: repeat(3, 1fr);
+        
+    }
+
 }
 
 .capa {

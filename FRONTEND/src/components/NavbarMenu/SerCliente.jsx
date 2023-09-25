@@ -8,7 +8,7 @@ export const SerCliente = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div className="contenedor_servicio">
         <h1 className="ser">SERVICIO AL CLIENTE</h1>
         <div className="container-R">
           <p className="">Ponte en contacto</p>
