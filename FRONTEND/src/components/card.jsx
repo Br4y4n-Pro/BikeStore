@@ -5,7 +5,7 @@ import corazonSelect from "../assets/Img/corazonSelect.svg";
 import "../assets/styles/Card.css";
 import { Link } from "react-router-dom";
 import { useCarrito } from "../store/carritoStore";
-
+import { useGlobalStore } from "../store/productoFetchStore";
 export const Card = ({
   
   id_producto,
@@ -15,7 +15,8 @@ export const Card = ({
   img_producto,
 }) => {
   
-const {  incrementar }= useCarrito()
+const {  incrementar,agregarProducto } = useCarrito()
+const { data } = useGlobalStore()
   
 
   const [fav, setFav] = useState(corazon)
@@ -49,8 +50,12 @@ if (fav) {
     noImagen = true;
   }
 
-  
-
+  const agregarCarrito = (id)=>{
+    incrementar()
+    const productoFiltrado = data.filter((data) => data.id_producto === id);
+    console.log(productoFiltrado)
+    agregarProducto(productoFiltrado)
+  }
   return (
     <>
       <div className="contenedorCard" id={id_producto}>
@@ -81,7 +86,7 @@ if (fav) {
             COMPRAR
           </Link>
           <div className="opciones">
-            <button className="addCarrito" onClick={incrementar}>AGREGAR AL CARRITO</button>
+            <button className="addCarrito" onClick={()=>{agregarCarrito(id_producto)}}>AGREGAR AL CARRITO</button>
             <div onClick={toggleFav} className="Favorito">
               <input type="checkbox" name="like" id="like" />
              <img src={fav} alt="" />

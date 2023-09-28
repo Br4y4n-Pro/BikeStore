@@ -5,28 +5,32 @@ font-family: "Montserrat", sans-serif;
 }
 
 .header {
-    display: grid;
-    grid-template-columns: 2fr 2fr auto auto;
-    padding: 10px;
+    display: flex;
     align-items: center;
-}
-.producto{
-    margin-left: 35%;
+    justify-content: space-evenly;
 
+    & p{
+        font-weight: 500;
+        font-size: 1.5em;
+    }
+    @media (width <= 375px) {
+        margin-left: 0;
+        font-size: .7em;
+        padding: .5em 2em;
+        justify-content: space-between;
+
+        
+    }
 }
+
 
 .opcion{
     display: flex;
-    width: 100%;
-    margin-right: 170px;
-    justify-content: flex-end;
-    margin-left: -12%;
-    font-family: 'Montserrat', sans-serif;
-    & h2{
-        margin-right: 172px;
-        font-family: 'Montserrat', sans-serif;
-    }
+    width: 31%;
+    justify-content: space-evenly;
+    gap: 3em;
 }
+  
 /* .opcion{
     display: inline-flex;
     width: 100%;
@@ -37,14 +41,54 @@ font-family: "Montserrat", sans-serif;
 .carr1{
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;
+    gap: 2em;
     font-family: 'Montserrat', sans-serif;justify-content: space-evenly;
 }
+
+
+.carr1 .img_cicla{
+    width: 200px;
+    height: 200px;
+
+    @media (width<=375px) {
+        width: 50px;
+        width: 50px;
+    }
+}
+
+.carr1 .img_cicla img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    
+    @media (width<=375px) {
+        width: 50px;
+        width: 50px;
+    }
+}
+
+
+.carr1 .precio{
+    width: 300px;
+    font-size: 1em;
+    @media (width<=375px) {
+       width: 10px;
+       font-size: .6em;
+    }
+}
+
 .carr2{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
+
+.carr1 p{
+    font-size: .5em;
+}
+
 .addCarrito{
     height: 40px;
     width:45%;

@@ -68,7 +68,6 @@ export const Login = () => {
         login();
         Navigate("/Home");
       } else {
-        setNumberStatus(1)
         console.log(data.error, "no se pudo iniciar ");
         // Inicio de sesión fallido, maneja el mensaje de error
       }

@@ -5,10 +5,11 @@ import logo from "../../assets/Img/logo/font kelly slab.png";
 // import { ModalRegis } from "./modalregi";
 // import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Registro = () => {
 
+  const Navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,6 +30,8 @@ export const Registro = () => {
       if (res.status === 201) {
         // Los datos del formulario se procesaron exitosamente
         alert("Se registro exitosamente joven")
+        Navigate("/Home");
+
       } else {
         // Manejar errores aquí
         console.log("Error al procesar datos del formulario");

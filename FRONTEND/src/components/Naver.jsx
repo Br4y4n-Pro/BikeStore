@@ -209,10 +209,12 @@ export const Navbar = () => {
               <img src={usua} alt="Icono de usuario" />
             </Link>
           )}
-          <div>
+         <Link to="/Carrito">
+         <div>
             <img src={carr} alt="Icono de carrito" className="carrito" />
             {contador}
           </div>
+         </Link>
           <img
             src={image}
             alt=""

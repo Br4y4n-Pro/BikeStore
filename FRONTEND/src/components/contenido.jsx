@@ -46,7 +46,7 @@ export const Contenido = () => {
       <>
         <Navbar />
         <Carousele/>
-        {userAdmin ? (
+        { userAdmin ? (
           <main className="admin zone">
             <Link to="/Productos">
               <img src="" alt="" />
