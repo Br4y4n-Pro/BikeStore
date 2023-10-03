@@ -1,65 +1,104 @@
-import React from "react";
 import "../../assets/styles/Carrito.css";
-import cicla from "../../assets/Img/cicla.png";
 import { Navbar } from "../Naver";
 import { Footer } from "../footer";
-import { useCarrito } from "../../store/carritoStore";
+import { useGlobalStore } from "../../store/productoFetchStore";
+
 
 export const Carrito = () => {
-  const { carrito } = useCarrito();
+  const { carrito, contador, totalprecio,agregarProducto,eliminarProducto,incrementar,eliminar} = useGlobalStore();
+//id_producto,id_cliente,estado_v,cantidad,costo,costo_unitario,forma_pago
+
+  const handleChangeEliminar = (productoId) => {
+    console.log(productoId)
+    eliminarProducto(productoId)
+    eliminar()
 
 
+  };
+
+  const handleChangeAñadir = (productoId) => {
+    console.log(productoId)
+    agregarProducto(productoId)
+    incrementar()
+  };
+
+  
+console.log(totalprecio)
   return (
     <>
       <Navbar />
-    <div className="contenedor_carrito">
-    <h1 className="titulo">Carrito De Compras</h1>
+      <div className="contenedor_carrito">
+        <h2 className="titulo">Carrito De Compras</h2>
 
-<header class="header">
-  <p className="producto">Producto</p>
-  <div className="opcion">
-    <p class="">Cantidad</p>
-    <p class="">Total</p>
-  </div>
-</header>
-<hr></hr>
+        <header className="header">
+          <p className="producto">Producto</p>
+            <p className="">Cantidad</p>
+            <p className="">Total</p>
+        
+        </header>
+        <main  className="list_product">
+        {contador >= 1 ? (
+          carrito.map((producto) => (
+              <div key={producto.id_producto} className="Item">
+             <article className="producto">
 
-{carrito.map((producto) => (
-  <div key={producto.id_producto} className="carr1">
-    <div className="img_cicla">
-      <img src={`http://localhost:3050${producto.img_producto}`} alt="" />
-    </div>
+                <img className="img_cicla"
+                  src={`http://localhost:3050${producto.img_producto}`}
+                  alt={producto.nombre_producto}
+                />
 
-    <div className="precio">
-      <p>{producto.nombre_producto}</p>
-      <p>{producto.precio}</p>
-    </div>
-    <div className="cantidad">
-      <p>cantidad</p>
-      <input type="number" name="" id="" className="input-can" />
-    </div>
-    <p>{producto.precio}</p>
-  </div>
-))}
+              <div className="precioNombre">
+                <p className="nombre">{producto.nombre_producto}</p>
+                <p className="precio"> $ {producto.precio}</p>
+              </div>
+             </article>
+              <article className="cantidadCar">
+           
+                <button onClick={()=>{handleChangeEliminar(producto.id_producto)}} className="min">{producto.cantidad === 1 ? <p>Eliminar</p> : <p>-</p> }</button>
+                <div className="cantidadtext">{producto.cantidad}</div>
+                <button onClick={()=>{handleChangeAñadir(producto.id_producto)}} className="max">+</button>
+              </article>
+             <article className="precioSum">
+             <p>
+                    {producto.cantidad * producto.precio}
+              </p>
+             </article>
+              </div>
+          ))
+        ) : (
+          <div className="notProduct">
+            <p>NO SE HA AGREGADO NINGUN PRODUCTO</p>
+          </div>
+        )}
+            </main>
 
-<hr></hr>
+        <main className="productPago">
+          <article className="campoText">
+            <h3>Agrega una nota a tu pedido</h3>
 
-<div className="carr2">
-  <div className="tex">
-    <h3>Agrega una nota a tu pedido</h3>
-    <textarea className="mensaje"> </textarea>
-  </div>
+            <textarea
+              className="mensaje"
+              name="mensaje"
+              id=""
+              cols="20"
+              rows="5"
+            ></textarea>
+          </article>
 
-  <div className="press">
-    <h2>$5.900.000</h2>
-    <h4 className="im">
-      Impuestos incluidos, envio calculado al finalizar la comprav
-    </h4>
-    <button className="addCarrito">AGREGAR AL CARRITO</button>
-  </div>
-</div>
-    </div>
-
+          <article className="precioTotal">
+           <p> $ {totalprecio}</p>
+          
+            <button className="comprar">COMPRAR PRODUCTOS</button>
+            <p className="im">
+              Al dar a comprar aceptas los terminos y condiciones de envios de productos
+            </p>
+          </article>
+          
+        </main>
+      </div>
+          <main className="modalCompra">
+            
+          </main>
       <Footer />
     </>
   );

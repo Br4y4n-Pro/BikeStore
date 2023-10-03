@@ -8,9 +8,11 @@ import { useAuthStore } from "../store/loginStore";
 import { useGlobalStore } from "../store/productoFetchStore";
 import { useEffect } from "react";
 import { Carousele } from "./carousel";
+// import { useCarrito } from "../store/carritoStore";
 
 export const Contenido = () => {
   const { data, loading, error, fetchData } = useGlobalStore();
+  // const {crearLista} = useCarrito()
 
   useEffect(() => {
     fetchData(); // Llama a la función para realizar la solicitud fetch al montar el componente
@@ -37,10 +39,9 @@ export const Contenido = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  if (data) {
-    // Renderiza los datos recibidos
+  if (data) {    
 
-    // console.log(data)
+    // crearLista(data)
 
     return (
       <>

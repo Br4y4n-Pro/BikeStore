@@ -9,7 +9,7 @@ import menu from "../../src/assets/Img/nav/menu.png";
 import closeMenu from "../../src/assets/Img/nav/cerrar.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/loginStore";
-import { useCarrito } from "../store/carritoStore";
+import { useGlobalStore } from "../store/productoFetchStore";
 
 export const Navbar = () => {
   //estados
@@ -20,10 +20,10 @@ export const Navbar = () => {
   const [query, setQuery] = useState([]);
   const [text, setText] = useState("");
   const [buscando, setBuscando] = useState(false);
+  
   //estados globales
   const { logout, isLoggedIn, usuario, setData } = useAuthStore();
-  const { contador } = useCarrito();
-
+  const {contador} = useGlobalStore();
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 820) {
@@ -61,7 +61,6 @@ export const Navbar = () => {
     Navigate("/Home");
   };
 
-  console.log(contador)
   const toggleMenu = () => {
     if (window.innerWidth <= 820) {
       if (!menuActive) {
@@ -113,6 +112,7 @@ export const Navbar = () => {
             onBlur={handleBlur}
             type="text"
             placeholder="Buscar"
+            name="buscador"
           />
           <div className="btn-lupa">
             <img src={lupa} alt="Icono de lupa" className="lupa" />
@@ -153,9 +153,7 @@ export const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link onClick={toggleMenu} to="/Mantenimiento">
-                Mantenimiento
-              </Link>
+            
             </li>
             <li>
               <Link onClick={toggleMenu} to="/Accesorios">
@@ -210,9 +208,9 @@ export const Navbar = () => {
             </Link>
           )}
          <Link to="/Carrito">
-         <div>
+         <div className="cont_carrito">
             <img src={carr} alt="Icono de carrito" className="carrito" />
-            {contador}
+            <p>{contador}</p>
           </div>
          </Link>
           <img

@@ -4,43 +4,29 @@ import corazon from "../assets/Img/corazon.svg";
 import corazonSelect from "../assets/Img/corazonSelect.svg";
 import "../assets/styles/Card.css";
 import { Link } from "react-router-dom";
-import { useCarrito } from "../store/carritoStore";
 import { useGlobalStore } from "../store/productoFetchStore";
 export const Card = ({
-  
   id_producto,
   nombre_producto,
   precio,
   color,
   img_producto,
 }) => {
-  
-const {  incrementar,agregarProducto } = useCarrito()
-const { data } = useGlobalStore()
-  
+  const { carrito, agregarProducto,incrementar } = useGlobalStore();
 
-  const [fav, setFav] = useState(corazon)
+  const [fav, setFav] = useState(corazon);
 
-
-const toggleFav = () =>{
-  console.log("checkee")
-if (fav) {
-  setFav(fav === corazon ? corazonSelect : corazon)
-  
-} else {
-  setFav(fav === corazon ? corazonSelect : corazon)
-  
-}
-
-
-}
-
+  const toggleFav = () => {
+    console.log("checkee");
+    if (fav) {
+      setFav(fav === corazon ? corazonSelect : corazon);
+    } else {
+      setFav(fav === corazon ? corazonSelect : corazon);
+    }
+  };
 
   let noImagen = false;
 
-
-
-  
   // eslint-disable-next-line react/prop-types
   const colores = color.split(",");
 
@@ -50,12 +36,11 @@ if (fav) {
     noImagen = true;
   }
 
-  const agregarCarrito = (id)=>{
-    incrementar()
-    const productoFiltrado = data.filter((data) => data.id_producto === id);
-    console.log(productoFiltrado)
-    agregarProducto(productoFiltrado)
-  }
+  const agregarCarrito = (id) => {
+    agregarProducto(id);
+    incrementar(1)
+    console.log(carrito, id);
+  };
   return (
     <>
       <div className="contenedorCard" id={id_producto}>
@@ -86,11 +71,17 @@ if (fav) {
             COMPRAR
           </Link>
           <div className="opciones">
-            <button className="addCarrito" onClick={()=>{agregarCarrito(id_producto)}}>AGREGAR AL CARRITO</button>
+            <button
+              className="addCarrito"
+              onClick={() => {
+                agregarCarrito(id_producto);
+              }}
+            >
+              AGREGAR AL CARRITO
+            </button>
             <div onClick={toggleFav} className="Favorito">
-              <input type="checkbox" name="like" id="like" />
-             <img src={fav} alt="" />
-              
+              <input type="checkbox" name="like" className="like" />
+              <img src={fav} alt="" />
             </div>
           </div>
         </div>

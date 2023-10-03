@@ -1,127 +1,208 @@
-.titulo{
-font-family: "Montserrat", sans-serif;
-  text-align: center;
-  padding: 35px;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    & p{
-        font-weight: 500;
-        font-size: 1.5em;
-    }
-    @media (width <= 375px) {
-        margin-left: 0;
-        font-size: .7em;
-        padding: .5em 2em;
-        justify-content: space-between;
-
-        
+.contenedor_carrito{
+    margin-top: 2em;
+    @media (width<=820px) {
+        margin-top: 10em;
     }
 }
 
-
-.opcion{
-    display: flex;
-    width: 31%;
-    justify-content: space-evenly;
-    gap: 3em;
-}
-  
-/* .opcion{
-    display: inline-flex;
-    width: 100%;
-    justify-content: space-around;
-    margin: 20px;
-} */
-
-.carr1{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2em;
-    font-family: 'Montserrat', sans-serif;justify-content: space-evenly;
+.contenedor_carrito h2{
+    text-align: center;
 }
 
-
-.carr1 .img_cicla{
-    width: 200px;
-    height: 200px;
-
-    @media (width<=375px) {
-        width: 50px;
-        width: 50px;
-    }
-}
-
-.carr1 .img_cicla img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-
-    
-    @media (width<=375px) {
-        width: 50px;
-        width: 50px;
-    }
-}
-
-
-.carr1 .precio{
-    width: 300px;
-    font-size: 1em;
-    @media (width<=375px) {
-       width: 10px;
-       font-size: .6em;
-    }
-}
-
-.carr2{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.carr1 p{
-    font-size: .5em;
-}
-
-.addCarrito{
-    height: 40px;
-    width:45%;
-    background: var(--white);
-    border: 1px solid var(--grey);
-    font-size: 10px;
-	font-family: 'Montserrat', sans-serif;
-    margin-right: .5em;
-    transition: .5s background ease;
-    cursor: pointer;
-    margin-left: -31px;
-    margin-top: 4%;
-    background: var(--red-primary);
-}
-
-.addCarrito:hover{
-    background: var(--white);
-    color: var(black);
-    transition: .5s background ease;
-    
-}
-.mensaje{
-    padding: 25%;
-    background-color: rgb(240, 213, 213);
-    margin-top: 4%;
+.contenedor_carrito .header{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "producto cantidad precio";
+    text-align: center;
 
 }
-.press{
+
+.contenedor_carrito .header p{
+    font-weight: 600;
+}
+
+.contenedor_carrito .list_product{
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    margin-bottom: 1em;
+  padding: 0px 1em;
+  @media (width<=820px) {
+    padding: 0;
+    
+  }
+}
+
+.contenedor_carrito .list_product .Item{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.159);
+    padding: 0px 1em;
+
+}
+
+.contenedor_carrito .list_product .Item .producto{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    column-gap: 1em;
 }
-.im{
-    margin-top: 4%;
+
+.contenedor_carrito .list_product .Item .producto .img_cicla{
+    width: 10em;
+
+    @media ( width <= 820px) {
+        width: 4em;
+      }
 }
+
+.contenedor_carrito .list_product .Item .producto .precioNombre .nombre{
+        font-size: 1em;
+        
+    @media (width<= 820px) {
+        font-size: .6em;
+        font-weight: 500;
+
+    }
+}
+
+.contenedor_carrito .list_product .Item .producto .precioNombre .precio{
+    font-size: 1em;
+        
+    @media (width<= 820px) {
+        font-size: .6em;
+        font-weight: 500;
+
+    }
+}
+
+.contenedor_carrito .list_product .Item .cantidadCar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: .5em;
+}
+
+.contenedor_carrito .list_product .Item .cantidadCar .min{
+    width: auto;
+    min-width: 20px;
+    height: 20px;
+    font-weight: 800;
+    background-color: var(--red-primary);
+    border: none;
+    border-radius: .3em;
+    color: white;
+}
+
+.contenedor_carrito .list_product .Item .cantidadCar .cantidadtext{
+    text-align: center;
+}
+
+
+.contenedor_carrito .list_product .Item .cantidadCar .max{
+    width: 20px;
+    height: 20px;
+    font-weight: 800;
+    background-color: var(--red-primary);
+    border: none;
+    border-radius: .3em;
+    color: white;
+}
+
+.contenedor_carrito .list_product .Item  .precioSum {
+    display: grid;
+    place-content: center;
+}
+
+.contenedor_carrito .list_product .Item  .precioSum p{
+    font-size: 1em;
+        
+    @media (width<= 820px) {
+        font-size: .6em;
+        font-weight: 500;
+
+    }} 
+
+    .contenedor_carrito .list_product .notProduct{
+        margin-top: 1em;
+        animation: moverTexto 4s linear infinite; /* Nombre de la animación, duración, temporización y repetición */
+        text-align: center;
+        margin-bottom: 2em;
+        @media (width<=820px) {
+            font-size: .6em;
+            text-align: center;
+            
+        }
+      }
+
+     .contenedor_carrito .productPago{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+     }
+
+     .contenedor_carrito .productPago .campoText{
+        max-width: 450px;
+        width: 90%;
+     }
+     .contenedor_carrito .productPago .campoText h3{
+        margin-bottom: 2em;
+     }
+
+     .contenedor_carrito .productPago .campoText .mensaje{
+        width: 100%;
+        height: 150px;
+        margin-bottom: 2em;
+
+     }
+
+
+     .contenedor_carrito .productPago .precioTotal{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+
+     .contenedor_carrito .productPago .precioTotal p{
+
+
+     }
+
+     .contenedor_carrito .productPago .precioTotal .comprar{
+        padding: 1em;
+        border: none;
+        width: 300px;
+        border-radius: 0.5em;
+        color: var(--white);
+        background: var(--red-primary);
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 2em;
+        margin-bottom: 3em;
+
+     }
+
+     .contenedor_carrito .productPago .precioTotal .im{
+     font-size: .6em;
+     max-width: 90%;
+     text-align: center;
+
+
+      @keyframes moverTexto {
+        0% {
+          opacity: 0; /* Posición inicial a la izquierda */
+        }
+        50% {
+          transform: scale(1.5); /* Posición en el medio */
+        }
+        100% {
+          opacity: 1; /* Posición final a la derecha */
+        }
+      }

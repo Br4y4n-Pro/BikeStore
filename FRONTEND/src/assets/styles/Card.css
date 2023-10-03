@@ -170,7 +170,7 @@
   place-items: center;
 }
 
-.contenedorCard .botonesHomeCard .Favorito #like {
+.contenedorCard .botonesHomeCard .Favorito .like {
   grid-area: centro;
   z-index: 3;
   display: none;
