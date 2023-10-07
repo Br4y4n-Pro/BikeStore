@@ -7,9 +7,9 @@ const upload = require('../models/multerConfig');
 
 
 router.get('/productos', dataController.conseguirProductos);
-router.get('/Allusuarios', dataController.conseguirUsuarios);
 router.get('/productos/:id', dataController.conseguirProducto)
 router.get('/buscar', dataController.busqueda)
+router.get('/Allusuarios', dataController.conseguirUsuarios);
 
 
 router.post('/addproducto',upload, dataController.addProductos)
@@ -20,6 +20,8 @@ router.post('/addproducto/imagen',upload, dataController.addImageProduct)
 router.post('/usuarios', dataController.ingresoUsuario)
 router.post('/registro', dataController.registerUser);
 
+
+router.post('/ventas', dataController.ventas)
 
 // router.delete('/productos',dataController.deleteProductos)
 // router.put('/registro',dataController.uregistro)

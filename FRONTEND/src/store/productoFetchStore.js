@@ -10,6 +10,7 @@ export const useGlobalStore = create()(
         loading: false, // Para rastrear el estado de la solicitud fetch
         error: null, // Para rastrear errores en la solicitud fetch
         carrito: [],
+        
         totalprecio: 0,
         contador: 0,
         eliminar: () => set((state) => ({ contador: state.contador - 1 })),
@@ -44,15 +45,15 @@ export const useGlobalStore = create()(
               set((state) => ({
                 carrito: state.carrito.map((item) =>
                   item.id_producto === productoId
-                    ? { ...item, cantidad: item.cantidad + 1 }
-                    : item
+                    ? { ...item, cantidad: item.cantidad + 1 , costo: (item.cantidad + 1) * item.precio}
+                    : {...item}
                 ),
-                totalprecio: get().totalprecio + parseInt(product.precio),
+                totalprecio: get().totalprecio + product.precio,
               }));
             } else {
               set((state) => ({
-                carrito: [...state.carrito, { ...product, cantidad: 1 }],
-                totalprecio: get().totalprecio + parseInt(product.precio),
+                carrito: [...state.carrito, { ...product, cantidad: 1, costo: product.precio }],
+                totalprecio: get().totalprecio + product.precio,
               }));
             }
           }
@@ -72,6 +73,7 @@ export const useGlobalStore = create()(
                 updateCartProducts[itemIndex] = {
                   ...itemToRemove,
                   cantidad: itemToRemove.cantidad - 1,
+                  costo: (itemToRemove.cantidad - 1) * itemToRemove.precio
                 };
                 return {
                   carrito: updateCartProducts,
@@ -93,6 +95,9 @@ export const useGlobalStore = create()(
             // Si el producto no se encontró en el carrito, simplemente devuelve el estado sin cambios
             return state;
           }),
+
+          resetCart: ()=> set(()=> ({carrito:[], contador:0, totalprecio:0}))
+
       };
     },
     {

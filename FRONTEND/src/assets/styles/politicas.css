@@ -1,0 +1,15 @@
+.cont_Politicas_datos{
+    margin-top: 2em;
+    padding: 2em 8em;
+    text-align: justify;
+
+    @media (width <= 820px) {
+        margin-top: 10em;
+        padding: 2em;
+        text-align: start;
+    }
+}
+
+.cont_Politicas_datos  h3 {
+    margin: 1em 0px;
+}

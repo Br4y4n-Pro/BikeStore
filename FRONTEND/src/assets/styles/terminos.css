@@ -1,0 +1,19 @@
+.container_terminos{
+    margin-top: 2em;
+    padding: 4em;
+    @media (width <= 820px) {
+        margin-top: 10em;
+        padding: 2em;
+    }
+}
+
+.container_terminos h3{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.container_terminos ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}

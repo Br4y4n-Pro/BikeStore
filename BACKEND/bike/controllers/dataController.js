@@ -5,10 +5,10 @@ const bcrypt = require("bcrypt");
 const ingresoUsuario = async (req, res) => {
   try {
     const { correo_electronico, hash_contraseña } = req.body;
-    console.log(correo_electronico, hash_contraseña);
+    // console.log(correo_electronico, hash_contraseña);
 
     const usuario = await bikeModel.correoExiste(correo_electronico);
-    console.log("soy el usuario de usuario.", usuario);
+    // console.log("soy el usuario de usuario.", usuario);
     if (!usuario) {
       return res.status(401).json({ mensaje: "Correo No existe" });
     }
@@ -147,6 +147,19 @@ const conseguirProducto = async (req,res) =>{
 ;
 }
 
+
+const ventas = async(req,res) =>{
+  const body = req.body;
+  const registroventa = await bikeModel.registrarVenta(body)
+  if (!registroventa) {
+      res.status(401).json({error: 'Error al registrar la venta'})
+  }
+  res.status(201).json({mensaje:'se registro la venta'})
+
+}
+
+
+
 const busqueda = async (req, res) => {
   const query = req.query.q;
   try {
@@ -161,6 +174,9 @@ const busqueda = async (req, res) => {
   }
 }
 
+
+
+
 module.exports = {
   ingresoUsuario, //⭕
   conseguirProductos, //⭕
@@ -170,5 +186,6 @@ module.exports = {
   addImageProduct,//⭕ lento
   conseguirProducto,
   busqueda,
+  ventas,
 
 };

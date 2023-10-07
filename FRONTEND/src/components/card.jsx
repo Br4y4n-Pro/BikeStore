@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import cicla from "../assets/Img/cicla.png";
 import corazon from "../assets/Img/corazon.svg";
@@ -56,7 +57,7 @@ export const Card = ({
         <div className="info">
           <p className="tituloCard">{nombre_producto}</p>
           <div className="precioEstado">
-            <p className="precio">{precio}</p>
+            <p className="precio">$ {precio.toLocaleString()}</p>
             <p className="estado">Disponible</p>
           </div>
           <div className="colores">

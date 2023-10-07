@@ -24,7 +24,7 @@ const productoExiste = async (nombre_producto) => {
 
 //FUNCIONANDO
 const correoExiste = async (correo_electronico) => {
-  console.log(correo_electronico);
+  // console.log(correo_electronico);
   const result = await pool.query(
     "SELECT * FROM clientes WHERE correo_electronico = $1",
     [correo_electronico]
@@ -80,7 +80,7 @@ const getProducto = async (iDproducto) => {
       [iDproducto]
     );
 
-    console.log(result.rows)
+    console.log(result.rows);
     return result.rows;
   } catch (error) {
     console.error("Error al obtener productos", error);
@@ -208,25 +208,57 @@ const imgProducto = async (nombre, imagen) => {
 
 const buscarProductos = async (query) => {
   try {
-    const keywords = query.split(' ');
+    const keywords = query.split(" ");
 
     // Construir la consulta SQL
-    const consultaSQL = 'SELECT * FROM productos WHERE (' + keywords.map((keyword, index) => {
-      return 'nombre_producto ILIKE $' + (index + 1);
-    }).join(' AND ') + ')';
-    
+    const consultaSQL =
+      "SELECT * FROM productos WHERE (" +
+      keywords
+        .map((keyword, index) => {
+          return "nombre_producto ILIKE $" + (index + 1);
+        })
+        .join(" AND ") +
+      ")";
 
     // Parámetros para la consulta SQL
-    const parametros = keywords.map(keyword => `%${keyword}%`);
+    const parametros = keywords.map((keyword) => `%${keyword}%`);
 
     // Ejecutar la consulta en la base de datos
     const resultado = await pool.query(consultaSQL, parametros);
 
-    console.log(resultado)
+    console.log(resultado);
     return resultado.rows; // Devolver los resultados
   } catch (error) {
     console.error("Error al obtener listado de productos", error);
     throw error;
+  }
+};
+//INSERT INTO public.ventas(
+//id_venta, id_producto, id_cliente, estado_v, fecha_v, cantidad, costo, costo_unitario, forma_pago)
+//VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+const registrarVenta = async (datos) => {
+  console.log(datos);
+  const { productos, data } = datos;
+  const { id_cliente, costoTotal, forma_pago, estado_v } = data;
+
+  const promises = productos.map(async (item) => {
+    const query = 'INSERT INTO ventas(id_producto, id_cliente, estado_v, cantidad, costo, costo_unitario, forma_pago) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+    const values = [item.id_producto, id_cliente, estado_v, item.cantidad, costoTotal, item.precio, forma_pago];
+  
+    const result = await pool.query(query, values);
+    console.log("first", result)
+    return result; // Devuelve el resultado de cada inserción
+  });
+  // Espera a que todas las inserciones se completen antes de continuar
+  const insertResults = await Promise.all(promises);
+  
+  console.log("por fuera -----------------------",insertResults)
+  // Verifica si todas las inserciones fueron exitosas
+  if (insertResults.every((result) => result.rowCount === 1)) {
+    return insertResults; // Devuelve los resultados de todas las inserciones
+  } else {
+    // Manejar el caso en que al menos una inserción falló
+    return { error: 'Al menos una inserción falló' };
   }
 };
 
@@ -241,4 +273,5 @@ module.exports = {
   productoExiste,
   getProducto,
   buscarProductos,
+  registrarVenta
 };
