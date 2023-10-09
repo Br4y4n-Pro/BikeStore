@@ -90,6 +90,10 @@ export const Carrito = () => {
       },
       body: JSON.stringify(newCart),
     });
+
+    if(!result.ok){
+      return   setModal(true),setVenta(false);
+    }
     const data = await result.json();
     if (result.status === 201) {
       controladorEnvio(data);
@@ -101,7 +105,7 @@ export const Carrito = () => {
   };
   // console.log(carrito);
 
-  const manejadorBotones = () => {};
+  // const manejadorBotones = () => {};
 
   return (
     <>

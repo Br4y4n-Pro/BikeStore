@@ -1,11 +1,158 @@
 openapi: 3.0.0
 info : 
-  title: Mi API
+  title: BikeStore Documentacion API
   version: 1.0.0
+  description: Aqui se encuentra todas las rutas disponibles en esta API de BikeStore
+
+  schemes:
+  - http
+  - https
 paths:
-  /:
+  /productos:
     get:
-        summary: Obtener todos los datos
-        responses:
-          '200':
-           description: Respuesta exitosa
+      summary: Obtener lista de productos
+      description: Retorna una lista de productos disponibles.
+      responses:
+        200:
+          description: Éxito. Retorna la lista de productos.
+        500:
+          description: Error interno del servidor.
+
+  /productos/{id}:
+    get:
+      summary: Obtener un producto por ID
+      description: Retorna un producto específico según su ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Éxito. Retorna los detalles del producto.
+        404:
+          description: Producto no encontrado.
+        500:
+          description: Error interno del servidor.
+
+  /buscar:
+    get:
+      summary: Realizar una búsqueda
+      description: Realiza una búsqueda de productos.
+      responses:
+        200:
+          description: Éxito. Retorna los resultados de la búsqueda.
+        500:
+          description: Error interno del servidor.
+
+  /Allusuarios:
+    get:
+      summary: Obtener lista de usuarios
+      description: Retorna una lista de todos los usuarios.
+      responses:
+        200:
+          description: Éxito. Retorna la lista de usuarios.
+        500:
+          description: Error interno del servidor.
+
+  /addproducto:
+    post:
+      summary: Agregar un producto
+      description: Agrega un nuevo producto con los datos proporcionados.
+      parameters:
+        - name: nombre_producto
+          in: formData
+          required: true
+          type: string
+          description: Nombre del producto.
+        - name: descripcion
+          in: formData
+          required: true
+          type: string
+          description: Descripción del producto.
+        - name: precio
+          in: formData
+          required: true
+          type: number
+          format: double
+          description: Precio del producto.
+        - name: stock
+          in: formData
+          required: true
+          type: integer
+          description: Cantidad en stock del producto.
+        - name: categoria
+          in: formData
+          required: true
+          type: string
+          description: Categoría del producto.
+        - name: tipo
+          in: formData
+          required: true
+          type: string
+          description: Tipo del producto.
+        - name: marca
+          in: formData
+          required: true
+          type: string
+          description: Marca del producto.
+        - name: color
+          in: formData
+          required: true
+          type: string
+          description: Color del producto.
+      responses:
+        201:
+          description: Éxito. El producto ha sido creado.
+        400:
+          description: Solicitud incorrecta.
+        500:
+          description: Error interno del servidor.
+
+  /addproducto/imagen:
+    post:
+      summary: Agregar imagen a un producto
+      description: Agrega una imagen a un producto existente.
+      responses:
+        201:
+          description: Éxito. La imagen ha sido agregada al producto.
+        400:
+          description: Solicitud incorrecta.
+        500:
+          description: Error interno del servidor.
+
+  /usuarios:
+    post:
+      summary: Ingresar un usuario
+      description: Ingresa un nuevo usuario con los datos proporcionados.
+      responses:
+        201:
+          description: Éxito. El usuario ha sido ingresado.
+        400:
+          description: Solicitud incorrecta.
+        500:
+          description: Error interno del servidor.
+
+  /registro:
+    post:
+      summary: Registrar un usuario
+      description: Registra un nuevo usuario con los datos proporcionados.
+      responses:
+        201:
+          description: Éxito. El usuario ha sido registrado.
+        400:
+          description: Solicitud incorrecta.
+        500:
+          description: Error interno del servidor.
+
+  /ventas:
+    post:
+      summary: Registrar una venta
+      description: Registra una nueva venta con los datos proporcionados.
+      responses:
+        201:
+          description: Éxito. La venta ha sido registrada.
+        400:
+          description: Solicitud incorrecta.
+        500:
+          description: Error interno del servidor.

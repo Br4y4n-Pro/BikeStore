@@ -233,9 +233,7 @@ const buscarProductos = async (query) => {
     throw error;
   }
 };
-//INSERT INTO public.ventas(
-//id_venta, id_producto, id_cliente, estado_v, fecha_v, cantidad, costo, costo_unitario, forma_pago)
-//VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
 const registrarVenta = async (datos) => {
   console.log(datos);
   const { productos, data } = datos;

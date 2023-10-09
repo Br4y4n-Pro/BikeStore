@@ -4,14 +4,14 @@ import LogoMovil from "../../assets/Img/Logo/LogoLWhite.png";
 import back from "../../assets/Img/FondoLoginMovil/back.png";
 import logo from "../../assets/Img/logo/font kelly slab.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/loginStore";
-
 export const Login = () => {
   const { login, setData } = useAuthStore();
   const [showPopup, setShowPopup] = useState(false);
   const [ numberStatus, setNumberStatus] = useState(0)
 
+  const Navigate = useNavigate()
 
   const mensaje = (value) => {
     console.log(value)
@@ -50,22 +50,21 @@ export const Login = () => {
       });
       const data = await res.json();
       setData(data.info);
-      // console.log(data);
+      console.log(data);
       
       if (res.status === 400) {
         setShowPopup(true);
         setNumberStatus(400)
-        return alert("Correo no registrado");
       }
       if (res.status === 401) {
         setShowPopup(true);
         setNumberStatus(401)
-        // return alert("Contraseña Incorrecta");
       }
 
       if (res.status === 200) {
         login();
-        history.goBack();
+        alert("Inicio de Sesion Exitoso")
+        Navigate("/Home")
       } else {
         console.log(data.error, "no se pudo iniciar ");
         // Inicio de sesión fallido, maneja el mensaje de error
@@ -142,7 +141,7 @@ export const Login = () => {
         {mensaje(numberStatus)}
 
 
-        <button className="modal_login_button" onClick={handleClosePopup}> Cerrar Modal</button>
+        <button className="modal_login_button" onClick={handleClosePopup}> Cerrar </button>
       </div>
      </div>
       ): null}

@@ -20,10 +20,10 @@ const ingresoUsuario = async (req, res) => {
     );
     if (!contraseñaCoincide) {
       // Las contraseñas no coinciden, devolver error
-      return res.status(401).json({ mensaje: "contraseña incorrectas."});
+      return res.status(401).json({ mensaje: "contraseña incorrectas." });
     }
 
-    return res.status(200).json({ info: usuario  });
+    return res.status(200).json({ info: usuario });
   } catch (error) {
     console.error("Error al iniciar sesion", error);
     res
@@ -88,10 +88,13 @@ const registerUser = async (req, res) => {
 };
 
 const addProductos = async (req, res) => {
-
-  console.log(req.body.nombre_producto)
+  // console.log(req.body.nombre_producto);
+  if (Object.keys(req.body).length === 0) {
+    console.log("no hay nada")
+    return res.status(400).json({ error: "El cuerpo de la solicitud está vacío." });
+  }
   const productoExiste = bikeModel.productoExiste(req.body.nombre_producto);
-console.log(productoExiste,"<----<---<---<---")
+  console.log(productoExiste, "<----<---<---<---");
   if (!productoExiste) {
     return res
       .status(400)
@@ -133,32 +136,25 @@ const addImageProduct = async (req, res) => {
   }
 };
 
-const conseguirProducto = async (req,res) =>{
+const conseguirProducto = async (req, res) => {
   const IDproducto = req.params.id;
   const producto = await bikeModel.getProducto(IDproducto);
 
-  
   if (!producto) {
-    return res.status(404).send('Usuario no encontrado');
+    return res.status(404).send("Usuario no encontrado");
   }
 
-  res.send(producto)
+  res.send(producto);
+};
 
-;
-}
-
-
-const ventas = async(req,res) =>{
+const ventas = async (req, res) => {
   const body = req.body;
-  const registroventa = await bikeModel.registrarVenta(body)
+  const registroventa = await bikeModel.registrarVenta(body);
   if (!registroventa) {
-      res.status(401).json({error: 'Error al registrar la venta'})
+    res.status(401).json({ error: "Error al registrar la venta" });
   }
-  res.status(201).json({mensaje:'se registro la venta'})
-
-}
-
-
+  res.status(201).json({ mensaje: "se registro la venta" });
+};
 
 const busqueda = async (req, res) => {
   const query = req.query.q;
@@ -169,13 +165,10 @@ const busqueda = async (req, res) => {
     // Envía los resultados como respuesta JSON
     res.json(resultados);
   } catch (error) {
-    console.error('Error al buscar en la base de datos:', error);
-    res.status(500).json({ error: 'Error en la búsqueda' });
+    console.error("Error al buscar en la base de datos:", error);
+    res.status(500).json({ error: "Error en la búsqueda" });
   }
-}
-
-
-
+};
 
 module.exports = {
   ingresoUsuario, //⭕
@@ -183,9 +176,8 @@ module.exports = {
   conseguirUsuarios, //⭕
   registerUser, //⭕
   addProductos, //⭕
-  addImageProduct,//⭕ lento
+  addImageProduct, //⭕ lento
   conseguirProducto,
   busqueda,
   ventas,
-
 };
